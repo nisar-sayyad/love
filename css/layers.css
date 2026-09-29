@@ -1,0 +1,547 @@
+/* ==========================================================================
+   THREE-LAYER ARCHITECTURE
+   Layer 1: #passcode-gate (Passcode: 2909)
+   Layer 2: #opening-screen ("OPEN MY HEART ❤️")
+   Layer 3: #story-experience (Main Sanctuary)
+   ========================================================================== */
+
+/* ==========================================================================
+   LAYER 1: PASSCODE GATE (PIXEL-PERFECT SANCTUM RECREATION)
+   ========================================================================== */
+#passcode-gate {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999 !important;
+  background: url('../assets/images/sanctum-passcode-bg.jpg') center center / cover no-repeat !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 0 20px clamp(30px, 4.5vh, 65px) !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: opacity, transform;
+}
+
+#passcode-gate.gate-unlocked,
+#passcode-gate.is-unlocked {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+  transform: scale(1.04) !important;
+}
+
+/* --- Top Branding / Header Area --- */
+#passcode-gate .sanctum-header-branding {
+  text-align: center;
+  margin-top: clamp(45px, 6.5vh, 75px);
+  margin-bottom: clamp(16px, 2.2vh, 26px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  user-select: none;
+}
+
+#passcode-gate .sanctum-eyebrow-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 6px;
+}
+
+#passcode-gate .eyebrow-ornament-line {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 235, 210, 0.75), transparent);
+}
+
+#passcode-gate .sanctum-eyebrow {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-size: clamp(11.5px, 1.15vw, 14px);
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #faebd7;
+  text-shadow: 0 0 12px rgba(255, 235, 210, 0.7), 0 2px 6px rgba(0, 0, 0, 0.9);
+  font-weight: 500;
+}
+
+#passcode-gate .sanctum-eyebrow-heart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  filter: drop-shadow(0 0 6px #ff2a7a) drop-shadow(0 0 14px rgba(255, 42, 122, 0.9));
+}
+
+#passcode-gate .sanctum-couple-title {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-size: clamp(38px, 4.6vw, 58px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2vw, 24px);
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+  text-shadow: 0 0 24px rgba(255, 240, 245, 0.9), 0 2px 8px rgba(0, 0, 0, 0.9);
+  cursor: pointer;
+  outline: none;
+}
+
+#passcode-gate .central-glow-heart {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 4px #ff1769) drop-shadow(0 0 14px #ff1769) drop-shadow(0 0 30px rgba(255, 23, 105, 0.95));
+}
+
+#passcode-gate .sanctum-script-subtitle {
+  font-family: 'Great Vibes', 'Alex Brush', cursive;
+  font-size: clamp(25px, 2.8vw, 33px);
+  color: #ffccd8;
+  line-height: 1.32;
+  text-shadow: 0 0 18px rgba(255, 120, 165, 0.85), 0 2px 6px rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+#passcode-gate .sanctum-script-subtitle p {
+  margin: 0;
+}
+
+#passcode-gate .script-heart {
+  font-family: sans-serif;
+  font-size: 0.85em;
+  margin-left: 5px;
+  color: #ff6b9d;
+  filter: drop-shadow(0 0 6px #ff2a7a);
+}
+
+/* --- Central Glassmorphism Card --- */
+#passcode-gate .passcode-card {
+  width: 100% !important;
+  max-width: 455px !important;
+  background: linear-gradient(168deg, rgba(255, 236, 232, 0.70) 0%, rgba(255, 218, 222, 0.56) 45%, rgba(246, 185, 202, 0.46) 100%) !important;
+  backdrop-filter: blur(28px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+  border: 1.5px solid rgba(255, 236, 220, 0.95) !important;
+  border-radius: 30px !important;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.35), 0 0 60px rgba(255, 195, 180, 0.50), inset 0 1.5px 3px rgba(255, 255, 255, 0.95), inset 0 -1.5px 3px rgba(255, 185, 210, 0.45) !important;
+  padding: 26px 32px 22px !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 2 !important;
+  margin-bottom: clamp(30px, 4.5vh, 65px) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+/* Lock Emblem */
+#passcode-gate .sanctum-lock-emblem {
+  margin-bottom: 4px !important;
+  display: flex !important;
+  justify-content: center !important;
+  filter: drop-shadow(0 4px 12px rgba(180, 80, 115, 0.32)) !important;
+}
+
+#passcode-gate .emblem-svg {
+  display: block;
+}
+
+/* Card Title & Subtitle */
+#passcode-gate .sanctum-card-title {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  color: #360a16 !important;
+  margin: 6px 0 3px !important;
+  line-height: 1.25 !important;
+  text-shadow: none !important;
+}
+
+#passcode-gate .sanctum-card-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #581f2f !important;
+  line-height: 1.45 !important;
+  margin: 0 0 18px !important;
+  text-shadow: none !important;
+}
+
+/* PIN Input Grid */
+#passcode-gate .sanctum-pin-grid {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 14px !important;
+  margin-bottom: 18px !important;
+  width: 100% !important;
+}
+
+#passcode-gate .pin-box-wrapper {
+  position: relative !important;
+  width: 58px !important;
+  height: 58px !important;
+}
+
+#passcode-gate .pin-digit-box {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 14px !important;
+  background: rgba(255, 255, 255, 0.90) !important;
+  border: 1.5px solid rgba(235, 185, 205, 0.85) !important;
+  box-shadow: inset 0 2px 4px rgba(210, 170, 185, 0.12), 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  text-align: center !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: #360a16 !important;
+  outline: none !important;
+  caret-color: #d81b60 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+#passcode-gate .pin-digit-box:focus {
+  border-color: #d81b60 !important;
+  background: #ffffff !important;
+  box-shadow: 0 0 16px rgba(216, 27, 96, 0.45) !important;
+}
+
+#passcode-gate .pin-heart-glyph {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+  transition: opacity 0.15s ease, transform 0.15s ease !important;
+}
+
+#passcode-gate .pin-box-wrapper.has-val .pin-heart-glyph {
+  opacity: 0 !important;
+  transform: scale(0.5) !important;
+}
+
+/* Unlock Button */
+#passcode-gate .sanctum-unlock-btn {
+  width: 100% !important;
+  max-width: 360px !important;
+  height: 50px !important;
+  border-radius: 999px !important;
+  border: none !important;
+  background: linear-gradient(90deg, #be0a49 0%, #db1a5e 50%, #9e0539 100%) !important;
+  box-shadow: 0 8px 30px rgba(219, 26, 94, 0.75), 0 0 18px rgba(255, 60, 120, 0.5) !important;
+  color: #ffffff !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 15.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.03em !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease !important;
+}
+
+#passcode-gate .sanctum-unlock-btn:hover {
+  transform: translateY(-1.5px) !important;
+  box-shadow: 0 10px 34px rgba(219, 26, 94, 0.85), 0 0 22px rgba(255, 60, 120, 0.6) !important;
+  filter: brightness(1.06) !important;
+}
+
+#passcode-gate .sanctum-unlock-btn:active {
+  transform: translateY(0) !important;
+}
+
+#passcode-gate .sanctum-unlock-btn .btn-arrow {
+  font-size: 17px;
+  transition: transform 0.2s ease;
+}
+
+#passcode-gate .sanctum-unlock-btn:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* Error feedback */
+#passcode-gate .passcode-error-msg {
+  min-height: 18px;
+  font-size: 11px;
+  color: #b80d46;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  margin-top: 6px;
+  transition: opacity 0.2s ease;
+}
+
+/* Divider with Heart */
+#passcode-gate .sanctum-divider-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  margin: 15px 0 10px !important;
+}
+
+#passcode-gate .sanctum-divider-wrap .divider-line {
+  height: 1px !important;
+  flex: 1 !important;
+  background: rgba(215, 175, 190, 0.6) !important;
+}
+
+#passcode-gate .sanctum-divider-wrap .divider-heart {
+  color: #d81b60 !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+}
+
+/* Romantic Quote */
+#passcode-gate .sanctum-quote-block {
+  margin-bottom: 14px !important;
+}
+
+#passcode-gate .sanctum-quote-block .quote-text {
+  font-family: 'Playfair Display', Georgia, serif !important;
+  font-style: italic !important;
+  font-size: 13px !important;
+  color: #42101e !important;
+  line-height: 1.45 !important;
+  margin: 0 0 3px !important;
+}
+
+#passcode-gate .sanctum-quote-block .quote-author {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 12px !important;
+  color: #581f2f !important;
+  font-weight: 500 !important;
+  display: block !important;
+}
+
+/* Bottom 3 Features */
+#passcode-gate .sanctum-features-row {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  width: 100% !important;
+  padding-top: 12px !important;
+  border-top: 1px solid rgba(215, 175, 190, 0.5) !important;
+}
+
+#passcode-gate .sanctum-feature-col {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 4px !important;
+  position: relative !important;
+}
+
+#passcode-gate .sanctum-feature-col:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 12%;
+  height: 76%;
+  width: 1px;
+  background: rgba(215, 175, 190, 0.5);
+}
+
+#passcode-gate .feature-icon-wrap {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 24px !important;
+}
+
+#passcode-gate .feature-text {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 1.25 !important;
+  color: #3d0d1b !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Shake Animation on Wrong Passcode */
+@keyframes shakeGateCard {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+#passcode-gate .passcode-card.shake {
+  animation: shakeGateCard 0.45s ease-in-out !important;
+}
+
+/* ==========================================================================
+   LAYER 2: OPEN MY HEART SCREEN
+   ========================================================================== */
+#opening-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 90000;
+  background: radial-gradient(circle at 50% 50%, #150611 0%, #090206 65%, #040103 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 1000ms var(--ease-cinematic), visibility 1000ms ease, transform 1000ms var(--ease-cinematic);
+}
+
+#opening-screen.opening-hidden,
+#opening-screen.screen-unlocked {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: scale(1.03);
+}
+
+.opening-content {
+  text-align: center;
+  max-width: 500px;
+  padding: 20px;
+}
+
+/* Glowing Pulsing Heart */
+.heartbeat-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heartbeat-glow {
+  position: absolute;
+  inset: -15px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 46, 78, 0.4) 0%, rgba(249, 217, 118, 0.15) 50%, transparent 70%);
+  animation: heartPulseAura 2.2s infinite ease-in-out;
+}
+
+.heart-svg {
+  width: 72px;
+  height: 72px;
+  filter: drop-shadow(0 0 16px rgba(184, 46, 78, 0.8));
+  animation: heartRhythm 2.2s infinite ease-in-out;
+  fill: url(#heartGradient);
+}
+
+@keyframes heartRhythm {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.22); }
+  28% { transform: scale(1.05); }
+  42% { transform: scale(1.28); }
+  70% { transform: scale(1); }
+}
+
+@keyframes heartPulseAura {
+  0%, 100% { transform: scale(0.9); opacity: 0.4; }
+  42% { transform: scale(1.4); opacity: 0.85; }
+  70% { transform: scale(0.9); opacity: 0.4; }
+}
+
+.opening-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--rose-muted);
+  margin-bottom: 8px;
+}
+
+.opening-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--text-pure);
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.opening-lead {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto 40px;
+  line-height: 1.7;
+}
+
+/* Open My Heart CTA */
+.btn-open-heart {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 36px;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--bg-obsidian);
+  background: var(--gold-gradient);
+  border-radius: 9999px;
+  border: none;
+  box-shadow: 0 0 32px var(--gold-glow), 0 10px 24px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: all 300ms var(--ease-cinematic);
+  overflow: hidden;
+}
+
+.btn-open-heart::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: translateX(-100%);
+  transition: transform 650ms ease;
+}
+
+.btn-open-heart:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 45px rgba(249, 217, 118, 0.5), 0 14px 30px rgba(0, 0, 0, 0.8);
+}
+
+.btn-open-heart:hover::before {
+  transform: translateX(100%);
+}
+
+.btn-open-heart:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* ==========================================================================
+   LAYER 3: MAIN SANCTUARY CONTAINER
+   ========================================================================== */
+#story-experience {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity 1200ms var(--ease-cinematic);
+  z-index: 10;
+}
+
+#story-experience.experience-active {
+  opacity: 1;
+}

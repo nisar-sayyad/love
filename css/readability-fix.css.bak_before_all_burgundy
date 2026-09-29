@@ -1,0 +1,2805 @@
+/* ==========================================================================
+   READABILITY FIX — NISAR × LAHARI
+   Fixes all text contrast issues + Frosted Glass + Rose Gold Glow
+   ========================================================================== */
+
+/* ──────────────────────────────────────────────────────────────
+   1. HOME PAGE — Welcome / Centre Section
+   ────────────────────────────────────────────────────────────── */
+
+.welcome-script-text {
+  color: #c8004d !important;
+  filter: drop-shadow(0 1px 6px rgba(200, 0, 77, 0.25)) drop-shadow(0 2px 3px rgba(0,0,0,0.18)) !important;
+}
+.welcome-title-names {
+  color: #0f0e0e !important;
+  text-shadow: 0 1px 4px rgba(255,255,255,0.8), 0 2px 8px rgba(0,0,0,0.15) !important;
+}
+.welcome-tagline {
+  color: #3a2e28 !important;
+  text-shadow: 0 1px 4px rgba(255,255,255,0.9) !important;
+  font-weight: 600 !important;
+}
+.welcome-description {
+  color: #1e1714 !important;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.7) !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   2. HOME PAGE — White Cards (Brand, Countdown, Clock, Player)
+   ────────────────────────────────────────────────────────────── */
+
+.home-brand-monogram { color: #111111 !important; }
+.home-brand-names { color: #111111 !important; }
+.home-brand-names .brand-times { color: #444444 !important; }
+.home-brand-tag { color: #3d3530 !important; font-weight: 700 !important; }
+.countdown-tag-row { color: #1a1410 !important; }
+.countdown-num { color: #0f0e0e !important; }
+.countdown-lbl { color: #4a3e38 !important; font-weight: 700 !important; }
+.countdown-dash { color: #5a4e48 !important; }
+.lahari-clock-name { color: #0f0e0e !important; }
+.lahari-clock-tag { color: #5a4e48 !important; font-weight: 700 !important; }
+.lahari-clock-num { color: #0f0e0e !important; }
+.lahari-clock-lbl { color: #4a3e38 !important; font-weight: 700 !important; }
+.player-title { color: #0f0e0e !important; font-weight: 700 !important; }
+.player-subtitle { color: #3d3530 !important; font-weight: 600 !important; }
+.player-time-tag { color: #3d3530 !important; font-weight: 700 !important; }
+.card-badge { color: #0f0e0e !important; font-weight: 800 !important; }
+.card-title { color: #0f0e0e !important; font-weight: 700 !important; }
+
+/* ══════════════════════════════════════════════════════════════
+   3. CHAPTER PAGES — CLEAN, COMPACT TITLES & HEADERS (NO BULKY BOX)
+   Removes the heavy rectangular frosted box so titles float
+   elegantly and seamlessly directly on the scene
+   ══════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════
+   3. CHAPTER PAGES — SLEEK SLIM FROSTED GLASS BANNER PILL
+   Compact luxury pill banner with single-line subtitles & refined typography
+   ══════════════════════════════════════════════════════════════ */
+
+/* ─── Chapter Hero Banner (top of every chapter) ─── */
+.chapter-page-wrapper .chapter-hero-banner {
+  position: relative;
+  background: rgba(255, 248, 245, 0.16) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(212, 160, 110, 0.38) !important;
+  border-radius: 9999px !important;
+  padding: 16px 42px 14px !important;
+  margin: 22px auto 14px !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 200, 170, 0.1),
+    0 8px 30px rgba(180, 80, 60, 0.12),
+    inset 0 1px 0 rgba(255, 240, 220, 0.22) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+/* Rose gold shimmer line at top */
+.chapter-page-wrapper .chapter-hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212, 160, 110, 0.7), rgba(255, 200, 150, 0.9), rgba(212, 160, 110, 0.7), transparent);
+  border-radius: 999px;
+  display: block !important;
+}
+
+/* ─── Section Headers inside chapters ─── */
+.chapter-page-wrapper .section-header {
+  position: relative;
+  background: rgba(255, 248, 245, 0.13) !important;
+  backdrop-filter: blur(18px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(150%) !important;
+  border: 1px solid rgba(212, 160, 110, 0.32) !important;
+  border-radius: 9999px !important;
+  padding: 13px 36px 12px !important;
+  margin: 0 auto 1.5rem !important;
+  width: fit-content !important;
+  max-width: 95% !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 200, 170, 0.08),
+    0 6px 20px rgba(180, 80, 60, 0.1),
+    inset 0 1px 0 rgba(255, 240, 220, 0.18) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.chapter-page-wrapper .section-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(212, 160, 110, 0.65), rgba(255, 200, 150, 0.85), rgba(212, 160, 110, 0.65), transparent);
+  border-radius: 999px;
+  display: block !important;
+}
+
+/* ─── ROSE GOLD GLOW & COMPACT SIZE — Chapter Hero Title ─── */
+.chapter-page-wrapper .chapter-hero-title {
+  color: #fff8f0 !important;
+  font-size: clamp(20px, 2.0vw, 26px) !important;
+  letter-spacing: 0.12em !important;
+  font-weight: 600 !important;
+  margin: 3px 0 2px 0 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  text-shadow:
+    0 0 10px rgba(212, 140, 90, 0.55),
+    0 0 20px rgba(200, 100, 60, 0.3),
+    0 2px 6px rgba(160, 60, 20, 0.35) !important;
+}
+
+/* ─── ROSE GOLD GLOW & COMPACT SIZE — Section Titles ─── */
+.chapter-page-wrapper .section-title {
+  color: #fff5ee !important;
+  font-size: clamp(18px, 1.8vw, 23px) !important;
+  letter-spacing: 0.06em !important;
+  font-weight: 600 !important;
+  margin: 2px 0 2px 0 !important;
+  line-height: 1.15 !important;
+  white-space: nowrap !important;
+  text-shadow:
+    0 0 10px rgba(212, 140, 90, 0.5),
+    0 0 18px rgba(200, 100, 60, 0.28),
+    0 2px 6px rgba(160, 60, 20, 0.3) !important;
+}
+
+/* ─── SINGLE LINE SUBTITLES (WARM CREAM) ─── */
+.chapter-page-wrapper .chapter-hero-sub {
+  color: rgba(255, 240, 220, 0.96) !important;
+  font-size: clamp(12.5px, 1.0vw, 14.5px) !important;
+  white-space: nowrap !important;
+  margin: 2px 0 0 0 !important;
+  max-width: none !important;
+  line-height: 1.3 !important;
+  text-shadow: 0 0 8px rgba(210, 130, 80, 0.28), 0 1px 4px rgba(0, 0, 0, 0.18) !important;
+}
+
+.chapter-page-wrapper .section-subtitle {
+  color: rgba(255, 238, 218, 0.96) !important;
+  font-size: clamp(12px, 0.95vw, 13.5px) !important;
+  white-space: nowrap !important;
+  margin: 2px 0 0 0 !important;
+  max-width: none !important;
+  line-height: 1.3 !important;
+  text-shadow: 0 0 8px rgba(210, 130, 80, 0.25), 0 1px 4px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* ─── CHAPTER BADGE TAG (CHAPTER 01 etc) ─── */
+.chapter-page-wrapper .chapter-badge-tag {
+  color: #ffd4a8 !important;
+  font-size: 10px !important;
+  padding: 2.5px 12px !important;
+  letter-spacing: 0.22em !important;
+  margin: 0 0 3px 0 !important;
+  line-height: 1.3 !important;
+  background: rgba(120, 50, 20, 0.45) !important;
+  border-color: rgba(212, 140, 80, 0.5) !important;
+  text-shadow: 0 0 8px rgba(212, 140, 80, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 999px !important;
+}
+
+/* ─── CHAPTER DIVIDER ORNAMENT (Heart Icon) ─── */
+.chapter-page-wrapper .chapter-divider-ornament {
+  margin: 5px auto 0 !important;
+  max-width: 120px !important;
+  opacity: 0.75 !important;
+}
+.chapter-page-wrapper .chapter-divider-ornament span {
+  font-size: 11px !important;
+}
+
+/* ─── Mobile Fallback for Narrow Screens ─── */
+@media (max-width: 768px) {
+  .chapter-page-wrapper .chapter-hero-banner,
+  .chapter-page-wrapper .section-header {
+    border-radius: 18px !important;
+    padding: 14px 18px !important;
+    width: 92% !important;
+  }
+  .chapter-page-wrapper .chapter-hero-title,
+  .chapter-page-wrapper .chapter-hero-sub,
+  .chapter-page-wrapper .section-title,
+  .chapter-page-wrapper .section-subtitle {
+    white-space: normal !important;
+  }
+}
+
+/* ─── GOLD BADGE — section-badge ─── */
+.chapter-page-wrapper .section-badge {
+  color: #ffd885 !important;
+  background: rgba(100, 50, 10, 0.4) !important;
+  border-color: rgba(212, 175, 80, 0.5) !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.45), 0 1px 3px rgba(0,0,0,0.25) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.18), inset 0 1px 0 rgba(255, 230, 140, 0.18) !important;
+}
+
+/* ─── SECTION PILL TAG (PERMANENT ARCHIVE, INTIMATE CONNECTION etc) ─── */
+.chapter-page-wrapper .section-pill-tag {
+  color: rgba(255, 230, 205, 0.98) !important;
+  background: rgba(100, 40, 10, 0.42) !important;
+  border-color: rgba(212, 140, 80, 0.45) !important;
+  text-shadow: 0 0 8px rgba(212, 130, 70, 0.4), 0 1px 3px rgba(0,0,0,0.25) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* ─── HERO PILL BADGE (EXCLUSIVELY FOR LAHARI) ─── */
+.chapter-page-wrapper .hero-pill-badge {
+  color: rgba(255, 230, 205, 0.98) !important;
+  background: rgba(100, 40, 10, 0.42) !important;
+  border-color: rgba(212, 140, 80, 0.45) !important;
+  text-shadow: 0 0 8px rgba(212, 130, 70, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+}
+
+/* ─── ROSE GOLD GLOW — Editorial Headings (Chapter 1 & 4) ─── */
+.chapter-page-wrapper .hero-editorial-title {
+  color: #fff5ee !important;
+  text-shadow:
+    0 0 10px rgba(212, 140, 90, 0.55),
+    0 0 22px rgba(200, 100, 60, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+.chapter-page-wrapper .hero-title-italic {
+  color: rgba(255, 220, 195, 0.98) !important;
+  text-shadow: 0 0 10px rgba(212, 140, 90, 0.5), 0 2px 8px rgba(0, 0, 0, 0.28) !important;
+}
+.chapter-page-wrapper .hero-editorial-sub {
+  color: rgba(255, 240, 225, 0.97) !important;
+  text-shadow: 0 0 8px rgba(210, 130, 80, 0.3), 0 1px 6px rgba(0, 0, 0, 0.22) !important;
+}
+.chapter-page-wrapper .hero-editorial-quote {
+  color: rgba(255, 235, 215, 0.97) !important;
+  border-left-color: rgba(212, 140, 80, 0.55) !important;
+  text-shadow: 0 0 8px rgba(210, 130, 80, 0.3), 0 1px 5px rgba(0,0,0,0.2) !important;
+}
+.chapter-page-wrapper .hero-editorial-quote cite {
+  color: #ffd4a8 !important;
+  text-shadow: 0 0 8px rgba(212, 140, 80, 0.45) !important;
+}
+.chapter-page-wrapper .hero-scroll-prompt {
+  color: rgba(255, 220, 185, 0.75) !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   4. CHAPTER PAGES — Navigation Buttons
+   ────────────────────────────────────────────────────────────── */
+
+.chapter-bottom-btn.prev-btn {
+  color: #ffffff !important;
+  background: rgba(80, 30, 10, 0.45) !important;
+  border-color: rgba(212, 160, 110, 0.4) !important;
+  text-shadow: 0 0 8px rgba(212, 130, 70, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+}
+.chapter-bottom-btn.home-btn {
+  color: #ffd885 !important;
+  background: rgba(80, 40, 5, 0.45) !important;
+  border-color: rgba(212, 175, 80, 0.45) !important;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   5. HOME PAGE — Nav Links
+   ────────────────────────────────────────────────────────────── */
+
+.home-nav-link { color: #1a1410 !important; font-weight: 600 !important; }
+.home-nav-link:hover, .home-nav-link.is-active { color: #c8004d !important; }
+
+/* Hide Floating Ambient Music Player (Midnight Serenade) */
+#ambient-music-widget,
+.ambient-music-widget {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   6. CHAPTER 02 — LUXURY FROSTED GLASS & WIDE COMPACT OVERHAUL
+   - 95vw Width: Side gaps completely eliminated across all grids
+   - Crystal Frosted Glass: Dark colors removed, glowing translucent glass
+   - Compact Proportions: Card heights reduced by 35-40% for sleek elegance
+   - Refined Single-Line Section Headers & Responsive 50/50 Balance
+   ══════════════════════════════════════════════════════════════ */
+
+#page-chapter-2.is-active {
+  display: block !important;
+  padding-bottom: 40px !important;
+  overflow-x: hidden !important;
+}
+
+#page-chapter-2:not(.is-active),
+#page-chapter-2[hidden] {
+  display: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Chapter 02 Hero Banner */
+#page-chapter-2 .chapter-hero-banner {
+  margin: 16px auto 20px !important;
+  padding: 10px 38px 11px !important;
+  max-width: fit-content !important;
+}
+
+/* Section Spacing — Reduced & Tightened */
+#page-chapter-2 .section-spacing {
+  padding-top: 1.1rem !important;
+  padding-bottom: 1.1rem !important;
+}
+
+#page-chapter-2 .sanctum-beacon-dual-section {
+  padding-top: 0.6rem !important;
+  padding-bottom: 1.1rem !important;
+}
+
+/* Section Headers — Sleek Single-Line Pills */
+#page-chapter-2 .section-header {
+  padding: 10px 32px 10px !important;
+  max-width: fit-content !important;
+  margin: 0 auto 1.2rem !important;
+  border-radius: 9999px !important;
+}
+
+#page-chapter-2 .section-header .section-title {
+  font-size: clamp(18px, 1.8vw, 23px) !important;
+  margin: 2px 0 !important;
+  white-space: nowrap !important;
+}
+
+#page-chapter-2 .section-header .section-subtitle {
+  font-size: clamp(11.5px, 0.9vw, 13px) !important;
+  margin: 1px 0 0 0 !important;
+  white-space: nowrap !important;
+}
+
+/* ── UNIFIED CRYSTAL FROSTED GLASS FOR ALL CHAPTER 02 CARDS ── */
+#page-chapter-2 .royal-monogram-frame,
+#page-chapter-2 .love-beacon-box,
+#page-chapter-2 .keepsake-pod-card,
+#page-chapter-2 .love-lock-card,
+#page-chapter-2 .fingerprint-scanner-card,
+#page-chapter-2 .intimate-card,
+#page-chapter-2 .love-compass-card,
+#page-chapter-2 .mood-oracle-card,
+#page-chapter-2 .love-barometer-card,
+#page-chapter-2 .scratch-card-wrap,
+#page-chapter-2 .neon-wall-card {
+  background: rgba(255, 248, 245, 0.14) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(212, 160, 110, 0.38) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 200, 170, 0.12),
+    0 14px 40px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(255, 235, 210, 0.22) !important;
+  box-sizing: border-box !important;
+  color: #fff8f0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CHAPTER 02 — COMPACT LUXURY BENTO COLLAGE (MATCHING HOME DIMENSIONS: ~240px × 280px)
+   ══════════════════════════════════════════════════════════════ */
+#page-chapter-2 .chapter-bento-collage {
+  max-width: 95vw !important;
+  width: 95% !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  box-sizing: border-box !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TOP BENTO CLUSTER: Crest (1 Col) + Neon Wall (2 Cols Wide) + Blooming Rose (1 Col)
+   Row 2: Full Width Intimate Connection Banner
+   ══════════════════════════════════════════════════════════════ */
+#page-chapter-2 .bento-cluster-top {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-rows: 280px auto !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+/* Cell 1: Royal Monogram Crest (Col 1, Row 1) - EXACT HOME DIMENSION (280px) */
+#page-chapter-2 .bento-cell-1 {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+#page-chapter-2 .bento-cell-1 .royal-monogram-frame {
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  padding: 14px 16px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-halo-ring {
+  width: 120px !important;
+  height: 120px !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-letters-row {
+  margin: 2px 0 !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-letter {
+  font-size: 34px !important;
+}
+#page-chapter-2 .bento-cell-1 .knot-heart-glyph {
+  font-size: 26px !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-ribbon-bar {
+  margin-top: 5px !important;
+  padding: 3px 12px !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-ribbon-text {
+  font-size: 11px !important;
+  letter-spacing: 0.16em !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-vault-subtitle {
+  font-size: 9.5px !important;
+  margin-top: 4px !important;
+  letter-spacing: 0.22em !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-hint-pill {
+  margin-top: 6px !important;
+  padding: 2px 8px !important;
+  font-size: 9px !important;
+}
+
+/* Cell 7: Neon Wall (Col 2 & 3, Row 1) - 2 Cols Wide (280px) */
+#page-chapter-2 .bento-cell-7 {
+  grid-column: 2 / span 2 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+#page-chapter-2 .bento-cell-7 .neon-wall-card {
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  padding: 14px 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-2 .bento-cell-7 .neon-brick-wall {
+  min-height: 160px !important;
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+#page-chapter-2 .bento-cell-7 .neon-status-caption {
+  font-size: 0.70rem !important;
+  margin: 0 !important;
+}
+
+/* Cell 4: The Magic Blooming Rose (Col 4, Row 1) - EXACT HOME DIMENSION (280px) */
+#page-chapter-2 .bento-cell-4 {
+  grid-column: 4 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+#page-chapter-2 .rose-pod {
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-2 .rose-interactive-stage {
+  height: 85px !important;
+}
+
+/* Cell 5: Middle Wide Banner (Row 2, Spans All 4 Cols) */
+#page-chapter-2 .bento-cell-5 {
+  grid-column: 1 / span 4 !important;
+  grid-row: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+}
+/* ══════════════════════════════════════════════════════════════
+   BOTTOM BENTO CLUSTER: 4 Equal Compact Cards (280px)
+   Row 1: Lock (Col 1) + Mood (Col 2) + Beacon (Col 3) + Bottle (Col 4)
+   Row 2: Cell 9 (Barometer & Scratch - Spans All 4 Cols)
+   ══════════════════════════════════════════════════════════════ */
+#page-chapter-2 .bento-cluster-bottom {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-rows: 280px auto !important;
+  gap: 16px !important;
+  align-items: stretch !important;
+  width: 100% !important;
+}
+
+/* Cell 6: Sacred Love Lock (Col 1, Row 1) - EXACT HOME DIMENSION (280px) */
+#page-chapter-2 .bento-cell-6 {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+#page-chapter-2 .bento-cell-6 .love-lock-card {
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  padding: 14px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-2 .bento-cell-6 .love-lock-graphic-box {
+  width: 70px !important;
+  height: 75px !important;
+  margin: 2px auto !important;
+}
+#page-chapter-2 .bento-cell-6 #love-lock-btn {
+  padding: 0.45rem 1.15rem !important;
+  font-size: 0.74rem !important;
+  margin: 4px 0 !important;
+}
+#page-chapter-2 .bento-cell-6 .lock-timestamp {
+  font-size: 0.68rem !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+}
+
+/* Cell 8: Mood Care Oracle (Col 2, Row 1) - EXACT HOME DIMENSION (280px) */
+#page-chapter-2 .bento-cell-8 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+#page-chapter-2 .bento-cell-8 .mood-oracle-card {
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-2 .bento-cell-8 .mood-chips-grid {
+  gap: 4px !important;
+}
+#page-chapter-2 .bento-cell-8 .mood-chip-btn {
+  padding: 3px 6px !important;
+  font-size: 0.68rem !important;
+}
+#page-chapter-2 .bento-cell-8 #mood-presc-title {
+  font-size: 0.95rem !important;
+  margin-bottom: 2px !important;
+}
+#page-chapter-2 .bento-cell-8 #mood-presc-text {
+  font-size: 0.78rem !important;
+  line-height: 1.3 !important;
+  margin-bottom: 4px !important;
+}
+
+/* Cell 2: The Love Beacon (Col 3, Row 1) - EXACT HOME DIMENSION (280px) */
+#page-chapter-2 .bento-cell-2 {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+#page-chapter-2 .bento-cell-2 .beacon-card,
+#page-chapter-2 .bento-cell-2 .love-beacon-box {
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-2 .bento-cell-2 .beacon-pill-tag,
+#page-chapter-2 .bento-cell-2 .sanctum-pill-tag {
+  font-size: 0.65rem !important;
+  padding: 2px 8px !important;
+  margin-bottom: 2px !important;
+}
+#page-chapter-2 .bento-cell-2 .beacon-card-title {
+  font-size: 1.02rem !important;
+  margin: 1px 0 !important;
+}
+#page-chapter-2 .bento-cell-2 .beacon-card-sub {
+  font-size: 0.70rem !important;
+  line-height: 1.25 !important;
+  max-width: 220px !important;
+  margin: 0 auto 3px !important;
+  color: rgba(255, 235, 242, 0.90) !important;
+}
+#page-chapter-2 .bento-cell-2 .beacon-cloche-wrap,
+#page-chapter-2 .bento-cell-2 .cloche-lamp-stage {
+  height: 65px !important;
+  margin: 0 auto !important;
+}
+#page-chapter-2 .bento-cell-2 .cloche-lamp-svg {
+  width: 55px !important;
+  height: 65px !important;
+}
+#page-chapter-2 .bento-cell-2 .beacon-state-badge,
+#page-chapter-2 .bento-cell-2 .beacon-status-pill {
+  font-size: 0.62rem !important;
+  padding: 2px 7px !important;
+}
+#page-chapter-2 .bento-cell-2 .btn-light-beacon {
+  padding: 0.38rem 1rem !important;
+  font-size: 0.72rem !important;
+}
+#page-chapter-2 .bento-cell-2 .beacon-quote-text {
+  font-size: 0.68rem !important;
+  line-height: 1.25 !important;
+  margin-top: 2px !important;
+  max-width: 220px !important;
+}
+
+/* Cell 3: Message in a Bottle (Col 4, Row 1) - EXACT HOME DIMENSION (280px) */
+#page-chapter-2 .bento-cell-3 {
+  grid-column: 4 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+#page-chapter-2 .bottle-pod {
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-2 .bottle-interactive-stage {
+  height: 90px !important;
+}
+#page-chapter-2 .bottle-icon {
+  font-size: 42px !important;
+}
+#page-chapter-2 .bottle-caption-text {
+  font-size: 0.70rem !important;
+  line-height: 1.25 !important;
+  margin: 2px 0 0 0 !important;
+}
+
+/* Cell 9: Barometer & Scratch Card (Row 2, Spans All 4 Cols) */
+#page-chapter-2 .bento-cell-9 {
+  grid-column: 1 / span 4 !important;
+  grid-row: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+}
+/* ── DUAL FEATURE SPLIT GRID ── */
+#page-chapter-2 .bento-dual-split {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* ── SHARED COMPACT CARD STYLING ── */
+#page-chapter-2 .pod-title {
+  font-size: 1.02rem !important;
+  margin: 1px 0 !important;
+}
+#page-chapter-2 .pod-subtitle {
+  font-size: 0.72rem !important;
+  line-height: 1.25 !important;
+  margin: 0 auto !important;
+  color: rgba(255, 235, 242, 0.90) !important;
+}
+#page-chapter-2 #water-rose-btn,
+#page-chapter-2 #pop-bottle-btn {
+  padding: 0.42rem 1.1rem !important;
+  font-size: 0.74rem !important;
+}
+#page-chapter-2 .intimate-card {
+  padding: 16px 20px !important;
+}
+#page-chapter-2 .intimate-card-title {
+  font-size: 1.1rem !important;
+  margin: 2px 0 !important;
+}
+#page-chapter-2 .intimate-card-desc {
+  font-size: 0.78rem !important;
+  line-height: 1.36 !important;
+}
+#page-chapter-2 .ecg-canvas-wrap {
+  height: 65px !important;
+}
+#page-chapter-2 .love-barometer-card,
+#page-chapter-2 .scratch-card-wrap {
+  padding: 16px 18px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+#page-chapter-2 .barometer-dial-rim {
+  width: 250px !important;
+  height: 250px !important;
+  margin: 0 auto !important;
+}
+#page-chapter-2 .scratch-canvas-box {
+  max-width: 270px !important;
+  height: 125px !important;
+  margin: 0 auto !important;
+}
+
+/* ── RESPONSIVE ADAPTATION (TABLET & MOBILE) ── */
+@media (max-width: 960px) {
+  #page-chapter-2 .bento-cluster-top,
+  #page-chapter-2 .bento-cluster-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  #page-chapter-2 .bento-cell-1,
+  #page-chapter-2 .bento-cell-2,
+  #page-chapter-2 .bento-cell-3,
+  #page-chapter-2 .bento-cell-4,
+  #page-chapter-2 .bento-cell-5,
+  #page-chapter-2 .bento-cell-6,
+  #page-chapter-2 .bento-cell-7,
+  #page-chapter-2 .bento-cell-8,
+  #page-chapter-2 .bento-cell-9 {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  #page-chapter-2 .bento-dual-split {
+    grid-template-columns: 1fr !important;
+  }
+}
+/* ── CHAPTER 02 BOTTOM NAVIGATION ── */
+#page-chapter-2 .chapter-bottom-nav {
+  margin: 24px auto 30px !important;
+  max-width: 95vw !important;
+  width: 95% !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* ── RESPONSIVE ADAPTATION (TABLET & MOBILE) ── */
+@media (max-width: 900px) {
+  #page-chapter-2 .bento-cluster-top,
+  #page-chapter-2 .bento-cluster-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  #page-chapter-2 .bento-cell-1,
+  #page-chapter-2 .bento-cell-2,
+  #page-chapter-2 .bento-cell-3,
+  #page-chapter-2 .bento-cell-4,
+  #page-chapter-2 .bento-cell-5,
+  #page-chapter-2 .bento-cell-6,
+  #page-chapter-2 .bento-cell-7,
+  #page-chapter-2 .bento-cell-8,
+  #page-chapter-2 .bento-cell-9 {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+  }
+  #page-chapter-2 .bento-dual-split {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   7. CHAPTER 01 — FULL-SCREEN LUXURY EDITORIAL (MATCHES SCREENSHOT)
+   EQUAL 50/50 DIMENSIONS SPLIT FROM CENTER:
+   - Banner pinned at top
+   - LEFT: Second Screenshot ("First of All... You." Text Card)
+   - RIGHT: First Screenshot (Hero Card + Love Whisper Ribbon below it)
+   - Bottom: Floating Navigation buttons across floor
+   Single-screen viewport presentation with zero scrollbar!
+   ══════════════════════════════════════════════════════════════ */
+
+#page-chapter-1.is-active {
+  min-height: 100vh !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 10px 28px 16px !important;
+  box-sizing: border-box !important;
+}
+
+#page-chapter-1:not(.is-active),
+#page-chapter-1[hidden] {
+  display: none !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Chapter 01 Banner */
+#page-chapter-1 .chapter-hero-banner {
+  margin: 0 auto 6px !important;
+  padding: 6px 32px 7px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+}
+#page-chapter-1 .chapter-hero-title {
+  font-size: clamp(17px, 1.6vw, 22px) !important;
+  margin: 1px 0 !important;
+}
+#page-chapter-1 .chapter-hero-sub {
+  font-size: clamp(11px, 0.85vw, 12.5px) !important;
+  margin: 1px 0 0 !important;
+}
+
+/* Middle Hero Dual Cards Section */
+#page-chapter-1 .hero-section-dual {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+  width: 100% !important;
+}
+
+#page-chapter-1 .hero-dual-container {
+  max-width: 96vw !important;
+  width: 96% !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+  align-items: stretch !important;
+  height: auto !important;
+  max-height: 520px !important;
+}
+
+/* Base Frosted Card */
+.hero-frosted-card {
+  background: rgba(255, 248, 245, 0.14) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(212, 160, 110, 0.38) !important;
+  border-radius: 20px !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 200, 170, 0.12),
+    0 16px 45px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 235, 210, 0.22) !important;
+  box-sizing: border-box !important;
+}
+
+/* Left Column: "First of All... You." */
+#page-chapter-1 .hero-column-left {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+#page-chapter-1 .hero-intro-card {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding: 20px 24px !important;
+  border-radius: 20px !important;
+}
+#page-chapter-1 .hero-intro-card .intro-text-block {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+#page-chapter-1 .hero-intro-card .section-badge {
+  align-self: flex-start !important;
+  margin-bottom: 2px !important;
+}
+#page-chapter-1 .hero-intro-card .section-title {
+  font-size: clamp(18px, 1.6vw, 23px) !important;
+  margin: 0 0 2px !important;
+  text-align: left !important;
+}
+#page-chapter-1 .hero-intro-card p {
+  font-size: clamp(0.76rem, 0.8vw, 0.84rem) !important;
+  line-height: 1.48 !important;
+  color: rgba(255, 240, 225, 0.96) !important;
+  margin: 0 !important;
+}
+#page-chapter-1 .hero-intro-card .intro-highlight {
+  background: rgba(100, 40, 10, 0.35) !important;
+  border-left: 3px solid rgba(212, 160, 110, 0.85) !important;
+  padding: 8px 14px !important;
+  font-style: italic !important;
+  color: #ffd885 !important;
+  border-radius: 0 10px 10px 0 !important;
+  margin: 3px 0 !important;
+  font-size: clamp(0.78rem, 0.82vw, 0.85rem) !important;
+  line-height: 1.42 !important;
+}
+
+/* Right Column: Hero Card (Top) + Love Whisper (Bottom) */
+#page-chapter-1 .hero-column-right {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  width: 100% !important;
+  height: 100% !important;
+  justify-content: space-between !important;
+}
+#page-chapter-1 .hero-main-card {
+  width: 100% !important;
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  display: grid !important;
+  grid-template-columns: 1.25fr 0.75fr !important;
+  gap: 16px !important;
+  align-items: center !important;
+  padding: 16px 20px !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-1 .hero-main-card .hero-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+#page-chapter-1 .hero-main-card .hero-editorial-title {
+  font-size: clamp(16px, 1.45vw, 20px) !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+#page-chapter-1 .hero-main-card .hero-editorial-sub {
+  font-size: clamp(0.74rem, 0.78vw, 0.81rem) !important;
+  line-height: 1.38 !important;
+  margin: 0 !important;
+}
+#page-chapter-1 .hero-main-card .hero-editorial-quote {
+  font-size: clamp(0.72rem, 0.76vw, 0.78rem) !important;
+  line-height: 1.35 !important;
+  padding-left: 8px !important;
+  margin-top: 2px !important;
+}
+#page-chapter-1 .hero-main-card .hero-frame {
+  max-width: 165px !important;
+  width: 100% !important;
+  padding: 5px !important;
+  border-radius: 14px !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-1 .hero-main-card .hero-frame-inner {
+  aspect-ratio: 9 / 13 !important;
+  border-radius: 10px !important;
+}
+#page-chapter-1 .hero-main-card .hero-img {
+  width: 100% !important;
+  height: 100% !important;
+  max-height: 220px !important;
+  object-fit: cover !important;
+}
+#page-chapter-1 .hero-main-card .hero-floating-tag {
+  bottom: 5px !important;
+  left: -5px !important;
+  padding: 0.28rem 0.6rem !important;
+  border-radius: 8px !important;
+}
+#page-chapter-1 .hero-main-card .hero-floating-tag span {
+  font-size: 0.70rem !important;
+}
+#page-chapter-1 .hero-main-card .hero-floating-tag small {
+  font-size: 0.58rem !important;
+}
+
+/* Love Whisper Ribbon */
+#page-chapter-1 .love-whisper-wrap {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-shrink: 0 !important;
+}
+#page-chapter-1 .love-whisper-ribbon {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  border-radius: 16px !important;
+  padding: 0.55rem 1.3rem !important;
+  background: rgba(255, 248, 245, 0.16) !important;
+  backdrop-filter: blur(20px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(160%) !important;
+  border: 1px solid rgba(212, 160, 110, 0.4) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 200, 170, 0.1),
+    0 10px 32px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 235, 210, 0.22) !important;
+}
+
+/* Floating Bottom Navigation: Directly below cards on same screen */
+#page-chapter-1 .chapter-bottom-nav {
+  margin: 8px auto 0 !important;
+  max-width: 96vw !important;
+  width: 96% !important;
+  padding: 0 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  border: none !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+.whisper-icon-badge {
+  background: rgba(120, 50, 20, 0.45) !important;
+  border: 1px solid rgba(212, 140, 80, 0.6) !important;
+  box-shadow: 0 0 14px rgba(212, 140, 80, 0.35) !important;
+}
+
+.whisper-tag {
+  color: #ffd4a8 !important;
+  text-shadow: 0 0 8px rgba(212, 140, 80, 0.5) !important;
+  letter-spacing: 0.2em !important;
+  font-size: 0.72rem !important;
+}
+
+.whisper-title {
+  color: #fff8f0 !important;
+  text-shadow: 0 0 10px rgba(212, 140, 90, 0.5) !important;
+  font-size: 1.15rem !important;
+  margin: 2px 0 !important;
+}
+
+.whisper-quote {
+  color: rgba(255, 240, 225, 0.96) !important;
+  font-style: italic !important;
+  font-size: 0.92rem !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.whisper-refresh-btn {
+  background: rgba(120, 50, 20, 0.45) !important;
+  border: 1px solid rgba(212, 140, 80, 0.55) !important;
+  color: #ffd885 !important;
+  border-radius: 9999px !important;
+  padding: 0.55rem 1.3rem !important;
+  font-size: 0.82rem !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 0 12px rgba(212, 140, 80, 0.2) !important;
+  transition: all 0.3s ease !important;
+}
+
+.whisper-refresh-btn:hover {
+  background: rgba(150, 60, 25, 0.65) !important;
+  border-color: rgba(255, 200, 120, 0.8) !important;
+  box-shadow: 0 0 18px rgba(255, 200, 120, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BIRTHDAY CELEBRATION MODAL SHIELD
+   Ensures zero click-through to background cards while fireworks & music play
+   ══════════════════════════════════════════════════════════════ */
+#birthday-celebration-canvas {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
+  touch-action: none !important;
+  cursor: default !important;
+}
+
+body.birthday-celebration-active {
+  overflow: hidden !important;
+  user-select: none !important;
+}
+
+body.birthday-celebration-active #page-home,
+body.birthday-celebration-active .sanctuary-view,
+body.birthday-celebration-active .chapter-page-wrapper,
+body.birthday-celebration-active .home-editorial-grid,
+body.birthday-celebration-active .editorial-card,
+body.birthday-celebration-active .sanctuary-realm-rail,
+body.birthday-celebration-active .atmosphere-bar,
+body.birthday-celebration-active a,
+body.birthday-celebration-active button {
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+
+
+
+
+/* ══════════════════════════════════════════════════════════════
+   ROSE VOUCHER POPUP MODAL (Matching Message in a Bottle Style)
+   ══════════════════════════════════════════════════════════════ */
+#rose-voucher-modal {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 45000 !important;
+  background: rgba(3, 8, 14, 0.94) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: all 0.4s ease !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
+}
+
+#rose-voucher-modal.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#rose-voucher-modal .rose-voucher-container {
+  max-width: 540px !important;
+  width: 100% !important;
+  transform: rotate(-1deg) scale(0.94) !important;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-sizing: border-box !important;
+}
+
+#rose-voucher-modal.is-active .rose-voucher-container {
+  transform: rotate(0deg) scale(1) !important;
+}
+
+#rose-voucher-modal .voucher-ticket {
+  background: linear-gradient(135deg, rgba(254, 248, 238, 0.98) 0%, rgba(244, 232, 210, 0.96) 100%) !important;
+  color: #2b1807 !important;
+  border: 2px dashed #b88d44 !important;
+  border-radius: 18px !important;
+  padding: clamp(1.6rem, 3.5vw, 2.4rem) !important;
+  text-align: left !important;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 230, 180, 0.3) !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+}
+
+#rose-voucher-modal .voucher-top-bar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 0.8rem !important;
+}
+
+#rose-voucher-modal .voucher-badge {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.15em !important;
+  color: #8c601d !important;
+  text-transform: uppercase !important;
+}
+
+#rose-voucher-modal .rose-modal-close-icon {
+  background: transparent !important;
+  border: none !important;
+  font-size: 1.8rem !important;
+  line-height: 1 !important;
+  color: #8c601d !important;
+  cursor: pointer !important;
+  padding: 0 4px !important;
+  transition: transform 0.2s ease, color 0.2s ease !important;
+}
+#rose-voucher-modal .rose-modal-close-icon:hover {
+  transform: scale(1.18) !important;
+  color: #ff3366 !important;
+}
+
+#rose-voucher-modal .voucher-title {
+  font-family: var(--font-serif) !important;
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem) !important;
+  color: #631221 !important;
+  margin: 0.2rem 0 0.5rem 0 !important;
+  font-weight: 700 !important;
+}
+
+#rose-voucher-modal .voucher-desc {
+  font-size: 0.92rem !important;
+  color: #5c3c1a !important;
+  line-height: 1.5 !important;
+  margin-bottom: 1rem !important;
+}
+
+#rose-voucher-modal .voucher-list {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 0 1.2rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.6rem !important;
+}
+
+#rose-voucher-modal .voucher-list li {
+  font-size: 0.92rem !important;
+  color: #2b1807 !important;
+  background: rgba(223, 183, 108, 0.16) !important;
+  border-left: 3px solid #b88d44 !important;
+  padding: 0.45rem 0.8rem !important;
+  border-radius: 0 8px 8px 0 !important;
+  line-height: 1.4 !important;
+}
+
+#rose-voucher-modal .voucher-footer {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  border-top: 1px dashed rgba(184, 141, 68, 0.4) !important;
+  padding-top: 0.8rem !important;
+  margin-bottom: 1.2rem !important;
+  font-size: 0.95rem !important;
+  color: #6d4715 !important;
+}
+
+#rose-voucher-modal .voucher-footer strong {
+  font-family: var(--font-script) !important;
+  font-size: 1.8rem !important;
+  color: #8c1d35 !important;
+}
+
+#rose-voucher-modal .voucher-actions-row {
+  display: flex !important;
+  gap: 0.8rem !important;
+  justify-content: center !important;
+  flex-wrap: wrap !important;
+}
+
+/* Button style when in bloomed state */
+#page-chapter-2 #water-rose-btn.is-bloomed {
+  background: linear-gradient(135deg, rgba(160, 20, 50, 0.65) 0%, rgba(90, 10, 30, 0.75) 100%) !important;
+  border-color: rgba(255, 120, 150, 0.7) !important;
+  box-shadow: 0 0 20px rgba(255, 51, 102, 0.4) !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+#page-chapter-2 #water-rose-btn.is-bloomed:hover {
+  background: linear-gradient(135deg, rgba(200, 30, 70, 0.8) 0%, rgba(120, 15, 45, 0.9) 100%) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 0 28px rgba(255, 51, 102, 0.6) !important;
+}
+
+
+#page-chapter-2 .bento-cell-6 .love-lock-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  padding: 24px 20px !important;
+  box-sizing: border-box !important;
+}
+
+#page-chapter-2 .bento-cell-8 .mood-oracle-card {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   DISABLE ALL ZOOM / SCALE ANIMATION ON ROYAL MONOGRAM CREST
+   ══════════════════════════════════════════════════════════════ */
+#page-chapter-2 .royal-monogram-frame,
+#page-chapter-2 .royal-monogram-frame:hover,
+#page-chapter-2 .royal-monogram-frame:active,
+#page-chapter-2 .secret-monogram-trigger,
+#page-chapter-2 .secret-monogram-trigger:hover,
+#page-chapter-2 .secret-monogram-trigger:active {
+  transform: none !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+#page-chapter-2 .royal-monogram-frame .monogram-filigree-corner,
+#page-chapter-2 .royal-monogram-frame:hover .monogram-filigree-corner,
+#page-chapter-2 .royal-monogram-frame:hover .corner-tl,
+#page-chapter-2 .royal-monogram-frame:hover .corner-tr,
+#page-chapter-2 .royal-monogram-frame:hover .corner-bl,
+#page-chapter-2 .royal-monogram-frame:hover .corner-br,
+#page-chapter-2 .royal-monogram-frame .monogram-letter,
+#page-chapter-2 .royal-monogram-frame:hover .monogram-letter,
+#page-chapter-2 .royal-monogram-frame:hover .letter-n,
+#page-chapter-2 .royal-monogram-frame:hover .letter-l {
+  transform: none !important;
+}
+
+#page-chapter-2 .bento-cell-1 .knot-heart-glyph {
+  animation: none !important;
+  transform: none !important;
+}
+
+#page-chapter-2 .bento-cell-1 .knot-pulse-ring {
+  display: none !important;
+  animation: none !important;
+}
+
+/* ======================================================
+   BENTO CARD ANIMATIONS — DISABLED PER USER REQUEST
+   Rose pod hover lift + Bottle bob animation removed
+   ====================================================== */
+
+/* Disable bottle bob animation (was: bottleBob 3.5s infinite) */
+#page-chapter-2 .bottle-visual-box {
+  animation: none !important;
+  transform: none !important;
+}
+
+/* Disable rose pod hover lift (keep blooming JS transitions intact) */
+#page-chapter-2 .rose-pod:hover {
+  transform: none !important;
+}
+
+/* Disable bottle pod hover lift */
+#page-chapter-2 .bottle-pod:hover {
+  transform: none !important;
+}
+
+/* ======================================================
+   BENTO CARD DISPLAY FIXES — INTERACTIVE STAGES
+   Rose & Bottle stages restored to show full visuals
+   ====================================================== */
+
+/* FIX: Rose interactive stage — allow rosepot to be visible */
+#page-chapter-2 .rose-interactive-stage {
+  height: auto !important;
+  min-height: 0 !important;
+  flex: 1 1 auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Scale rosepot to fit inside 280px card */
+#page-chapter-2 .rosepot-stage {
+  width: 100px !important;
+  height: 115px !important;
+  margin: 0 auto !important;
+}
+#page-chapter-2 .rosepot-pot {
+  width: 60px !important;
+  height: 34px !important;
+}
+#page-chapter-2 .rosepot-rim {
+  top: -6px !important;
+  left: -4px !important;
+  right: -4px !important;
+  height: 8px !important;
+}
+#page-chapter-2 .rosepot-monogram {
+  font-size: 0.55rem !important;
+}
+#page-chapter-2 .rose-plant {
+  bottom: 32px !important;
+}
+#page-chapter-2 .rose-stem {
+  width: 4px !important;
+}
+#page-chapter-2 .rose-plant.is-blooming .rose-stem {
+  height: 50px !important;
+}
+#page-chapter-2 .rose-blossom {
+  width: 36px !important;
+  height: 36px !important;
+  top: -18px !important;
+}
+#page-chapter-2 .rose-leaf {
+  width: 13px !important;
+  height: 7px !important;
+}
+#page-chapter-2 .leaf-left {
+  bottom: 20px !important;
+  left: -12px !important;
+}
+#page-chapter-2 .leaf-right {
+  bottom: 36px !important;
+  right: -12px !important;
+}
+
+/* FIX: Bottle interactive stage — show bottle properly */
+#page-chapter-2 .bottle-interactive-stage {
+  height: auto !important;
+  flex: 1 1 auto !important;
+  overflow: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+#page-chapter-2 .bottle-visual-box {
+  width: 70px !important;
+  height: 85px !important;
+  margin: 4px auto !important;
+}
+#page-chapter-2 .bottle-icon {
+  font-size: 3.2rem !important;
+}
+#page-chapter-2 .bottle-caption-text {
+  font-size: 0.65rem !important;
+  line-height: 1.2 !important;
+  margin: 2px 0 0 0 !important;
+  max-width: 95% !important;
+}
+
+/* FIX: Love lock card — fix overflow on timestamp text */
+#page-chapter-2 .bento-cell-6 .lock-timestamp {
+  font-size: 0.62rem !important;
+  line-height: 1.2 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-height: 2.8em !important;
+  padding: 0 4px !important;
+}
+
+/* ======================================================
+   BEACON IS-LIT STATE — Mapped to beacon-lamp-box (cloche wrap)
+   JS adds .is-lit to #beacon-lamp-box. These rules make the
+   SVG lamp glow when the beacon is activated.
+   ====================================================== */
+
+/* Warm glow on the entire SVG when lit */
+#beacon-lamp-box.is-lit .cloche-lamp-svg {
+  filter: drop-shadow(0 0 20px rgba(255,170,50,0.7)) drop-shadow(0 0 50px rgba(255,110,20,0.4)) !important;
+}
+
+/* Aura circle opacity — becomes visible */
+#beacon-lamp-box.is-lit .beacon-aura-bg {
+  opacity: 0.85 !important;
+  transition: opacity 0.6s ease !important;
+}
+
+/* Filament wire glows golden */
+#beacon-lamp-box.is-lit .beacon-filament-wire {
+  stroke: #fff4a0 !important;
+  filter: drop-shadow(0 0 5px #ffe680) drop-shadow(0 0 12px #ff9100) !important;
+  transition: all 0.5s ease !important;
+}
+
+/* Glass dome fills with warm amber */
+#beacon-lamp-box.is-lit .cloche-glass {
+  fill: rgba(255, 160, 40, 0.28) !important;
+  stroke: rgba(255, 200, 80, 0.6) !important;
+  transition: all 0.5s ease !important;
+}
+
+/* Dormant state — reset transitions */
+#beacon-lamp-box:not(.is-lit) .cloche-glass {
+  fill: rgba(32, 16, 26, 0.45) !important;
+  stroke: rgba(255, 220, 180, 0.28) !important;
+  transition: all 0.5s ease !important;
+}
+
+/* ============================================================
+   DEFINITIVE FIXES — BOTTLE & LOCK CARD LAYOUT
+   These override all previous conflicting rules.
+   ============================================================ */
+
+/* BOTTLE POD: Override huge default padding + overflow:hidden */
+#page-chapter-2 .bottle-pod.keepsake-pod-card {
+  padding: 10px 12px !important;
+  overflow: visible !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+#page-chapter-2 .bottle-interactive-stage {
+  flex: 1 1 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+#page-chapter-2 .bottle-visual-box {
+  width: auto !important;
+  height: auto !important;
+  margin: 0 auto 4px auto !important;
+  animation: none !important;
+  transform: none !important;
+  cursor: pointer !important;
+}
+
+#page-chapter-2 .bottle-icon {
+  font-size: 3.5rem !important;
+  display: block !important;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6)) !important;
+}
+
+#page-chapter-2 .bottle-caption-text {
+  font-size: 0.62rem !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  color: rgba(165, 216, 255, 0.8) !important;
+}
+
+/* LOVE LOCK CARD: Fix layout to show all elements */
+#page-chapter-2 .bento-cell-6 .love-lock-card.reveal-on-scroll {
+  padding: 12px 14px !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
+  gap: 6px !important;
+}
+
+#page-chapter-2 .bento-cell-6 .love-lock-graphic-box {
+  width: 80px !important;
+  height: 88px !important;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-6 #love-lock-btn {
+  padding: 0.5rem 1.2rem !important;
+  font-size: 0.72rem !important;
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#page-chapter-2 .bento-cell-6 .lock-timestamp {
+  font-size: 0.58rem !important;
+  line-height: 1.3 !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+  color: rgba(255,215,185,0.65) !important;
+  padding: 0 2px !important;
+  max-width: 100% !important;
+  word-break: break-word !important;
+}
+
+
+
+/* ======================================================
+   SCRATCH CARD REVEALED TEXT — Bigger fonts for readability
+   ====================================================== */
+#page-chapter-2 .bento-cell-6 .scratch-secret-title {
+  font-size: 0.85rem !important;
+  margin-bottom: 6px !important;
+}
+#page-chapter-2 .bento-cell-6 .scratch-secret-note {
+  font-size: 0.78rem !important;
+  line-height: 1.5 !important;
+  padding: 0 8px !important;
+}
+#page-chapter-2 .bento-cell-6 .scratch-secret-sign {
+  font-size: 0.72rem !important;
+  margin-top: 6px !important;
+}
+/* Hide scratch hint globally in cell-6 (belt+suspenders) */
+#page-chapter-2 .bento-cell-6 .scratch-hint {
+  display: none !important;
+}
+
+/* ======================================================
+   SCRATCH CARD IN CELL-6 — CLEAN LAYOUT (matches other cards)
+   ====================================================== */
+#page-chapter-2 .bento-cell-6 .scratch-card-wrap {
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  padding: 14px 14px !important;
+  overflow: hidden !important;
+  /* NO custom background — inherits unified frosted glass from line 386 */
+}
+
+#page-chapter-2 .bento-cell-6 .scratch-canvas-box {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 195px !important;
+  margin: 0 auto !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  flex: 1 1 auto !important;
+}
+
+#page-chapter-2 .bento-cell-6 #scratch-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#page-chapter-2 .bento-cell-6 .scratch-hint {
+  display: none !important;
+}
+
+#page-chapter-2 .bento-cell-6 #scratch-another-btn {
+  padding: 0.45rem 1rem !important;
+  font-size: 0.72rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-6 [style*="margin-top: 1.25rem"] {
+  margin-top: 0 !important;
+  flex-shrink: 0 !important;
+}
+
+/* ======================================================
+   SCRATCH CARD CELL-6 — FULL WIDTH FIX
+   Override max-width:540px + margin:auto from components.css
+   ====================================================== */
+#page-chapter-2 .bento-cell-6 .scratch-card-wrap {
+  width: 100% !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  overflow: hidden !important;
+}
+
+#page-chapter-2 .bento-cell-6 .scratch-canvas-box {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  height: auto !important;
+  flex: 1 1 auto !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+#page-chapter-2 .bento-cell-6 #scratch-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+/* ======================================================
+   SCRATCH CANVAS BOX — SMALLER SIZE
+   ====================================================== */
+#page-chapter-2 .bento-cell-6 .scratch-canvas-box {
+  height: 145px !important;
+  flex: 0 0 145px !important;
+}
+#page-chapter-2 .bento-cell-6 .scratch-secret-title {
+  font-size: 0.72rem !important;
+  margin-bottom: 4px !important;
+}
+#page-chapter-2 .bento-cell-6 .scratch-secret-note {
+  font-size: 0.65rem !important;
+  line-height: 1.4 !important;
+  padding: 0 6px !important;
+}
+#page-chapter-2 .bento-cell-6 .scratch-secret-sign {
+  font-size: 0.6rem !important;
+  margin-top: 4px !important;
+}
+
+/* ======================================================
+   SCRATCH CANVAS BOX — SMALLER FROM ALL SIDES
+   ====================================================== */
+#page-chapter-2 .bento-cell-6 .scratch-canvas-box {
+  width: calc(100% - 24px) !important;
+  max-width: calc(100% - 24px) !important;
+  height: 170px !important;
+  flex: 0 0 170px !important;
+  margin: 0 auto !important;
+  border-radius: 14px !important;
+}
+
+/* ======================================================
+   SCRATCH CANVAS — BALANCED FIT (canvas fills most of card)
+   ====================================================== */
+#page-chapter-2 .bento-cell-6 .scratch-card-wrap {
+  padding: 10px 12px 8px 12px !important;
+  gap: 8px !important;
+}
+#page-chapter-2 .bento-cell-6 .scratch-canvas-box {
+  width: calc(100% - 16px) !important;
+  max-width: calc(100% - 16px) !important;
+  height: 195px !important;
+  flex: 0 0 195px !important;
+  margin: 0 auto !important;
+  border-radius: 14px !important;
+}
+#page-chapter-2 .bento-cell-6 #scratch-another-btn {
+  margin-top: 0 !important;
+  padding: 0.4rem 1rem !important;
+  font-size: 0.7rem !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+#page-chapter-2 .bento-cell-6 [style*="margin-top"] {
+  margin-top: 0 !important;
+}
+
+/* ======================================================
+   MONOGRAM CARD (Cell-1) — SQUARE SHAPE 280×280px
+   ====================================================== */
+#page-chapter-2 .bento-cell-1 {
+  width: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+  height: 280px !important;
+  flex-shrink: 0 !important;
+}
+#page-chapter-2 .bento-cell-1 .royal-monogram-frame {
+  width: 280px !important;
+  height: 280px !important;
+  min-width: 280px !important;
+  max-width: 280px !important;
+}
+/* Adjust top cluster to use fixed 280px for col-1, rest auto */
+#page-chapter-2 .bento-cluster-top {
+  grid-template-columns: 280px 1fr 1fr 1fr !important;
+}
+
+/* ======================================================
+   MONOGRAM CARD — TEXT FIT IN 280x280 SQUARE
+   ====================================================== */
+#page-chapter-2 .bento-cell-1 .world-names {
+  font-size: 9px !important;
+  letter-spacing: 0.18em !important;
+  white-space: nowrap !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-ribbon-bar {
+  padding: 3px 10px !important;
+  margin-top: 4px !important;
+  white-space: nowrap !important;
+  width: auto !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-letters-row {
+  gap: 8px !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-letter {
+  font-size: 32px !important;
+}
+#page-chapter-2 .bento-cell-1 .knot-heart-glyph {
+  font-size: 24px !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-halo-ring {
+  width: 100px !important;
+  height: 100px !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-sanctum-tag {
+  font-size: 8px !important;
+  letter-spacing: 0.2em !important;
+  margin-top: 4px !important;
+}
+
+/* NISAR × LAHARI — size increase, still nowrap */
+#page-chapter-2 .bento-cell-1 .world-names {
+  font-size: 13px !important;
+  letter-spacing: 0.14em !important;
+  white-space: nowrap !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-ribbon-bar {
+  padding: 3px 8px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+}
+
+/* MONOGRAM — BIGGER TEXT PASS */
+#page-chapter-2 .bento-cell-1 .world-names {
+  font-size: 17px !important;
+  letter-spacing: 0.12em !important;
+  white-space: nowrap !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-letter {
+  font-size: 42px !important;
+}
+#page-chapter-2 .bento-cell-1 .knot-heart-glyph {
+  font-size: 30px !important;
+}
+#page-chapter-2 .bento-cell-1 .monogram-sanctum-tag span {
+  font-size: 10px !important;
+  letter-spacing: 0.18em !important;
+}
+
+
+
+/* ======================================================
+   LOVE BAROMETER CARD — FIXED COMPACT 280x280px
+   Fix: Explicitly constrain .barometer-gauge-box height
+   ====================================================== */
+#page-chapter-2 .bento-cell-9 .bento-dual-split {
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+#page-chapter-2 .bento-cell-9 .love-barometer-card {
+  width: 280px !important;
+  height: 280px !important;
+  max-width: 280px !important;
+  max-height: 280px !important;
+  min-width: 280px !important;
+  min-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+/* 1. Dial Gauge Container - explicitly 110px height so it sits at top */
+#page-chapter-2 .bento-cell-9 .barometer-gauge-box {
+  width: 110px !important;
+  height: 110px !important;
+  max-height: 110px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+#page-chapter-2 .bento-cell-9 .barometer-dial-rim {
+  width: 110px !important;
+  height: 110px !important;
+  border-width: 3.5px !important;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* 2. Current Reading Telemetry Box */
+#page-chapter-2 .bento-cell-9 .barometer-status-box {
+  width: 100% !important;
+  max-width: 240px !important;
+  background: rgba(18, 4, 10, 0.65) !important;
+  border: 1px solid rgba(223, 183, 108, 0.3) !important;
+  border-radius: 10px !important;
+  padding: 5px 10px !important;
+  margin: 4px auto !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-9 .barometer-telemetry-label {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.14em !important;
+  color: var(--color-rose-blush, #ffb3c6) !important;
+  line-height: 1 !important;
+  margin-bottom: 2px !important;
+}
+
+#page-chapter-2 .bento-cell-9 .barometer-reading-display {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+/* 3. Action Button */
+#page-chapter-2 .bento-cell-9 .love-barometer-card > div:last-child,
+#page-chapter-2 .bento-cell-9 [style*="margin-top: 1.2rem"],
+#page-chapter-2 .bento-cell-9 [style*="margin-top:1.2rem"] {
+  margin-top: 0 !important;
+  width: 100% !important;
+  max-width: 240px !important;
+  flex-shrink: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-9 #measure-love-btn {
+  width: 100% !important;
+  padding: 0.48rem 1rem !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  display: block !important;
+  background: linear-gradient(135deg, #7a0c26 0%, #4a0515 100%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.4) !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ======================================================
+   NEW PLACEMENT: BAROMETER IN CELL-4 (Right of Neon Wall)
+   ====================================================== */
+#page-chapter-2 .bento-cell-4 {
+  grid-column: 4 !important;
+  grid-row: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+  height: 280px !important;
+}
+
+#page-chapter-2 .bento-cell-4 .love-barometer-card {
+  width: 100% !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  min-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-4 .barometer-gauge-box {
+  width: 110px !important;
+  height: 110px !important;
+  max-height: 110px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+#page-chapter-2 .bento-cell-4 .barometer-dial-rim {
+  width: 110px !important;
+  height: 110px !important;
+  border-width: 3.5px !important;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-4 .barometer-status-box {
+  width: 100% !important;
+  max-width: 240px !important;
+  background: rgba(18, 4, 10, 0.65) !important;
+  border: 1px solid rgba(223, 183, 108, 0.3) !important;
+  border-radius: 10px !important;
+  padding: 5px 10px !important;
+  margin: 4px auto !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-4 .barometer-telemetry-label {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.14em !important;
+  color: var(--color-rose-blush, #ffb3c6) !important;
+  line-height: 1 !important;
+  margin-bottom: 2px !important;
+}
+
+#page-chapter-2 .bento-cell-4 .barometer-reading-display {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  color: #fff !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-4 .love-barometer-card > div:last-child,
+#page-chapter-2 .bento-cell-4 [style*="margin-top: 1.2rem"],
+#page-chapter-2 .bento-cell-4 [style*="margin-top:1.2rem"] {
+  margin-top: 0 !important;
+  width: 100% !important;
+  max-width: 240px !important;
+  flex-shrink: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-4 #measure-love-btn {
+  width: 100% !important;
+  padding: 0.48rem 1rem !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 20px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  display: block !important;
+  background: linear-gradient(135deg, #7a0c26 0%, #4a0515 100%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.4) !important;
+  color: #fff !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ======================================================
+   ROSE POD IN CELL-9 (Wide Banner Left Slot)
+   ====================================================== */
+#page-chapter-2 .bento-cell-9-rose-wrap {
+  width: 280px !important;
+  height: 280px !important;
+  margin: 0 auto !important;
+}
+
+#page-chapter-2 .bento-cell-9-rose-wrap .rose-pod {
+  width: 100% !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+}
+
+/* ======================================================
+   4 CARDS SIDE-BY-SIDE IN TOP ROW (Row 1)
+   Col 1: Monogram | Col 2: Neon Wall | Col 3: Love Barometer | Col 4: Blooming Rose
+   ====================================================== */
+#page-chapter-2 .bento-cluster-top {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-rows: 280px auto !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+#page-chapter-2 .bento-cell-1 {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  height: 280px !important;
+}
+
+#page-chapter-2 .bento-cell-7 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  height: 280px !important;
+}
+
+#page-chapter-2 .bento-cell-4 {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  height: 280px !important;
+}
+
+#page-chapter-2 .bento-cell-rose {
+  grid-column: 4 !important;
+  grid-row: 1 !important;
+  height: 280px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-rose .rose-pod {
+  width: 100% !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  text-align: center !important;
+}
+
+#page-chapter-2 .bento-cell-5 {
+  grid-column: 1 / span 4 !important;
+  grid-row: 2 !important;
+}
+
+/* Adjust Neon Wall in 1-column slot */
+#page-chapter-2 .bento-cell-7 .neon-wall-card {
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 12px !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-tube-text {
+  font-size: 1.15rem !important;
+  letter-spacing: 0.08em !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-sub-wire {
+  font-size: 0.55rem !important;
+  letter-spacing: 0.14em !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-status-caption {
+  font-size: 0.65rem !important;
+}
+
+/* ======================================================
+   PERFECT UNIFORM 4-CARD TOP ROW (Row 1)
+   All 4 cards equal width (repeat(4, 1fr)) and 280px height
+   ====================================================== */
+#page-chapter-2 .bento-cluster-top {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-rows: 280px auto !important;
+  gap: 16px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* Card 1: Monogram (Col 1) */
+#page-chapter-2 .bento-cell-1 {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  flex: 1 1 0 !important;
+}
+
+#page-chapter-2 .bento-cell-1 .royal-monogram-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 14px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+/* Card 2: Neon Wall (Col 2) — Perfect Fit without awkward side gaps */
+#page-chapter-2 .bento-cell-7 {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  flex: 1 1 0 !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-wall-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 10px 12px 8px 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: stretch !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-brick-wall {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  margin: 0 !important;
+  border-radius: 14px !important;
+  padding: 20px 10px 16px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-sign-frame {
+  padding: 0 !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-sub-wire {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.18em !important;
+  margin-bottom: 0.35rem !important;
+  color: rgba(223, 183, 108, 0.6) !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-tube-text {
+  font-size: 1.5rem !important;
+  gap: 0.6rem !important;
+  width: 100% !important;
+  justify-content: center !important;
+  letter-spacing: 0.06em !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-word-nisar,
+#page-chapter-2 .bento-cell-7 .neon-word-lahari {
+  font-size: 1.5rem !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-heart {
+  font-size: 1.35rem !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-pull-chain-wrap {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0.8rem !important;
+}
+
+#page-chapter-2 .bento-cell-7 .neon-status-caption {
+  font-size: 0.62rem !important;
+  margin: 4px 0 0 0 !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  flex-shrink: 0 !important;
+}
+
+/* Card 3: Love Barometer (Col 3) */
+#page-chapter-2 .bento-cell-4 {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  flex: 1 1 0 !important;
+}
+
+#page-chapter-2 .bento-cell-4 .love-barometer-card {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 10px 14px 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  text-align: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+#page-chapter-2 .bento-cell-4 .barometer-gauge-box {
+  width: 110px !important;
+  height: 110px !important;
+  max-height: 110px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+#page-chapter-2 .bento-cell-4 .barometer-dial-rim {
+  width: 110px !important;
+  height: 110px !important;
+  border-width: 3.5px !important;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* Card 4: Blooming Rose (Col 4) */
+#page-chapter-2 .bento-cell-rose {
+  grid-column: 4 !important;
+  grid-row: 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  flex: 1 1 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#page-chapter-2 .bento-cell-rose .rose-pod {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 280px !important;
+  max-height: 280px !important;
+  box-sizing: border-box !important;
+  padding: 12px 14px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  text-align: center !important;
+}
+
+/* ======================================================
+   FINAL DEDICATION SECTION — FULL TRANSPARENT & SEAMLESS
+   Removes solid dark maroon box so the palace/rose backdrop shines through
+   ====================================================== */
+.final-screen-section {
+  background: transparent !important;
+  background-color: transparent !important;
+  min-height: 80vh !important;
+  padding: 4rem 1.5rem !important;
+  position: relative !important;
+}
+
+.final-content {
+  position: relative !important;
+  z-index: 2 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.final-media-frame {
+  box-shadow: 0 0 30px rgba(223, 183, 108, 0.6), 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+  border: 2.5px solid var(--color-gold, #dfb76c) !important;
+}
+
+.final-lead {
+  color: #ffd6e0 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+}
+
+.final-main-text {
+  color: #fff4d4 !important;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.9), 0 0 30px rgba(223, 183, 108, 0.4) !important;
+}
+
+.final-signature-text {
+  color: #ffe6eb !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+.final-signature-name {
+  color: var(--color-gold-light, #fbedc7) !important;
+  text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9), 0 0 25px rgba(223, 183, 108, 0.5) !important;
+}
+
+.final-footer-note {
+  color: rgba(255, 255, 255, 0.85) !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* ======================================================
+   CHAPTER 06: "IF YOU COULD SEE YOURSELF THROUGH MY EYES"
+   Luxury Translucent Crystal Frosted Glass Styling
+   ====================================================== */
+#page-chapter-6 .eyes-section {
+  padding-top: 1.5rem !important;
+  padding-bottom: 3rem !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+#page-chapter-6 .eyes-card {
+  background: rgba(255, 248, 245, 0.14) !important;
+  backdrop-filter: blur(24px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(170%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.42) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 0 35px rgba(223, 183, 108, 0.08) !important;
+  padding: clamp(2rem, 4vw, 3.5rem) !important;
+  display: grid !important;
+  grid-template-columns: 0.95fr 1.05fr !important;
+  gap: clamp(1.8rem, 4vw, 3.5rem) !important;
+  align-items: center !important;
+}
+
+#page-chapter-6 .eyes-media-frame {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  border: 1.5px solid rgba(223, 183, 108, 0.45) !important;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(223, 183, 108, 0.2) !important;
+  aspect-ratio: 9 / 13 !important;
+  max-width: 380px !important;
+  margin: 0 auto !important;
+}
+
+#page-chapter-6 .eyes-media-frame img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+#page-chapter-6 .eyes-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 1.15rem !important;
+}
+
+#page-chapter-6 .eyes-content .section-badge {
+  display: inline-block !important;
+  align-self: flex-start !important;
+  background: rgba(223, 183, 108, 0.16) !important;
+  border: 1px solid rgba(223, 183, 108, 0.4) !important;
+  color: var(--color-gold, #dfb76c) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  padding: 0.35rem 0.9rem !important;
+  border-radius: 20px !important;
+  font-weight: 600 !important;
+}
+
+#page-chapter-6 .eyes-title {
+  font-family: var(--font-display, Georgia, serif) !important;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem) !important;
+  color: var(--color-gold-light, #fbedc7) !important;
+  font-weight: 400 !important;
+  line-height: 1.25 !important;
+  margin: 0 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.7) !important;
+}
+
+#page-chapter-6 .eyes-quote-lead {
+  font-family: var(--font-serif, serif) !important;
+  font-style: italic !important;
+  font-size: clamp(1.1rem, 2vw, 1.28rem) !important;
+  color: #ffd6e2 !important;
+  line-height: 1.55 !important;
+  border-left: 2.5px solid rgba(223, 183, 108, 0.5) !important;
+  padding-left: 1rem !important;
+  margin: 0.2rem 0 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6) !important;
+}
+
+#page-chapter-6 .eyes-content p {
+  font-family: var(--font-serif, serif) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.75 !important;
+  color: #fff2f6 !important;
+  margin: 0 !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7) !important;
+}
+
+@media (max-width: 860px) {
+  #page-chapter-6 .eyes-card {
+    grid-template-columns: 1fr !important;
+    gap: 1.8rem !important;
+    padding: 1.8rem !important;
+  }
+  #page-chapter-6 .eyes-media-frame {
+    max-width: 280px !important;
+  }
+}
+
+/* ======================================================
+   FINAL SCREEN: SUB-QUOTE STYLING
+   ====================================================== */
+.final-sub-quote {
+  font-family: var(--font-serif, Georgia, serif) !important;
+  font-style: italic !important;
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem) !important;
+  color: #ffdce5 !important;
+  max-width: 680px !important;
+  margin: 0.5rem auto 1.8rem auto !important;
+  line-height: 1.6 !important;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.85) !important;
+  padding: 0 1rem !important;
+}
+
+/* ======================================================
+   FROSTED GLASS UPGRADES: 4 REQUESTED SECTIONS
+   ====================================================== */
+
+/* 1. Chapter 6: Bucket List & Future Dreams Cards */
+.bucket-list-card {
+  background: rgba(255, 248, 245, 0.12) !important;
+  backdrop-filter: blur(24px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(170%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.38) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(223, 183, 108, 0.06) !important;
+}
+
+.bucket-item {
+  background: rgba(255, 248, 245, 0.11) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(223, 183, 108, 0.3) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35) !important;
+}
+
+.bucket-item:hover {
+  background: rgba(255, 248, 245, 0.19) !important;
+  border-color: rgba(223, 183, 108, 0.7) !important;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55), 0 0 20px rgba(223, 183, 108, 0.2) !important;
+  transform: translateY(-4px) !important;
+}
+
+.bucket-item.is-stamped {
+  background: radial-gradient(circle at top left, rgba(223, 183, 108, 0.25) 0%, rgba(255, 51, 102, 0.22) 100%) !important;
+  border-color: var(--color-gold, #dfb76c) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(223, 183, 108, 0.3) !important;
+}
+
+/* 2. Chapter 6: Final Dedication Screen Frosted Glass Box */
+.final-screen-section .final-content {
+  background: rgba(255, 248, 245, 0.14) !important;
+  backdrop-filter: blur(26px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.42) !important;
+  border-radius: 32px !important;
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.8rem, 4vw, 3.5rem) !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 0 35px rgba(223, 183, 108, 0.08) !important;
+  max-width: 820px !important;
+  margin: 0 auto !important;
+}
+
+/* 3. Chapter 5: 3D Flip Cards ("Things I Love About You") */
+.love-card-front {
+  background: rgba(255, 248, 245, 0.14) !important;
+  backdrop-filter: blur(20px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(170%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.35) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+.love-card-back {
+  background: radial-gradient(circle at 50% 20%, rgba(255, 248, 245, 0.22) 0%, rgba(55, 12, 30, 0.65) 100%) !important;
+  backdrop-filter: blur(22px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+  border: 1.5px solid var(--color-gold, #dfb76c) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(223, 183, 108, 0.25) !important;
+}
+
+/* 4. Chapter 4: "You Probably Don't Know This..." (Confession Cards) */
+.confession-card {
+  background: rgba(255, 248, 245, 0.14) !important;
+  backdrop-filter: blur(22px) saturate(170%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(170%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.35) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45), inset 0 0 20px rgba(223, 183, 108, 0.05) !important;
+}
+
+.confession-card:hover {
+  background: rgba(255, 248, 245, 0.22) !important;
+  border-color: rgba(223, 183, 108, 0.7) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(223, 183, 108, 0.25) !important;
+  transform: translateY(-5px) !important;
+}
+
+/* ======================================================
+   DEFINITIVE SITE-WIDE LUXURY FROSTED GLASS UPGRADE
+   Rich tinted backdrop blur: 100% Readable + Crystal Glass Aesthetic
+   ====================================================== */
+
+/* 1. CHAPTER 02 BENTO CARDS */
+#page-chapter-2 .royal-monogram-frame,
+#page-chapter-2 .love-beacon-box,
+#page-chapter-2 .keepsake-pod-card,
+#page-chapter-2 .love-lock-card,
+#page-chapter-2 .fingerprint-scanner-card,
+#page-chapter-2 .intimate-card,
+#page-chapter-2 .love-compass-card,
+#page-chapter-2 .mood-oracle-card,
+#page-chapter-2 .love-barometer-card,
+#page-chapter-2 .scratch-card-wrap,
+#page-chapter-2 .neon-wall-card {
+  background: linear-gradient(135deg, rgba(34, 10, 24, 0.65) 0%, rgba(16, 4, 12, 0.78) 100%) !important;
+  backdrop-filter: blur(22px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.4) !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 0 25px rgba(223, 183, 108, 0.06) !important;
+}
+
+/* 2. CHAPTER 04: OPEN WHEN ENVELOPES (Screenshot 1) */
+.open-envelope-card {
+  background: linear-gradient(135deg, rgba(34, 10, 24, 0.72) 0%, rgba(14, 3, 10, 0.84) 100%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.38) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(223, 183, 108, 0.06) !important;
+}
+
+.open-envelope-card:hover {
+  background: linear-gradient(135deg, rgba(45, 14, 32, 0.8) 0%, rgba(20, 5, 14, 0.9) 100%) !important;
+  border-color: var(--color-gold, #dfb76c) !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 0 0 25px rgba(223, 183, 108, 0.25) !important;
+  transform: translateY(-5px) !important;
+}
+
+.open-envelope-card h3 {
+  color: #fff6e2 !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8) !important;
+}
+
+.open-envelope-card .envelope-tag {
+  color: var(--color-gold, #dfb76c) !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7) !important;
+}
+
+/* 3. CHAPTER 04: CONFESSION CARDS */
+.confession-card {
+  background: linear-gradient(135deg, rgba(34, 10, 24, 0.72) 0%, rgba(14, 3, 10, 0.84) 100%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.38) !important;
+  border-radius: 22px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(223, 183, 108, 0.06) !important;
+}
+
+.confession-card:hover {
+  background: linear-gradient(135deg, rgba(45, 14, 32, 0.8) 0%, rgba(20, 5, 14, 0.9) 100%) !important;
+  border-color: var(--color-gold, #dfb76c) !important;
+}
+
+/* 4. CHAPTER 05: 3D FLIP CARDS (Screenshot 2 — High Contrast Readability) */
+.love-card-front {
+  background: linear-gradient(135deg, rgba(34, 10, 24, 0.76) 0%, rgba(15, 3, 11, 0.88) 100%) !important;
+  backdrop-filter: blur(22px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(180%) !important;
+  border: 1.5px solid rgba(223, 183, 108, 0.42) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 0 20px rgba(223, 183, 108, 0.08) !important;
+}
+
+.love-card-front h3 {
+  color: #fff9ea !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9) !important;
+  font-weight: 600 !important;
+}
+
+.love-card-hint {
+  color: #f7d58a !important;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.85) !important;
+  font-weight: 600 !important;
+}
+
+.love-card-back {
+  background: linear-gradient(145deg, rgba(55, 14, 30, 0.9) 0%, rgba(20, 4, 12, 0.95) 100%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1.5px solid var(--color-gold, #dfb76c) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65), 0 0 25px rgba(223, 183, 108, 0.3) !important;
+}
+
+.love-card-back p {
+  color: #ffe6ec !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+}
+
+/* 5. CHAPTER 06: BUCKET LIST CARDS */
+.bucket-list-card {
+  background: linear-gradient(135deg, rgba(30, 8, 20, 0.7) 0%, rgba(12, 2, 8, 0.82) 100%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.4) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.55), inset 0 0 30px rgba(223, 183, 108, 0.08) !important;
+}
+
+.bucket-item {
+  background: linear-gradient(135deg, rgba(38, 10, 25, 0.72) 0%, rgba(16, 4, 11, 0.84) 100%) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(223, 183, 108, 0.35) !important;
+  border-radius: 18px !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45) !important;
+}
+
+.bucket-item h4 {
+  color: #fff9ea !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85) !important;
+}
+
+.bucket-item p {
+  color: #ffdce5 !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8) !important;
+}
+
+/* 6. CHAPTER 06: THROUGH MY EYES */
+#page-chapter-6 .eyes-card {
+  background: linear-gradient(135deg, rgba(30, 8, 20, 0.72) 0%, rgba(12, 2, 8, 0.84) 100%) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.42) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 0 35px rgba(223, 183, 108, 0.08) !important;
+}
+
+/* 7. CHAPTER 06: FINAL DEDICATION SCREEN */
+.final-screen-section .final-content {
+  background: linear-gradient(135deg, rgba(30, 8, 20, 0.72) 0%, rgba(12, 2, 8, 0.84) 100%) !important;
+  backdrop-filter: blur(26px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(26px) saturate(180%) !important;
+  border: 1px solid rgba(223, 183, 108, 0.42) !important;
+  border-radius: 32px !important;
+}

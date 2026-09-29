@@ -1,0 +1,336 @@
+﻿/* ==========================================================================
+   VOICE NOTE, LOVE LETTER & FINAL MOMENT
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. VOICE NOTE SECTION (#voice-note-section)
+   -------------------------------------------------------------------------- */
+#voice-note-section {
+  position: relative;
+  padding: var(--section-padding-y) var(--section-padding-x);
+  z-index: 10;
+}
+
+.voice-note-card {
+  max-width: 680px;
+  margin: 0 auto;
+  background: rgba(16, 6, 13, 0.85);
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 28px;
+  padding: clamp(28px, 5vw, 44px) clamp(20px, 4vw, 36px);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(249, 217, 118, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.voice-note-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.voice-note-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.voice-note-title {
+  font-size: 1.25rem;
+  color: var(--gold-celestial);
+}
+
+.voice-note-date {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  color: var(--rose-soft);
+}
+
+.voice-note-status-badge {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(249, 217, 118, 0.1);
+  border: 1px solid rgba(249, 217, 118, 0.25);
+  color: var(--gold-celestial);
+  text-transform: uppercase;
+}
+
+/* Waveform Canvas & Controls */
+.voice-player-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.audio-play-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold-gradient);
+  color: var(--bg-obsidian);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px var(--gold-glow);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.audio-play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(249, 217, 118, 0.5);
+}
+
+.waveform-canvas {
+  flex-grow: 1;
+  height: 56px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 12px;
+  border: 1px solid rgba(249, 217, 118, 0.1);
+}
+
+.voice-note-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   2. HANDWRITTEN LOVE LETTER (#letter-from-nisar)
+   -------------------------------------------------------------------------- */
+#letter-from-nisar {
+  position: relative;
+  padding: var(--section-padding-y) var(--section-padding-x);
+  z-index: 10;
+}
+
+.love-letter-wrap {
+  max-width: 740px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* Sealed Envelope / Unsealed Parchment Container */
+.parchment-sheet {
+  background: #FAF6EE;
+  background-image: radial-gradient(#E8DEC8 1px, transparent 0);
+  background-size: 24px 24px;
+  color: #24111E;
+  border-radius: 16px;
+  border: 1px solid rgba(228, 179, 66, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 0 40px rgba(249, 217, 118, 0.2);
+  padding: clamp(36px, 7vw, 64px) clamp(24px, 6vw, 56px);
+  position: relative;
+  transition: all 800ms var(--ease-cinematic);
+  overflow: hidden;
+}
+
+.parchment-sheet::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(184, 46, 78, 0.2);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+/* Crimson Wax Seal */
+.wax-seal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.wax-seal-container.unsealed {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.wax-seal-btn {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #D63056 0%, #B82E4E 50%, #6C142A 100%);
+  border: 2px solid #F9D976;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(184, 46, 78, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #FDFBF7;
+  cursor: pointer;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.wax-seal-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(249, 217, 118, 0.5);
+}
+
+.wax-seal-hint {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #B82E4E;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 14px;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Letter Content (Blurred when sealed, crisp when unsealed) */
+.letter-content {
+  transition: filter 800ms ease, opacity 800ms ease;
+  filter: blur(8px);
+  opacity: 0.3;
+  user-select: none;
+}
+
+.parchment-sheet.revealed .letter-content {
+  filter: blur(0);
+  opacity: 1;
+  user-select: text;
+}
+
+.letter-salutation {
+  font-family: var(--font-handwritten);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  color: #6C142A;
+  margin-bottom: 20px;
+}
+
+.letter-paragraphs {
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  line-height: 1.7;
+  color: #2A1421;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.letter-signoff {
+  margin-top: 36px;
+  text-align: right;
+  font-family: var(--font-handwritten);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  color: #6C142A;
+}
+
+/* --------------------------------------------------------------------------
+   3. FINAL MOMENT SECTION (#before-you-leave)
+   -------------------------------------------------------------------------- */
+#before-you-leave {
+  position: relative;
+  padding: calc(var(--section-padding-y) * 1.3) var(--section-padding-x) clamp(80px, 12vw, 150px);
+  z-index: 10;
+  text-align: center;
+}
+
+.final-moment-card {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.final-moment-eyebrow {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-style: italic;
+  color: var(--rose-soft);
+}
+
+.final-moment-title {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  color: var(--gold-celestial);
+  line-height: 1.15;
+}
+
+.final-moment-quote {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  font-style: italic;
+  line-height: 1.8;
+  color: var(--text-pure);
+  max-width: 680px;
+}
+
+.final-signature {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-champagne);
+  margin-top: 8px;
+}
+
+.btn-carry-with-you {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 9999px;
+  background: rgba(249, 217, 118, 0.12);
+  border: 1px solid var(--border-gold-strong);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-celestial);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.btn-carry-with-you:hover {
+  background: var(--gold-gradient);
+  color: var(--bg-obsidian);
+  box-shadow: 0 0 25px var(--gold-glow);
+  transform: translateY(-2px);
+}
+
+/* Master Footer */
+.sanctuary-footer {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid rgba(249, 217, 118, 0.12);
+  padding-top: 36px;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  color: var(--text-subtle);
+}
+
+.footer-monogram {
+  font-size: 1.1rem;
+  color: var(--gold-celestial);
+}

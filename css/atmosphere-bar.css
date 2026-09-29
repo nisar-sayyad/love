@@ -1,0 +1,259 @@
+/* ==========================================================================
+   LUXURY ATMOSPHERE CONTROL BAR & MAGIC EFFECTS
+   Matches "A Private Sanctum" aesthetic: Burgundy-gold glassmorphism,
+   4 corner stars, glass shine shimmer, icon-only buttons (Theme, Petals, Lanterns, Hearts, Rain).
+   ========================================================================== */
+
+/* 1. TOP HORIZONTAL FLOATING GLASS BAR (SQUARE DOCK) */
+.top-atmosphere-bar {
+  position: fixed;
+  top: 20px;
+  right: 24px;
+  z-index: 25000;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: radial-gradient(ellipse at 50% 50%, rgba(38, 14, 30, 0.94) 0%, rgba(18, 6, 16, 0.98) 100%);
+  border: 1.5px solid rgba(220, 185, 115, 0.48);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 16px 45px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(220, 185, 115, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2),
+    inset 0 0 30px rgba(212, 175, 55, 0.06);
+  user-select: none;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-16px);
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), 
+              visibility 600ms cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 600ms cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 300ms ease, 
+              box-shadow 300ms ease;
+}
+
+/* 1.1 REVEAL ONLY UPON ENTERING MAIN SANCTUARY (PAGE 3) */
+body.sanctuary-entered .top-atmosphere-bar {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* STRICT OVERRIDE: Hide during Passcode Gate & Opening "OPEN MY HEART" Screen */
+body.passcode-locked .top-atmosphere-bar,
+body:not(.sanctuary-entered) .top-atmosphere-bar {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-16px) !important;
+}
+
+.top-atmosphere-bar:hover {
+  border-color: rgba(249, 217, 118, 0.75);
+  box-shadow: 
+    0 20px 55px rgba(0, 0, 0, 0.92),
+    0 0 35px rgba(249, 217, 118, 0.25),
+    inset 0 1px 2px rgba(255, 255, 255, 0.28);
+}
+
+/* 2. GLASS SHINE REFLECTION SWEEP ANIMATION */
+.top-atmosphere-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 35%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(249, 217, 118, 0.35) 55%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  z-index: 1;
+  animation: glassBarShine 6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes glassBarShine {
+  0% {
+    left: -120%;
+  }
+  30%, 100% {
+    left: 200%;
+  }
+}
+
+/* 3. HORIZONTAL BUTTON ROW */
+.atmos-buttons-row {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 4. SQUARE TILE ICON BUTTONS (HANDCRAFTED LUXURY JEWEL EMBLEMS) */
+.atmos-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9px;
+  background: radial-gradient(circle at 35% 30%, rgba(55, 18, 42, 0.95) 0%, rgba(20, 6, 17, 0.98) 100%);
+  border: 1.2px solid rgba(249, 217, 118, 0.38);
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition: all 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 0 10px rgba(249, 217, 118, 0.05);
+}
+
+.atmos-icon-btn .custom-jewel-icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), filter 280ms ease;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.85));
+}
+
+.atmos-icon-btn:hover {
+  transform: translateY(-2px) scale(1.1);
+  border-color: rgba(249, 217, 118, 0.85);
+  background: radial-gradient(circle at 35% 30%, rgba(85, 28, 64, 0.95) 0%, rgba(30, 8, 25, 0.98) 100%);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.85),
+    0 0 20px rgba(249, 217, 118, 0.45),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.atmos-icon-btn:hover .custom-jewel-icon {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 10px rgba(249, 217, 118, 0.95)) brightness(1.15);
+}
+
+.atmos-icon-btn:active {
+  transform: scale(0.94);
+}
+
+/* Active State for Toggled Effects (e.g. Rain ON) */
+.atmos-icon-btn.is-active {
+  background: radial-gradient(circle, rgba(249, 217, 118, 0.35) 0%, rgba(200, 30, 80, 0.25) 100%);
+  border-color: #F9D976;
+  box-shadow: 0 0 20px rgba(249, 217, 118, 0.75), inset 0 0 10px rgba(249, 217, 118, 0.4);
+  animation: atmosBtnPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes atmosBtnPulse {
+  0% {
+    box-shadow: 0 0 12px rgba(249, 217, 118, 0.5), inset 0 0 6px rgba(249, 217, 118, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 24px rgba(249, 217, 118, 0.9), inset 0 0 12px rgba(249, 217, 118, 0.5);
+  }
+}
+
+/* Active indicator dot */
+.atmos-icon-btn.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #F9D976;
+  box-shadow: 0 0 6px #F9D976;
+}
+
+/* 6. TOAST NOTIFICATION BADGE FOR ATMOSPHERE MODES */
+.atmos-toast {
+  position: fixed;
+  top: 76px;
+  right: 28px;
+  z-index: 25001;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  background: rgba(18, 5, 14, 0.92);
+  border: 1px solid rgba(249, 217, 118, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #FFFFFF;
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 18px rgba(249, 217, 118, 0.25);
+  opacity: 0;
+  transform: translateY(-8px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1), transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.atmos-toast.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 7. FULLSCREEN EFFECT OVERLAY CANVASES */
+#atmosphere-sparklers-canvas,
+#atmosphere-meteors-canvas,
+#celestial-cursor-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  display: block;
+}
+
+#atmosphere-sparklers-canvas {
+  z-index: 51;
+}
+
+#atmosphere-meteors-canvas {
+  z-index: 52;
+}
+
+#celestial-cursor-canvas {
+  z-index: 999999;
+}
+
+/* 8. MOBILE RESPONSIVE TWEAKS */
+@media (max-width: 600px) {
+  .top-atmosphere-bar {
+    top: 12px;
+    right: 12px;
+    padding: 5px 8px;
+    border-radius: 8px;
+  }
+  .atmos-buttons-row {
+    gap: 6px;
+  }
+  .atmos-icon-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+  }
+  .atmos-icon-btn svg {
+    width: 17px;
+    height: 17px;
+  }
+  .atmos-toast {
+    top: 64px;
+    right: 16px;
+    font-size: 0.75rem;
+  }
+}

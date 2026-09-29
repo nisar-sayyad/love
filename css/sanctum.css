@@ -1,0 +1,277 @@
+﻿/* ==========================================================================
+   TWIN INTERACTIVE SANCTUARY
+   Left: Scratch to Reveal (Gold Foil Vow) | Right: Reason Jar (50 Hearts)
+   ========================================================================== */
+
+#twin-interactive-sanctum {
+  position: relative;
+  padding: var(--section-padding-y) var(--section-padding-x);
+  z-index: 10;
+}
+
+.sanctum-grid {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 4vw, 48px);
+}
+
+.sanctum-card {
+  background: rgba(18, 6, 14, 0.85);
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 32px;
+  padding: clamp(28px, 5vw, 44px) clamp(20px, 4vw, 36px);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: border-color var(--transition-fast);
+}
+
+.sanctum-card:hover {
+  border-color: var(--border-gold-strong);
+}
+
+.sanctum-header-mini {
+  margin-bottom: 24px;
+}
+
+.sanctum-icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.sanctum-card-title {
+  font-size: 1.5rem;
+  color: var(--gold-celestial);
+  margin-bottom: 6px;
+}
+
+.sanctum-card-subtitle {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--rose-muted);
+}
+
+/* --------------------------------------------------------------------------
+   LEFT: SCRATCH TO REVEAL
+   -------------------------------------------------------------------------- */
+.scratch-box {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  height: 280px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-gold-subtle);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.9);
+  user-select: none;
+  touch-action: none;
+}
+
+/* The Revealed Secret Content Underneath */
+.scratch-secret {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 40%, #200818 0%, #0D030A 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  text-align: center;
+  gap: 12px;
+}
+
+.secret-portrait {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-celestial);
+  box-shadow: 0 0 16px var(--gold-glow);
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.secret-vow-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--gold-celestial);
+  letter-spacing: 0.1em;
+}
+
+.secret-vow-text {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--text-pure);
+  line-height: 1.6;
+}
+
+/* The Scratch Foil Canvas */
+.scratch-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  z-index: 2;
+  transition: opacity 600ms ease;
+}
+
+.scratch-canvas.cleared {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scratch-controls {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.scratch-progress {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: var(--rose-soft);
+}
+
+.btn-secondary {
+  padding: 8px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--border-gold-subtle);
+  background: rgba(255, 255, 255, 0.03);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-celestial);
+  transition: all var(--transition-fast);
+}
+
+.btn-secondary:hover {
+  background: rgba(249, 217, 118, 0.15);
+  border-color: var(--gold-celestial);
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT: REASON JAR
+   -------------------------------------------------------------------------- */
+.jar-container {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.crystal-jar {
+  position: relative;
+  width: 180px;
+  height: 240px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(249, 217, 118, 0.05) 50%, rgba(184, 46, 78, 0.08) 100%);
+  border: 2px solid rgba(249, 217, 118, 0.35);
+  border-radius: 30px 30px 50px 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), inset 0 0 25px rgba(249, 217, 118, 0.15), 0 0 30px rgba(249, 217, 118, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform-origin: bottom center;
+  transition: transform 200ms ease;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.jar-lid {
+  position: absolute;
+  top: -18px;
+  width: 120px;
+  height: 20px;
+  background: var(--gold-gradient);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 15px var(--gold-glow);
+}
+
+.jar-label {
+  font-family: var(--font-handwritten);
+  font-size: 2.2rem;
+  color: var(--gold-celestial);
+  text-shadow: 0 0 12px var(--gold-glow);
+  transform: rotate(-5deg);
+}
+
+.jar-hearts-inside {
+  position: absolute;
+  font-size: 1rem;
+  pointer-events: none;
+  animation: floatingHearts 3s infinite alternate ease-in-out;
+}
+
+@keyframes floatingHearts {
+  0% { transform: translateY(0) scale(0.95); }
+  100% { transform: translateY(-10px) scale(1.05); }
+}
+
+/* Wobble Animation on Tap */
+@keyframes jarWobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-7deg); }
+  75% { transform: rotate(7deg); }
+}
+
+.crystal-jar.wobble {
+  animation: jarWobble 450ms ease-in-out;
+}
+
+/* Reason Note Paper Reveal Card */
+.reason-display-card {
+  width: 100%;
+  min-height: 120px;
+  margin-top: 24px;
+  background: #FDFBF7;
+  color: #1A0D15;
+  border-radius: 16px;
+  border: 1.5px solid var(--gold-champagne);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: all 400ms var(--ease-cinematic);
+}
+
+.reason-badge {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--rose-primary);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.reason-text {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #2D1522;
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+  .sanctum-grid {
+    grid-template-columns: 1fr;
+  }
+}

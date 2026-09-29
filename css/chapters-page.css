@@ -1,0 +1,546 @@
+/* ==========================================================================
+   CHAPTER PAGES STYLING & NAVIGATION — NISAR × LAHARI
+   Dedicated multi-page views, luxury sticky headers, and bottom pagination.
+   ========================================================================== */
+
+/* Sanctuary View Base Visibility */
+.sanctuary-view {
+  display: none !important;
+  opacity: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sanctuary-view.is-active {
+  display: block !important;
+  opacity: 1;
+}
+
+/* Chapter Page Outer Wrapper */
+.chapter-page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0d0208;
+  color: #faebd7;
+  padding-bottom: 24px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: visible;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* ==========================================================================
+   CLEAN ATMOSPHERIC CHAPTER BACKGROUNDS (ZERO-LAG PERFORMANCE)
+   Background images removed as requested for buttery-smooth scrolling.
+   ========================================================================== */
+#page-chapter-1,
+#page-chapter-2,
+#page-chapter-3,
+#page-chapter-4,
+#page-chapter-5,
+#page-chapter-6 {
+  background-image: none !important;
+  background: transparent !important;
+}
+
+/* Sticky Luxury Chapter Header Bar */
+.chapter-header-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  background: rgba(13, 2, 8, 0.88);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 215, 185, 0.15);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+
+.chapter-nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.chapter-back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 240, 220, 0.08);
+  border: 1px solid rgba(255, 215, 185, 0.25);
+  border-radius: 999px;
+  color: #faebd7;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.22s ease;
+}
+
+.chapter-back-home-btn:hover {
+  background: rgba(255, 42, 122, 0.18);
+  border-color: rgba(255, 42, 122, 0.5);
+  color: #ffffff;
+  transform: translateX(-3px);
+  box-shadow: 0 0 16px rgba(255, 42, 122, 0.35);
+}
+
+.chapter-nav-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.chapter-nav-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #faebd7;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.chapter-nav-logo:hover {
+  opacity: 0.85;
+}
+
+.chapter-nav-logo .nav-heart {
+  color: #ff2a7a;
+  font-size: 14px;
+  filter: drop-shadow(0 0 6px rgba(255, 42, 122, 0.8));
+}
+
+.chapter-nav-subtext {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: #e2b86b;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.chapter-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Atmosphere Magic Controls inside Chapter Navigation Bar (beside Chapter XX of 06) */
+.chapter-nav-right .top-atmosphere-bar {
+  position: static !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: none !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar::before {
+  display: none !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-buttons-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: transparent !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-icon-btn {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-icon-btn .custom-jewel-icon {
+  width: 24px !important;
+  height: 24px !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6)) !important;
+  transition: transform 0.2s ease, filter 0.2s ease !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-icon-btn:hover {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: translateY(-2px) scale(1.18) !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-icon-btn:hover .custom-jewel-icon {
+  filter: drop-shadow(0 0 10px rgba(249, 217, 118, 0.85)) brightness(1.2) !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-icon-btn.is-active {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-icon-btn.is-active .custom-jewel-icon {
+  filter: drop-shadow(0 0 10px rgba(249, 217, 118, 0.95)) !important;
+}
+
+.chapter-nav-right .top-atmosphere-bar .atmos-icon-btn.is-active::after {
+  bottom: -3px !important;
+  background: #F9D976 !important;
+  box-shadow: 0 0 8px rgba(249, 217, 118, 0.9) !important;
+}
+
+.chapter-step-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: linear-gradient(135deg, rgba(226, 184, 107, 0.18), rgba(255, 42, 122, 0.14));
+  border: 1px solid rgba(226, 184, 107, 0.4);
+  border-radius: 999px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #ffd885;
+}
+
+/* Chapter Hero Banner */
+.chapter-hero-banner {
+  text-align: center;
+  padding: 64px 24px 36px;
+  max-width: 860px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.chapter-badge-tag {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 999px;
+  background: rgba(255, 42, 122, 0.12);
+  border: 1px solid rgba(255, 42, 122, 0.35);
+  color: #ff85aa;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.chapter-hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(30px, 4.5vw, 48px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #faebd7;
+  margin: 0 0 14px 0;
+  line-height: 1.2;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+.chapter-hero-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(17px, 2.2vw, 22px);
+  color: #e8d0bc;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 680px;
+}
+
+.chapter-divider-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 28px auto 0;
+  max-width: 320px;
+  opacity: 0.65;
+}
+
+.chapter-divider-ornament::before,
+.chapter-divider-ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(226, 184, 107, 0.6), transparent);
+}
+
+.chapter-divider-ornament span {
+  color: #ff2a7a;
+  font-size: 13px;
+}
+
+/* Chapter Bottom Pagination Bar */
+.chapter-bottom-nav {
+  margin: 18px auto 0;
+  max-width: 860px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 215, 185, 0.15);
+  box-sizing: border-box;
+}
+
+.chapter-bottom-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-sizing: border-box;
+}
+
+.chapter-bottom-btn.prev-btn {
+  background: rgba(255, 240, 220, 0.06);
+  border: 1px solid rgba(255, 215, 185, 0.22);
+  color: #edd5c5;
+}
+
+.chapter-bottom-btn.prev-btn:hover {
+  background: rgba(255, 240, 220, 0.14);
+  color: #ffffff;
+  transform: translateX(-4px);
+}
+
+.chapter-bottom-btn.prev-btn.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+  cursor: default;
+}
+
+.chapter-bottom-btn.home-btn {
+  background: transparent;
+  border: 1px solid rgba(226, 184, 107, 0.35);
+  color: #ffd885;
+}
+
+.chapter-bottom-btn.home-btn:hover {
+  background: rgba(226, 184, 107, 0.15);
+  border-color: #ffd885;
+  transform: translateY(-2px);
+}
+
+.chapter-bottom-btn.next-btn {
+  background: linear-gradient(135deg, #d81b60 0%, #b8124b 100%);
+  border: 1px solid rgba(255, 117, 151, 0.4);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(216, 27, 96, 0.35);
+}
+
+.chapter-bottom-btn.next-btn:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 26px rgba(216, 27, 96, 0.55);
+}
+
+@media (max-width: 768px) {
+  .chapter-header-nav {
+    padding: 0 16px;
+    height: 58px;
+  }
+  .chapter-nav-subtext {
+    display: none;
+  }
+  .chapter-bottom-nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .chapter-bottom-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Entire top header removed from all chapters as requested */
+.chapter-header-nav { display: none !important; }
+
+
+/* ==========================================================================
+   DEDICATED FIXED CHAPTER BACKDROPS (OPTION A: FIXED, ZERO-LAG, EXACT PROPORTIONS)
+   ========================================================================== */
+.chapter-fixed-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+#chapter-1-fixed-backdrop {
+  background-image: url('../assets/images/chapter-1-sanctuary-bg.jpg');
+}
+
+#chapter-2-fixed-backdrop {
+  background-image: url('../assets/images/chapter-2-universe-bg.jpg');
+}
+
+#chapter-3-fixed-backdrop {
+  background-image: url('../assets/images/chapter-3-museum-bg.jpg');
+}
+
+#chapter-4-fixed-backdrop {
+  background-image: url('../assets/images/chapter-4-words-bg.jpg');
+}
+
+#chapter-5-fixed-backdrop {
+  background-image: url('../assets/images/chapter-5-about-bg.jpg');
+}
+
+#chapter-6-fixed-backdrop {
+  background-image: url('../assets/images/chapter-6-future-bg.jpg');
+}
+
+/* Ensure all interactive content inside chapter page sits on top with full clarity */
+.chapter-page-wrapper > *:not(.chapter-fixed-backdrop) {
+  position: relative;
+  z-index: 2;
+}
+
+/* Enhanced readability over luminous scenic chapter backdrops */
+.chapter-hero-title {
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.chapter-hero-sub {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+.hero-editorial-title {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.9) !important;
+}
+
+.hero-title-italic {
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.85), 0 2px 6px rgba(0, 0, 0, 0.9) !important;
+}
+
+.hero-editorial-sub {
+  color: rgba(255, 255, 255, 0.95) !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.95) !important;
+}
+
+.hero-editorial-quote {
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.95) !important;
+}
+
+.chapter-page-wrapper .section-title {
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85), 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.chapter-page-wrapper .section-subtitle {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9), 0 1px 4px rgba(0, 0, 0, 0.85);
+}
+
+
+
+/* =====================================================
+   MASTER READABILITY PATCH — All Section Titles & Subtitles
+   Fixes gray/washed-out text on scenic backgrounds
+   ===================================================== */
+
+/* --- BIG SECTION TITLES (Bloom & Ocean Drift, Touch Heartbeat, Love Compass etc) --- */
+.section-title,
+.hero-editorial-title,
+.chapter-page-wrapper .section-title {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 1px rgba(0,0,0,1),
+    0 2px 8px rgba(0,0,0,0.95),
+    0 4px 20px rgba(0,0,0,0.85),
+    0 8px 40px rgba(0,0,0,0.6) !important;
+}
+
+/* --- ITALIC SUBTITLES (hero-editorial-sub, hero-editorial-quote, chapter-hero-sub) --- */
+.section-subtitle,
+.hero-editorial-sub,
+.hero-editorial-quote,
+.chapter-hero-sub,
+.chapter-page-wrapper .section-subtitle {
+  color: rgba(255, 235, 240, 0.98) !important;
+  text-shadow:
+    0 0 1px rgba(0,0,0,1),
+    0 1px 6px rgba(0,0,0,0.95),
+    0 3px 16px rgba(0,0,0,0.9) !important;
+}
+
+/* --- HERO ITALIC LINE (italic portion inside title) --- */
+.hero-title-italic {
+  color: rgba(255, 220, 235, 0.98) !important;
+  text-shadow:
+    0 0 1px rgba(0,0,0,1),
+    0 2px 8px rgba(0,0,0,0.95),
+    0 4px 20px rgba(0,0,0,0.85) !important;
+}
+
+/* --- SMALL CAPS BADGES (INTIMATE CONNECTION, ETERNAL DIRECTION, etc) --- */
+.section-badge,
+.chapter-badge-tag,
+.hero-editorial-badge {
+  color: #ffd885 !important;
+  background: rgba(10, 3, 7, 0.65) !important;
+  border-color: rgba(255, 216, 133, 0.55) !important;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+}
+
+/* --- BOTTOM NAVIGATION BUTTONS (Previous Chapter, Return to Home) --- */
+.chapter-bottom-btn.prev-btn {
+  color: #ffffff !important;
+  background: rgba(0,0,0,0.4) !important;
+  border-color: rgba(255,255,255,0.3) !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.9) !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+.chapter-bottom-btn.home-btn {
+  color: #ffd885 !important;
+  background: rgba(0,0,0,0.4) !important;
+  border-color: rgba(255,216,133,0.4) !important;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.9) !important;
+  backdrop-filter: blur(6px) !important;
+}

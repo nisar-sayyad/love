@@ -1,0 +1,60 @@
+/* ==========================================================================
+   PERMANENT MOUNTAIN NIGHT ATMOSPHERE
+   Canvas Starfield + Mountain Silhouettes + Valley Lights
+   ========================================================================== */
+
+#mountain-night-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Starfield Canvas */
+#stars-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
+/* Cosmic Nebula Glows */
+.nebula-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.22;
+  will-change: transform, opacity;
+}
+
+.nebula-rose {
+  top: 15%;
+  left: 20%;
+  width: 450px;
+  height: 350px;
+  background: radial-gradient(circle, #B82E4E 0%, transparent 70%);
+  animation: nebulaDrift 24s infinite alternate ease-in-out;
+}
+
+.nebula-gold {
+  top: 35%;
+  right: 15%;
+  width: 500px;
+  height: 400px;
+  background: radial-gradient(circle, #E4B342 0%, transparent 70%);
+  animation: nebulaDrift 28s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes nebulaDrift {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.18; }
+  50% { transform: translate(30px, -20px) scale(1.12); opacity: 0.26; }
+  100% { transform: translate(-25px, 25px) scale(0.95); opacity: 0.18; }
+}
+
+

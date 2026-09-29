@@ -1,0 +1,279 @@
+/**
+ * ============================================================
+ * DESIGN TOKENS & VARIABLES — NISAR × LAHARI
+ * Luxury Editorial + Cinematic Film + Private Love Letter
+ * ============================================================
+ */
+
+:root {
+  /* Color Palette — Primary (Deep Wine, Velvet Burgundy, Dark Rose) */
+  --color-bg-deep: #12040a;
+  --color-bg-wine: #1c0610;
+  --color-bg-card: rgba(36, 11, 22, 0.72);
+  --color-bg-card-hover: rgba(54, 16, 33, 0.88);
+  --color-burgundy: #4a1327;
+  --color-dark-rose: #6e1d3a;
+  --color-rose-glow: #9e2a53;
+
+  /* Color Palette — Secondary (Soft Blush, Warm Cream, Ivory, Pure White) */
+  --color-blush: #f4dce2;
+  --color-blush-soft: #fbeff2;
+  --color-cream: #faf5ee;
+  --color-ivory: #f7f1e5;
+  --color-white: #ffffff;
+  --color-text-primary: #fdfbf7;
+  --color-text-secondary: #e2cad2;
+  --color-text-muted: #ab8694;
+
+  /* Color Palette — Accents (Subtle Champagne & Warm Gold) */
+  --color-gold: #dfb76c;
+  --color-gold-light: #f4d89d;
+  --color-gold-dark: #b88d44;
+  --color-gold-glow: rgba(223, 183, 108, 0.35);
+
+  /* Gradients */
+  --grad-primary: linear-gradient(180deg, #12040a 0%, #1a0610 50%, #12040a 100%);
+  --grad-wine-rose: linear-gradient(135deg, #421023 0%, #1a060f 100%);
+  --grad-gold: linear-gradient(135deg, #f4d89d 0%, #dfb76c 50%, #b88d44 100%);
+  --grad-rose-gold: linear-gradient(135deg, #e5a4b7 0%, #dfb76c 100%);
+  --grad-card: linear-gradient(145deg, rgba(46, 14, 28, 0.7) 0%, rgba(20, 5, 12, 0.85) 100%);
+  --grad-vignette: radial-gradient(circle at center, transparent 35%, rgba(10, 2, 6, 0.85) 100%);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Alex Brush', 'Italianno', cursive;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.75);
+  --shadow-gold: 0 0 30px rgba(223, 183, 108, 0.25);
+  --shadow-rose: 0 0 35px rgba(158, 42, 83, 0.3);
+  --shadow-card: 0 16px 40px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-prestige: 0 24px 60px -12px rgba(0, 0, 0, 0.85), 0 0 30px var(--color-gold-glow);
+
+  /* Prestige Accents & Gradients */
+  --grad-gold-foil: linear-gradient(135deg, #fff2cc 0%, #e5be6b 35%, #b88d44 70%, #f7dfa5 100%);
+  --grad-card-prestige: linear-gradient(145deg, rgba(38, 12, 24, 0.82) 0%, rgba(14, 4, 9, 0.95) 100%);
+  --candlelight-glow: radial-gradient(circle at center, rgba(255, 179, 71, 0.18) 0%, rgba(218, 112, 34, 0.06) 45%, transparent 75%);
+
+  /* Borders & Glassmorphism */
+  --border-subtle: 1px solid rgba(223, 183, 108, 0.16);
+  --border-rose: 1px solid rgba(158, 42, 83, 0.28);
+  --border-gold: 1px solid rgba(223, 183, 108, 0.4);
+  --border-gold-glow: 1px solid rgba(244, 216, 157, 0.6);
+  --glass-backdrop: blur(18px) saturate(160%);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-cinematic: 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Layout Container */
+  --container-max-width: 1240px;
+  --container-text-width: 780px;
+  --container-pad: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+/* ============================================================
+   10 PRESTIGE LUXURY THEMES FOR NISAR × LAHARI
+   Applied dynamically via [data-theme="..."] on <html> or <body>
+   ============================================================ */
+
+/* 1. Velvet Wine & Champagne Gold (Default Signature) */
+[data-theme="velvet-wine"] {
+  --color-bg-deep: #12040a;
+  --color-bg-wine: #1c0610;
+  --color-bg-card: rgba(36, 11, 22, 0.75);
+  --color-bg-card-hover: rgba(54, 16, 33, 0.88);
+  --color-burgundy: #4a1327;
+  --color-dark-rose: #6e1d3a;
+  --color-rose-glow: #9e2a53;
+  --color-blush: #f4dce2;
+  --color-gold: #dfb76c;
+  --color-gold-light: #f4d89d;
+  --color-gold-glow: rgba(223, 183, 108, 0.35);
+  --grad-primary: linear-gradient(180deg, #12040a 0%, #1a0610 50%, #12040a 100%);
+  --grad-wine-rose: linear-gradient(135deg, #421023 0%, #1a060f 100%);
+  --grad-card: linear-gradient(145deg, rgba(46, 14, 28, 0.75) 0%, rgba(20, 5, 12, 0.88) 100%);
+}
+
+/* 2. Midnight Celestial & Starlight Silver */
+[data-theme="midnight-celestial"] {
+  --color-bg-deep: #050814;
+  --color-bg-wine: #0c1228;
+  --color-bg-card: rgba(14, 22, 48, 0.75);
+  --color-bg-card-hover: rgba(22, 36, 75, 0.88);
+  --color-burgundy: #162550;
+  --color-dark-rose: #243b7a;
+  --color-rose-glow: #4468c4;
+  --color-blush: #dce5fa;
+  --color-gold: #b3c7ee;
+  --color-gold-light: #dbe7fc;
+  --color-gold-glow: rgba(179, 199, 238, 0.4);
+  --grad-primary: linear-gradient(180deg, #050814 0%, #0a1024 50%, #050814 100%);
+  --grad-wine-rose: linear-gradient(135deg, #182855 0%, #080d1e 100%);
+  --grad-card: linear-gradient(145deg, rgba(16, 26, 56, 0.8) 0%, rgba(8, 13, 30, 0.9) 100%);
+}
+
+/* 3. Royal Emerald & 24K Gold Leaf */
+[data-theme="royal-emerald"] {
+  --color-bg-deep: #03120c;
+  --color-bg-wine: #072115;
+  --color-bg-card: rgba(11, 38, 26, 0.76);
+  --color-bg-card-hover: rgba(18, 58, 40, 0.88);
+  --color-burgundy: #0e3b26;
+  --color-dark-rose: #165638;
+  --color-rose-glow: #248256;
+  --color-blush: #d5eedf;
+  --color-gold: #e5be6b;
+  --color-gold-light: #f5dba3;
+  --color-gold-glow: rgba(229, 190, 107, 0.4);
+  --grad-primary: linear-gradient(180deg, #03120c 0%, #071f15 50%, #03120c 100%);
+  --grad-wine-rose: linear-gradient(135deg, #10442c 0%, #051910 100%);
+  --grad-card: linear-gradient(145deg, rgba(12, 42, 29, 0.8) 0%, rgba(5, 20, 13, 0.9) 100%);
+}
+
+/* 4. Parisian Sunset & Dusty Rose */
+[data-theme="paris-rose"] {
+  --color-bg-deep: #160a10;
+  --color-bg-wine: #24101b;
+  --color-bg-card: rgba(48, 20, 35, 0.75);
+  --color-bg-card-hover: rgba(68, 28, 50, 0.88);
+  --color-burgundy: #52203b;
+  --color-dark-rose: #7d335a;
+  --color-rose-glow: #aa4a7c;
+  --color-blush: #fbe6ed;
+  --color-gold: #e8b09b;
+  --color-gold-light: #f7d2c4;
+  --color-gold-glow: rgba(232, 176, 155, 0.35);
+  --grad-primary: linear-gradient(180deg, #160a10 0%, #200e18 50%, #160a10 100%);
+  --grad-wine-rose: linear-gradient(135deg, #481b33 0%, #190913 100%);
+  --grad-card: linear-gradient(145deg, rgba(46, 18, 33, 0.8) 0%, rgba(20, 8, 15, 0.9) 100%);
+}
+
+/* 5. Obsidian Noir & Royal Ruby */
+[data-theme="obsidian-ruby"] {
+  --color-bg-deep: #080608;
+  --color-bg-wine: #14080e;
+  --color-bg-card: rgba(28, 10, 18, 0.78);
+  --color-bg-card-hover: rgba(48, 14, 28, 0.9);
+  --color-burgundy: #5a0d1f;
+  --color-dark-rose: #8a132e;
+  --color-rose-glow: #bf1d43;
+  --color-blush: #fcdde4;
+  --color-gold: #e28a9b;
+  --color-gold-light: #f7b7c4;
+  --color-gold-glow: rgba(226, 138, 155, 0.4);
+  --grad-primary: linear-gradient(180deg, #080608 0%, #12070c 50%, #080608 100%);
+  --grad-wine-rose: linear-gradient(135deg, #4c0b1a 0%, #0d0509 100%);
+  --grad-card: linear-gradient(145deg, rgba(34, 10, 20, 0.85) 0%, rgba(12, 4, 8, 0.95) 100%);
+}
+
+/* 6. Imperial Amethyst & Violet Glow */
+[data-theme="amethyst-twilight"] {
+  --color-bg-deep: #0c0516;
+  --color-bg-wine: #170a2a;
+  --color-bg-card: rgba(32, 14, 56, 0.76);
+  --color-bg-card-hover: rgba(48, 20, 84, 0.88);
+  --color-burgundy: #3c1664;
+  --color-dark-rose: #5a2294;
+  --color-rose-glow: #8738da;
+  --color-blush: #ede0fa;
+  --color-gold: #c39bf5;
+  --color-gold-light: #e0cbfa;
+  --color-gold-glow: rgba(195, 155, 245, 0.4);
+  --grad-primary: linear-gradient(180deg, #0c0516 0%, #150926 50%, #0c0516 100%);
+  --grad-wine-rose: linear-gradient(135deg, #37145b 0%, #0e051a 100%);
+  --grad-card: linear-gradient(145deg, rgba(36, 15, 62, 0.8) 0%, rgba(14, 5, 24, 0.92) 100%);
+}
+
+/* 7. Sapphire Ocean & Diamond Mist */
+[data-theme="sapphire-ocean"] {
+  --color-bg-deep: #030c18;
+  --color-bg-wine: #07172e;
+  --color-bg-card: rgba(10, 32, 60, 0.76);
+  --color-bg-card-hover: rgba(16, 48, 88, 0.88);
+  --color-burgundy: #0f3764;
+  --color-dark-rose: #175192;
+  --color-rose-glow: #2476d0;
+  --color-blush: #d5ecf8;
+  --color-gold: #71cbdf;
+  --color-gold-light: #a9e4f1;
+  --color-gold-glow: rgba(113, 203, 223, 0.4);
+  --grad-primary: linear-gradient(180deg, #030c18 0%, #07162a 50%, #030c18 100%);
+  --grad-wine-rose: linear-gradient(135deg, #103762 0%, #040e1c 100%);
+  --grad-card: linear-gradient(145deg, rgba(12, 36, 68, 0.8) 0%, rgba(4, 14, 28, 0.92) 100%);
+}
+
+/* 8. Tuscan Espresso & Warm Amber */
+[data-theme="tuscan-amber"] {
+  --color-bg-deep: #120905;
+  --color-bg-wine: #1e1008;
+  --color-bg-card: rgba(42, 22, 12, 0.76);
+  --color-bg-card-hover: rgba(62, 32, 18, 0.88);
+  --color-burgundy: #4c260f;
+  --color-dark-rose: #743a17;
+  --color-rose-glow: #a85623;
+  --color-blush: #faebd7;
+  --color-gold: #dca358;
+  --color-gold-light: #f2cca1;
+  --color-gold-glow: rgba(220, 163, 88, 0.38);
+  --grad-primary: linear-gradient(180deg, #120905 0%, #1c0e07 50%, #120905 100%);
+  --grad-wine-rose: linear-gradient(135deg, #44220d 0%, #140804 100%);
+  --grad-card: linear-gradient(145deg, rgba(46, 23, 12, 0.8) 0%, rgba(18, 8, 4, 0.92) 100%);
+}
+
+/* 9. Cherry Blossom & Soft Peony */
+[data-theme="cherry-blossom"] {
+  --color-bg-deep: #150610;
+  --color-bg-wine: #220a1a;
+  --color-bg-card: rgba(46, 16, 36, 0.76);
+  --color-bg-card-hover: rgba(66, 24, 52, 0.88);
+  --color-burgundy: #52183c;
+  --color-dark-rose: #7a2559;
+  --color-rose-glow: #ab377e;
+  --color-blush: #fce7f2;
+  --color-gold: #f2a7ca;
+  --color-gold-light: #fad1e4;
+  --color-gold-glow: rgba(242, 167, 202, 0.4);
+  --grad-primary: linear-gradient(180deg, #150610 0%, #1f0918 50%, #150610 100%);
+  --grad-wine-rose: linear-gradient(135deg, #481635 0%, #170612 100%);
+  --grad-card: linear-gradient(145deg, rgba(44, 15, 34, 0.8) 0%, rgba(19, 6, 15, 0.92) 100%);
+}
+
+/* 10. Victorian Noir & Antique Bronze */
+[data-theme="victorian-noir"] {
+  --color-bg-deep: #0e0d0b;
+  --color-bg-wine: #191612;
+  --color-bg-card: rgba(36, 31, 24, 0.78);
+  --color-bg-card-hover: rgba(54, 46, 36, 0.88);
+  --color-burgundy: #403628;
+  --color-dark-rose: #61523c;
+  --color-rose-glow: #8e7857;
+  --color-blush: #f5eedf;
+  --color-gold: #cbb07c;
+  --color-gold-light: #e5d4b1;
+  --color-gold-glow: rgba(203, 176, 124, 0.38);
+  --grad-primary: linear-gradient(180deg, #0e0d0b 0%, #161310 50%, #0e0d0b 100%);
+  --grad-wine-rose: linear-gradient(135deg, #383023 0%, #12100d 100%);
+  --grad-card: linear-gradient(145deg, rgba(38, 32, 25, 0.82) 0%, rgba(16, 14, 11, 0.94) 100%);
+}
+

@@ -1,0 +1,1050 @@
+/* ==========================================================================
+   HOME SANCTUARY UI — DESKTOP VIEWPORT SCALING (1920 × 1080)
+   Full-width, properly proportioned layout across the 16:9 canvas
+   ========================================================================== */
+
+/* Page View Host — Clean Neutral Base with Luxury Luminous Sanctuary Aesthetic */
+#page-home {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 1080px;
+  background: #faf8f5 url('../assets/images/home-sanctuary-bg.jpg') center center / cover no-repeat;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* Master Home Container */
+.home-authoritative-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  height: 100%;
+  max-height: 1080px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  z-index: 105;
+  background: transparent;
+}
+
+/* Canvas Wrapper — Full 1920×1080 Viewport */
+.home-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* When Home is active, keep background clean neutral and hide background overlays/canvases/widgets */
+html:has(body.home-active-view),
+body.home-active-view {
+  background-color: #faf8f5 !important;
+  overflow: hidden !important;
+}
+
+html:has(body.home-active-view)::-webkit-scrollbar,
+body.home-active-view::-webkit-scrollbar {
+  width: 8px;
+  background-color: #faf8f5;
+}
+
+html:has(body.home-active-view)::-webkit-scrollbar-thumb,
+body.home-active-view::-webkit-scrollbar-thumb {
+  background-color: #e0dad0;
+  border-radius: 4px;
+}
+
+body.home-active-view #ambient-music-widget,
+body.home-active-view #mountain-night-bg,
+body.home-active-view #secret-easter-egg,
+body.home-active-view .easter-egg-btn,
+body.home-active-view .theme-curved-sheet-launcher,
+body.home-active-view #theme-curved-sheet-launcher,
+body.home-active-view #ambient-soundscapes-widget,
+body.home-active-view #easter-egg-ambient-triggers,
+body.home-active-view .floating-story-rail,
+body.home-active-view .floating-quick-dock,
+body.home-active-view #stars-canvas,
+body.home-active-view .blank-screen-secrets-layer {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ==========================================================================
+   TOP ATMOSPHERE BAR (4 MAGIC CONTROL ICONS)
+   Hidden on Home (Main) Page; rendered inside Chapter top header bars
+   ========================================================================== */
+/* body.home-active-view .top-atmosphere-bar (now active on home) */
+body.passcode-locked .top-atmosphere-bar,
+body:not(.sanctuary-entered) .top-atmosphere-bar {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-16px) !important;
+}
+
+/* ==========================================================================
+   1. TOP-LEFT BRANDING MONOGRAM (ROYAL SQUARE GLASS PLAQUE - OPTION 1)
+   Frosted crystal glassmorphism plaque with bespoke French double-line gold border
+   ========================================================================== */
+.home-brand-layer {
+  position: absolute;
+  left: clamp(32px, 3.2vw, 64px);
+  top: calc(clamp(102px, 11.2vh, 124px) - 5px);
+  width: calc((100% - 2 * clamp(32px, 3.2vw, 64px) - 5 * clamp(16px, 1.4vw, 26px)) / 6);
+  max-width: none;
+  height: calc(clamp(276px, 28.5vh, 312px) + 100px - (clamp(102px, 11.2vh, 124px) - 5px));
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  border: 1.5px solid rgba(212, 175, 55, 0.22);
+  border-radius: 24px;
+  box-shadow: 0 8px 24px rgba(60, 40, 50, 0.04), 0 1px 2px rgba(212, 175, 55, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.95);
+  padding: 16px 20px 14px;
+  box-sizing: border-box;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+/* Bespoke French Double-Hairline Inner Frame */
+.home-brand-layer::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 17px;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.28s ease;
+}
+
+.home-brand-layer:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(60, 40, 50, 0.08), 0 2px 6px rgba(212, 175, 55, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.home-brand-layer:hover::before {
+  border-color: rgba(212, 175, 55, 0.60);
+  box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.06);
+}
+
+/* 4 Classical Beveled Gold Corner Brackets (Option 1 Specifics) */
+.brand-glass-corner {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: rgba(212, 175, 55, 0.42);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 3;
+  transition: border-color 0.28s ease;
+}
+
+.brand-glass-corner.corner-tl {
+  top: 11px;
+  left: 11px;
+  border-width: 1.6px 0 0 1.6px;
+  border-top-left-radius: 6px;
+}
+
+.brand-glass-corner.corner-tr {
+  top: 11px;
+  right: 11px;
+  border-width: 1.6px 1.6px 0 0;
+  border-top-right-radius: 6px;
+}
+
+.brand-glass-corner.corner-bl {
+  bottom: 11px;
+  left: 11px;
+  border-width: 0 0 1.6px 1.6px;
+  border-bottom-left-radius: 6px;
+}
+
+.brand-glass-corner.corner-br {
+  bottom: 11px;
+  right: 11px;
+  border-width: 0 1.6px 1.6px 0;
+  border-bottom-right-radius: 6px;
+}
+
+.home-brand-layer:hover .brand-glass-corner {
+  border-color: rgba(212, 175, 55, 0.95);
+}
+
+.home-brand-monogram {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(38px, 2.7vw, 46px);
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.16em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  line-height: 1;
+  position: relative;
+  z-index: 3;
+}
+
+.home-brand-monogram .brand-letter {
+  display: inline-block;
+}
+
+.home-brand-monogram .brand-heart {
+  color: #e6005c;
+  font-size: 0.95em;
+  filter: drop-shadow(0 0 7px rgba(230, 0, 92, 0.45));
+}
+
+.home-brand-names {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(15px, 1.05vw, 18px);
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #1a1a1a;
+  margin-top: 8px;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+.home-brand-names .brand-times {
+  font-size: 0.9em;
+  color: #665b55;
+  margin: 0 4px;
+}
+
+/* Microscopic Gold Divider Line (Option 1) */
+.brand-glass-divider {
+  width: 52px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.55), transparent);
+  margin: 8px 0 6px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.home-brand-tag {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(10.5px, 0.72vw, 12.5px);
+  letter-spacing: 0.32em;
+  color: #6a5e56;
+  margin-top: 0;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   2. HERO / MAIN CONTENT WELCOME AREA
+   Substantially enlarged and commanding presence
+   ========================================================================== */
+.home-welcome-layer {
+  position: absolute;
+  left: clamp(315px, 23.5vw, 435px);
+  top: clamp(63px, 7.2vh, 78px);
+  width: clamp(640px, 44vw, 860px);
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-script-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(34px, 2.3vw, 44px);
+  color: #e6005c;
+  line-height: 1.05;
+  margin: 0;
+  filter: drop-shadow(0 2px 4px rgba(230, 0, 92, 0.15));
+}
+
+.welcome-title-names {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(30px, 2.0vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #181515;
+  margin: 0;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.welcome-heart-outline {
+  display: inline-block;
+  color: #e6005c;
+  font-weight: 300;
+  margin: 0 10px;
+  filter: drop-shadow(0 0 5px rgba(230, 0, 92, 0.35));
+}
+
+.welcome-tagline {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(11px, 0.72vw, 13px);
+  letter-spacing: 0.38em;
+  color: #6d5f52;
+  margin: 4px 0 6px 0;
+  text-transform: uppercase;
+}
+
+.welcome-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(13px, 0.88vw, 15px);
+  line-height: 1.45;
+  color: #38302d;
+  margin: 0;
+  max-width: 720px;
+}
+
+/* ==========================================================================
+   LAHARI LIFE-CLOCK FRAME (29 Sept 2007 Eternity Ticker)
+   ========================================================================== */
+.lahari-clock-frame {
+  position: relative;
+  width: clamp(600px, 41vw, 710px);
+  margin-top: 15px;
+  background: #ffffff;
+  border-radius: 22px;
+  border: 1.5px solid rgba(212, 175, 55, 0.32);
+  padding: 16px 28px 18px;
+  box-shadow: 0 8px 30px rgba(60, 40, 50, 0.06), 0 1px 3px rgba(212, 175, 55, 0.08);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+/* Bespoke French Double-Hairline Inner Frame */
+.lahari-clock-frame::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border-radius: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.28s ease;
+}
+
+.lahari-clock-frame:hover::before {
+  border-color: rgba(212, 175, 55, 0.75);
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.08);
+}
+
+.lahari-clock-header {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+}
+
+.lahari-clock-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.lahari-clock-name {
+  font-family: 'Cinzel', serif;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #1a1615;
+}
+
+.lahari-clock-heart {
+  color: #e6005c;
+  font-size: 16px;
+  filter: drop-shadow(0 0 4px rgba(230, 0, 92, 0.4));
+}
+
+.lahari-clock-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #8c7b73;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lahari-clock-digits {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 14px;
+}
+
+.lahari-clock-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.lahari-clock-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #1a1615;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.lahari-clock-lbl {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7a6c65;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  margin-top: 6px;
+}
+
+.lahari-clock-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(70, 50, 40, 0.14);
+}
+
+.btn-begin-journey {
+  background: linear-gradient(135deg, #e6005c 0%, #d81b60 100%);
+  color: #ffffff;
+  padding: 16px 38px;
+  font-size: 17px;
+  border: 1px solid rgba(255, 120, 160, 0.4);
+  box-shadow: 0 6px 22px rgba(230, 0, 92, 0.35);
+}
+
+.btn-begin-journey .btn-arrow {
+  margin-left: 10px;
+  font-size: 1.25em;
+  transition: transform 0.2s ease;
+}
+
+.btn-begin-journey:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 28px rgba(230, 0, 92, 0.55);
+}
+
+.btn-begin-journey:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-secret-note {
+  background: #ffffff;
+  color: #26201e;
+  padding: 16px 34px;
+  font-size: 16px;
+  border: 1.5px solid #26201e;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.btn-secret-note .btn-lock {
+  margin-left: 8px;
+  font-size: 1.1em;
+}
+
+.btn-secret-note:hover {
+  background: #fbf7f0;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   3. TOP-RIGHT COUNTDOWN PANEL
+   Proportionally enlarged card
+   ========================================================================== */
+.home-countdown-layer {
+  position: absolute;
+  right: clamp(32px, 3.2vw, 64px);
+  top: clamp(102px, 11.2vh, 124px);
+  width: clamp(440px, 27vw, 530px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 175, 55, 0.32);
+  border-radius: 22px;
+  padding: 16px 28px;
+  box-shadow: 0 8px 28px rgba(60, 40, 50, 0.06), 0 1px 3px rgba(212, 175, 55, 0.08);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  box-sizing: border-box;
+}
+
+/* Bespoke French Double-Hairline Inner Frame */
+.home-countdown-layer::before {
+  content: '';
+  position: absolute;
+  inset: 6.5px;
+  border-radius: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.28s ease;
+}
+
+.home-countdown-layer:hover::before {
+  border-color: rgba(212, 175, 55, 0.75);
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.08);
+}
+
+.countdown-tag-row {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #2b2421;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 9px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3;
+}
+
+.countdown-dash {
+  color: #8c7b73;
+  font-weight: 600;
+}
+
+.countdown-digits-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 15px;
+  position: relative;
+  z-index: 3;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.countdown-num {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #1a1615;
+  line-height: 1;
+}
+
+.countdown-lbl {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #7a6c65;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  margin-top: 6px;
+  line-height: 1;
+}
+
+.countdown-divider {
+  width: 1px;
+  height: 42px;
+  background: rgba(70, 50, 40, 0.14);
+}
+
+/* ==========================================================================
+   4. TOP-RIGHT VOICE PLAYER PILL
+   Scaled up proportionally and clearly readable
+   ========================================================================== */
+.home-player-layer {
+  position: absolute;
+  right: clamp(32px, 3.2vw, 64px);
+  top: clamp(276px, 28.5vh, 312px);
+  width: clamp(440px, 27vw, 530px);
+  height: 100px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 26px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 175, 55, 0.32);
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(60, 40, 50, 0.06), 0 1px 3px rgba(212, 175, 55, 0.08);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+/* Bespoke French Double-Hairline Inner Frame */
+.home-player-layer::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.28s ease;
+}
+
+.home-player-layer:hover::before {
+  border-color: rgba(212, 175, 55, 0.72);
+  box-shadow: inset 0 0 8px rgba(212, 175, 55, 0.08);
+}
+
+.player-avatar-click {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  flex-shrink: 0;
+  opacity: 1;
+  border: 2px solid #e6005c;
+  box-shadow: 0 2px 8px rgba(230, 0, 92, 0.25);
+  position: relative;
+  z-index: 3;
+}
+
+.player-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.player-meta-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin: 0 18px;
+  min-width: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.player-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1c1817;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.player-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13.5px;
+  color: #6a5c55;
+  line-height: 1.2;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+
+.player-waveform-box {
+  width: 100%;
+  height: 20px;
+}
+
+.player-waveform-box canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.player-ctrl-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 3;
+}
+
+.player-circle-play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #e6005c;
+  color: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+  box-shadow: 0 4px 14px rgba(230, 0, 92, 0.35);
+}
+
+.player-circle-play-btn:hover {
+  background: #d81b60;
+  transform: scale(1.08);
+  box-shadow: 0 6px 18px rgba(230, 0, 92, 0.5);
+}
+
+.player-time-tag {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  color: #5a4d46;
+  font-weight: 600;
+  margin-top: 4px;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   5. BOTTOM ROW: 6 LARGE ARCHED CHAPTER CARDS
+   Primary visual element spanning across the content width
+   ========================================================================== */
+.home-cards-layer {
+  position: absolute;
+  left: clamp(32px, 3.2vw, 64px);
+  right: clamp(32px, 3.2vw, 64px);
+  bottom: clamp(30px, 4vh, 46px);
+  height: clamp(430px, 45vh, 490px);
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: clamp(16px, 1.4vw, 26px);
+  box-sizing: border-box;
+}
+
+.home-arch-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 18px 22px 18px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1.5px solid rgba(212, 175, 55, 0.32);
+  box-shadow: 0 6px 24px rgba(60, 40, 50, 0.05), 0 1px 3px rgba(212, 175, 55, 0.08);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+  box-sizing: border-box;
+}
+
+/* Bespoke French Double-Hairline Inner Frame */
+.home-arch-card::before {
+  content: '';
+  position: absolute;
+  inset: 6.5px;
+  border-radius: 13.5px;
+  border: 1px solid rgba(212, 175, 55, 0.42);
+  pointer-events: none;
+  z-index: 2;
+  transition: all 0.28s ease;
+}
+
+.home-arch-card:hover::before {
+  border-color: rgba(212, 175, 55, 0.78);
+  box-shadow: inset 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+.card-full-link {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 4;
+  text-decoration: none;
+  background: transparent;
+}
+
+.card-badge {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  z-index: 3;
+}
+
+.card-arch-visual {
+  position: relative;
+  display: block;
+  width: 86%;
+  height: clamp(210px, 25vh, 260px);
+  margin-top: 22px;
+  border-radius: 80px 80px 14px 14px;
+  background: #f0ebe2;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.03);
+  flex-shrink: 0;
+  z-index: 3;
+}
+
+/* Inner hairline nested arch frame */
+.card-arch-visual::after {
+  content: '';
+  position: absolute;
+  inset: 4.5px;
+  border-radius: 75.5px 75.5px 10px 10px;
+  border: 1px solid rgba(212, 175, 55, 0.28);
+  pointer-events: none;
+}
+
+.card-arch-visual img {
+  display: none; /* Ready for new artwork later */
+}
+
+.card-title {
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(17px, 1.0vw, 20px);
+  font-weight: 600;
+  color: #1a1a1a;
+  text-align: center;
+  margin: 12px 0 2px 0;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-transform: none !important;
+  position: relative;
+  z-index: 3;
+}
+
+.card-dot {
+  font-size: 18px;
+  color: #e6005c;
+  line-height: 1;
+  user-select: none;
+  margin: 2px 0 4px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.card-circle-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  opacity: 1;
+  background: #fdf2f4;
+  color: #e6005c;
+  border: 1.5px solid rgba(230, 0, 92, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.22s ease;
+  user-select: none;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 3;
+}
+
+/* Card Hover Micro-Interactions */
+.home-arch-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.09);
+}
+
+.home-arch-card:hover .card-circle-arrow {
+  background: #e6005c;
+  color: #ffffff;
+  transform: scale(1.12);
+  box-shadow: 0 4px 14px rgba(230, 0, 92, 0.4);
+}
+
+/* ==========================================================================
+   TRAVELING GOLD BORDER BEAM (Liquid Gold Shimmer)
+   Graceful 24k gold light beam continuously traveling along the perimeter
+   ========================================================================== */
+@property --gold-beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes goldBeamRotate {
+  0% {
+    --gold-beam-angle: 0deg;
+  }
+  100% {
+    --gold-beam-angle: 360deg;
+  }
+}
+
+.home-countdown-layer::after,
+.home-player-layer::after,
+.lahari-clock-frame::after,
+.home-arch-card::after,
+.home-brand-layer::after {
+  content: '';
+  position: absolute;
+  inset: -2.8px;
+  border-radius: inherit;
+  padding: 2.8px;
+  background: conic-gradient(
+    from var(--gold-beam-angle, 0deg),
+    transparent 0%,
+    transparent 68%,
+    rgba(230, 0, 92, 0.22) 76%,
+    rgba(212, 175, 55, 0.75) 85%,
+    rgba(255, 215, 0, 1) 94%,
+    #ffffff 98%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: goldBeamRotate 6.5s linear infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.85)) drop-shadow(0 0 12px rgba(212, 175, 55, 0.45));
+  z-index: 5;
+}
+
+/* Staggered timings across the 6 cards and header widgets for a living gold rhythm */
+.home-arch-card.card-01::after { animation-delay: 0s; }
+.home-arch-card.card-02::after { animation-delay: -1.1s; }
+.home-arch-card.card-03::after { animation-delay: -2.2s; }
+.home-arch-card.card-04::after { animation-delay: -3.3s; }
+.home-arch-card.card-05::after { animation-delay: -4.4s; }
+.home-arch-card.card-06::after { animation-delay: -5.5s; }
+.home-countdown-layer::after { animation-delay: -1.8s; }
+.home-player-layer::after { animation-delay: -3.6s; }
+.lahari-clock-frame::after { animation-delay: -2.7s; }
+.home-brand-layer::after {
+  animation-delay: -0.9s;
+  background: conic-gradient(
+    from var(--gold-beam-angle, 0deg),
+    transparent 0%,
+    transparent 78%,
+    rgba(212, 175, 55, 0.25) 86%,
+    rgba(240, 210, 120, 0.65) 94%,
+    rgba(255, 250, 220, 0.8) 98%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 1.5px rgba(212, 175, 55, 0.35));
+  opacity: 0.65;
+}
+
+/* Interactive Hover State: Intensifies the gold gleam and lifts card */
+.home-arch-card:hover,
+.home-countdown-layer:hover,
+.home-player-layer:hover,
+.lahari-clock-frame:hover,
+.home-brand-layer:hover {
+  border-color: rgba(212, 175, 55, 0.65);
+  box-shadow: 0 14px 36px rgba(230, 0, 92, 0.1), 0 3px 18px rgba(212, 175, 55, 0.3);
+}
+
+.home-arch-card:hover::after,
+.home-countdown-layer:hover::after,
+.home-player-layer:hover::after,
+.lahari-clock-frame:hover::after,
+.home-brand-layer:hover::after {
+  animation-duration: 3.5s;
+  filter: drop-shadow(0 0 9px rgba(255, 215, 0, 1)) drop-shadow(0 0 16px rgba(212, 175, 55, 0.65));
+}
+
+
+
+/* ==========================================================================
+   TOP ATMOSPHERE BAR (4 MAGIC CONTROL ICONS) — HOME SANCTUARY POSITIONING
+   Frosted gold glassmorphism dock positioned at top right of the canvas
+   ========================================================================== */
+#page-home .top-atmosphere-bar {
+  position: absolute;
+  top: 24px;
+  right: clamp(32px, 3.2vw, 64px);
+  z-index: 120;
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
+  align-items: center;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(212, 175, 55, 0.38);
+  box-shadow: 0 8px 24px rgba(60, 40, 50, 0.05), 0 1px 2px rgba(212, 175, 55, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  user-select: none;
+}
+
+#page-home .top-atmosphere-bar .atmos-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#page-home .top-atmosphere-bar .atmos-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+#page-home .top-atmosphere-bar .atmos-icon-btn:hover {
+  transform: translateY(-2px) scale(1.15);
+}
+
+#page-home .top-atmosphere-bar .atmos-icon-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+/* Hide top-atmosphere-bar when not on home view */
+body:not(.home-active-view) .top-atmosphere-bar {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

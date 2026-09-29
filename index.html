@@ -1,0 +1,2894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Nisar × Lahari — A Little World Made For You</title>
+  <meta name="description" content="A private digital love story and cinematic appreciation experience created exclusively by Nisar for Lahari.">
+  <meta name="theme-color" content="#16040c">
+
+  <!-- OpenGraph / Social Metadata -->
+  <meta property="og:title" content="Nisar × Lahari — A Little World Made For You">
+  <meta property="og:description" content="A private digital love story and cinematic appreciation experience created exclusively by Nisar for Lahari.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero-lahari.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23dfb76c'><path d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/></svg>">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Preload Critical Home Sanctuary Background -->
+  <link rel="preload" as="image" href="assets/images/home-sanctuary-bg.jpg" fetchpriority="high">
+  <!-- Prefetch Chapter Luxury Backgrounds -->
+  <link rel="prefetch" as="image" href="assets/images/chapter-1-sanctuary-bg.jpg">
+  <link rel="prefetch" as="image" href="assets/images/chapter-2-universe-bg.jpg">
+  <link rel="prefetch" as="image" href="assets/images/chapter-3-museum-bg.jpg">
+  <link rel="prefetch" as="image" href="assets/images/chapter-4-words-bg.jpg">
+  <link rel="prefetch" as="image" href="assets/images/chapter-5-about-bg.jpg">
+  <link rel="prefetch" as="image" href="assets/images/chapter-6-future-bg.jpg">
+
+  <!-- ============================================================
+       AUTH BOOT GUARD — STRICT ZERO-FLASH LOGIC
+       State Machine: checking -> locked | authenticated
+       ============================================================ -->
+  <script id="critical-auth-controller">
+    (function() {
+      window.__AUTH_STATE__ = 'checking';
+      try {
+        var isUnlocked = sessionStorage.getItem('lahari_world_unlocked') === 'true' || window.location.search.indexOf('unlock=1') !== -1;
+        if (window.location.search.indexOf('unlock=1') !== -1) {
+          try { sessionStorage.setItem('lahari_world_unlocked', 'true'); } catch(err) {}
+        }
+        window.__AUTH_STATE__ = isUnlocked ? 'authenticated' : 'locked';
+      } catch (e) {
+        window.__AUTH_STATE__ = 'locked';
+      }
+      var ROUTE_MAP = {
+        '': 'page-home',
+        '#': 'page-home',
+        '#/': 'page-home',
+        '#/home': 'page-home',
+        '#/sanctuary': 'page-chapter-1',
+        '#/universe': 'page-chapter-2',
+        '#/museum': 'page-chapter-3',
+        '#/words': 'page-chapter-4',
+        '#/about-you': 'page-chapter-5',
+        '#/future': 'page-chapter-6'
+      };
+      var rawHash = window.location.hash || '#/home';
+      var cleanHash = rawHash.split('?')[0].toLowerCase();
+      var targetPage = ROUTE_MAP[cleanHash] || 'page-home';
+      var isHome = targetPage === 'page-home';
+
+      document.documentElement.setAttribute('data-auth-state', window.__AUTH_STATE__);
+      document.documentElement.setAttribute('data-auth', window.__AUTH_STATE__ === 'authenticated' ? 'unlocked' : 'locked');
+      document.documentElement.setAttribute('data-target-page', targetPage);
+      document.documentElement.setAttribute('data-is-home', isHome ? 'true' : 'false');
+      
+      // PERMANENT EMOJI & DOUBLE-CLICK POPUP ERADICATION
+      try {
+        Object.defineProperty(window, 'spawnHeartBloomAt', {
+          value: function() { return; },
+          writable: false,
+          configurable: false
+        });
+      } catch(err) {
+        window.spawnHeartBloomAt = function() { return; };
+      }
+
+      // Neutralize any dblclick or double-tap popup listeners across the website
+      try {
+        var _origAEL = EventTarget.prototype.addEventListener;
+        EventTarget.prototype.addEventListener = function(type, listener, options) {
+          if (type === 'dblclick') {
+            return; // Suppress double click listener completely
+          }
+          return _origAEL.call(this, type, listener, options);
+        };
+      } catch(err) {}
+
+      // MutationObserver: purge any heart-bloom-particle or emoji popup from the DOM immediately
+      if (typeof MutationObserver !== 'undefined') {
+        var _purgeObserver = new MutationObserver(function(mutations) {
+          for (var i = 0; i < mutations.length; i++) {
+            var added = mutations[i].addedNodes;
+            for (var j = 0; j < added.length; j++) {
+              var n = added[j];
+              if (n && n.nodeType === 1) {
+                var cls = n.className;
+                if (typeof cls === 'string' && (cls.indexOf('heart-bloom') !== -1 || cls.indexOf('bloom-particle') !== -1)) {
+                  n.remove();
+                }
+              }
+            }
+          }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+          if (document.body) {
+            _purgeObserver.observe(document.body, { childList: true, subtree: true });
+          }
+        });
+      }
+
+      if (window.__AUTH_STATE__ === 'authenticated') {
+        document.documentElement.classList.add('auth-unlocked');
+        if (isHome) {
+          document.documentElement.classList.add('boot-home-view');
+        } else {
+          document.documentElement.classList.add('boot-chapter-view');
+        }
+      } else {
+        document.documentElement.classList.add('auth-locked');
+      }
+    })();
+  </script>
+  <style id="critical-auth-baseline">
+    /* ABSOLUTE EMOJI POPUP PERMANENT ERADICATION (ZERO-RENDER GUARD) */
+    .heart-bloom-particle,
+    div.heart-bloom-particle,
+    [class*="heart-bloom"],
+    [class*="bloom-particle"] {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      font-size: 0 !important;
+      line-height: 0 !important;
+      transform: scale(0) !important;
+      position: absolute !important;
+      top: -9999px !important;
+      left: -9999px !important;
+      contain: strict !important;
+    }
+
+    /* Universal baseline: always deep dark matching the site theme to prevent any white flash */
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-color: #0b0207 !important;
+      color: #faebd7;
+    }
+
+    /* Home page baseline: clean ivory background only when actually on home */
+    html[data-is-home="true"],
+    html[data-is-home="true"] body,
+    html.boot-home-view,
+    html.boot-home-view body {
+      background-color: #faf8f5 !important;
+      background-image: none !important;
+      color: #2b2421;
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
+
+    /* Chapter page baseline: atmospheric deep dark background with unrestricted smooth scrolling */
+    html[data-is-home="false"],
+    html[data-is-home="false"] body,
+    html.boot-chapter-view,
+    html.boot-chapter-view body {
+      background-color: #0b0207 !important;
+      background-image: none !important;
+      color: #faebd7;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      height: auto !important;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    /* Passcode Gate locked display guard */
+    html[data-auth-state="locked"],
+    html[data-auth-state="locked"] body,
+    html[data-auth-state="checking"],
+    html[data-auth-state="checking"] body {
+      background-color: #0b0207 !important;
+      background-image: none !important;
+      color: #faebd7;
+      overflow: hidden !important;
+      height: 100vh !important;
+    }
+    html[data-auth-state="locked"] #passcode-gate {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+    html[data-auth-state="authenticated"] #passcode-gate {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    /* ZERO-FLASH CHAPTER VIEW ENGINE:
+       If destination route is any chapter (01 to 06), immediately hide #page-home
+       and immediately force target chapter to be block/visible at initial paint */
+    html[data-is-home="false"] #page-home,
+    html[data-target-page]:not([data-target-page="page-home"]) #page-home {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+    }
+
+    html[data-target-page="page-chapter-1"] #page-chapter-1,
+    html[data-target-page="page-chapter-2"] #page-chapter-2,
+    html[data-target-page="page-chapter-3"] #page-chapter-3,
+    html[data-target-page="page-chapter-4"] #page-chapter-4,
+    html[data-target-page="page-chapter-5"] #page-chapter-5,
+    html[data-target-page="page-chapter-6"] #page-chapter-6 {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+  </style>
+
+  <!-- Stylesheets with Cache Busting -->
+  <link rel="stylesheet" href="css/variables.css?v=20260929_115">
+  <link rel="stylesheet" href="css/main.css?v=20260928_04">
+  <link rel="stylesheet" href="css/components.css?v=20260928_04">
+  <!-- PAGE Integrated Modular Stylesheets -->
+  <link rel="stylesheet" href="css/page-main.css?v=20260928_04">
+  <link rel="stylesheet" href="css/layers.css?v=20260928_04">
+  <link rel="stylesheet" href="css/atmosphere.css?v=20260928_04">
+  <link rel="stylesheet" href="css/navigation.css?v=20260928_04">
+  <link rel="stylesheet" href="css/sections.css?v=20260928_04">
+  <link rel="stylesheet" href="css/sanctum.css?v=20260928_04">
+  <link rel="stylesheet" href="css/letter-audio.css?v=20260928_04">
+  <link rel="stylesheet" href="css/effects.css?v=20260928_04">
+  <link rel="stylesheet" href="css/editorial.css?v=20260928_04">
+  <link rel="stylesheet" href="css/atmosphere-bar.css?v=20260928_04">
+  <link rel="stylesheet" href="css/home-sanctuary.css?v=20260928_07">
+  <link rel="stylesheet" href="css/chapters-page.css?v=20260928_07">
+  <link rel="stylesheet" href="css/readability-fix.css?v=20260929_166">
+<style id="chapter-1-perfect-fit">
+  /* ── CHAPTER 01 CONTAINER & NAVIGATION ── */
+  #page-chapter-1.is-active {
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    padding: 14px 28px 32px !important;
+    box-sizing: border-box !important;
+    overflow-y: auto !important;
+  }
+
+  #page-chapter-1:not(.is-active),
+  #page-chapter-1[hidden] {
+    display: none !important;
+    height: 0 !important;
+    max-height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Chapter 01 Banner */
+  #page-chapter-1 .chapter-hero-banner {
+    margin: 0 auto 16px !important;
+    padding: 10px 32px !important;
+    flex-shrink: 0 !important;
+    display: flex !important;
+  }
+
+  /* Bottom Navigation: Positioned at page bottom */
+  #page-chapter-1 .chapter-bottom-nav {
+    margin-top: auto !important;
+    margin-bottom: 24px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 1000px !important;
+    width: 95% !important;
+    padding: 24px 0 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    border-top: 1px solid rgba(223, 183, 108, 0.25) !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    z-index: 10 !important;
+  }
+</style>
+</head>
+<body>
+  <script id="critical-body-boot">
+    (function() {
+      var isAuth = window.__AUTH_STATE__ === 'authenticated';
+      var isHome = document.documentElement.getAttribute('data-is-home') === 'true';
+      if (isAuth) {
+        document.body.className = isHome ? 'sanctuary-entered home-active-view' : 'sanctuary-entered';
+      } else {
+        document.body.className = 'passcode-locked';
+      }
+    })();
+  </script>
+
+  <!-- Ambient Shimmer Particle Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Falling Rose Petals Canvas -->
+  <canvas id="petals-canvas"></canvas>
+
+  <!-- Atmosphere Magic Overlay Canvases -->
+  <canvas id="atmosphere-sparklers-canvas"></canvas>
+  <canvas id="atmosphere-meteors-canvas"></canvas>
+  <!-- Celestial Stardust Cursor Trail Canvas -->
+  <canvas id="celestial-cursor-canvas"></canvas>
+
+
+  <!-- ============================================================
+       0. PASSCODE SECURITY GATE (STRICT PRIVATE ACCESS)
+       ============================================================ -->
+  <div id="passcode-gate" role="dialog" aria-modal="true" aria-label="Private Access Gate">
+    
+    <!-- Top Branding / Header Area (Floating Over Balcony Scene) -->
+    <header class="sanctum-header-branding">
+      <div class="sanctum-eyebrow-container">
+        <span class="eyebrow-ornament-line"></span>
+        <span class="sanctum-eyebrow">A PRIVATE SANCTUARY</span>
+        <span class="eyebrow-ornament-line"></span>
+      </div>
+      <div class="sanctum-eyebrow-heart" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ff2a7a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <h1 class="sanctum-couple-title passcode-monogram" tabindex="0" title="A Secret Sanctum">
+        <span class="partner-name">NISAR</span>
+        <span class="central-glow-heart" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="42" height="42" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </span>
+        <span class="partner-name">LAHARI</span>
+      </h1>
+      <div class="sanctum-script-subtitle">
+        <p class="script-line-1">Some worlds are not for everyone...</p>
+        <p class="script-line-2">
+          This one is just for you.
+          <span class="script-heart" aria-hidden="true">♡</span>
+        </p>
+      </div>
+          </header>
+
+      
+
+
+    <!-- Central Glassmorphism Card -->
+    <div class="passcode-card" id="passcode-card">
+      
+      <!-- Top Emblem: Golden Padlock + Laurel Ring + Roses -->
+      <div class="sanctum-lock-emblem" aria-hidden="true">
+        <svg viewBox="0 0 160 70" width="138" height="60" class="emblem-svg">
+          <defs>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff0b8"/>
+              <stop offset="35%" stop-color="#e8b449"/>
+              <stop offset="70%" stop-color="#c48f24"/>
+              <stop offset="100%" stop-color="#ffd56b"/>
+            </linearGradient>
+            <linearGradient id="roseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ff7597"/>
+              <stop offset="50%" stop-color="#f0436d"/>
+              <stop offset="100%" stop-color="#b81d43"/>
+            </linearGradient>
+            <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8bc34a"/>
+              <stop offset="100%" stop-color="#388e3c"/>
+            </linearGradient>
+            <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="1.2" result="blur"/>
+              <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+            </filter>
+          </defs>
+          
+          <!-- Sparkles & Fairy Dust -->
+          <circle cx="48" cy="18" r="1" fill="#ffeaa7" opacity="0.8"/>
+          <circle cx="112" cy="19" r="1.2" fill="#ffeaa7" opacity="0.8"/>
+          <polygon points="80,4 81.5,9 86.5,10.5 81.5,12 80,17 78.5,12 73.5,10.5 78.5,9" fill="#fff5cc" opacity="0.75" transform="scale(0.55) translate(40, -2)"/>
+          <polygon points="80,4 81.5,9 86.5,10.5 81.5,12 80,17 78.5,12 73.5,10.5 78.5,9" fill="#fff5cc" opacity="0.65" transform="scale(0.45) translate(220, 15)"/>
+
+          <!-- Golden Laurel / Circular Ring -->
+          <circle cx="80" cy="35" r="19" fill="none" stroke="url(#goldGrad)" stroke-width="1.8" stroke-dasharray="2 1.5" opacity="0.85"/>
+          <circle cx="80" cy="35" r="22" fill="none" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.5"/>
+
+          <!-- Symmetrical Rose Blossom Sprigs (Left) -->
+          <path d="M58 35 C52 30 46 32 43 36 C47 38 53 37 58 35 Z" fill="url(#leafGrad)" opacity="0.85"/>
+          <path d="M64 43 C58 45 54 50 54 55 C59 53 63 48 64 43 Z" fill="url(#leafGrad)" opacity="0.8"/>
+          <path d="M62 25 C56 22 50 22 47 25 C51 28 57 28 62 25 Z" fill="url(#leafGrad)" opacity="0.75"/>
+          <g transform="translate(52, 33)">
+            <circle cx="-2" cy="-4" r="4.5" fill="url(#roseGrad)"/>
+            <circle cx="3" cy="-3" r="4" fill="url(#roseGrad)"/>
+            <circle cx="4" cy="3" r="4.2" fill="url(#roseGrad)"/>
+            <circle cx="-2" cy="4" r="4" fill="url(#roseGrad)"/>
+            <circle cx="-5" cy="0" r="3.8" fill="url(#roseGrad)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#ffe57f"/>
+          </g>
+          <g transform="translate(42, 23) scale(0.65)">
+            <circle cx="0" cy="-4" r="4" fill="url(#roseGrad)"/>
+            <circle cx="4" cy="0" r="4" fill="url(#roseGrad)"/>
+            <circle cx="0" cy="4" r="4" fill="url(#roseGrad)"/>
+            <circle cx="-4" cy="0" r="4" fill="url(#roseGrad)"/>
+            <circle cx="0" cy="0" r="2" fill="#ffe57f"/>
+          </g>
+
+          <!-- Symmetrical Rose Blossom Sprigs (Right) -->
+          <path d="M102 35 C108 30 114 32 117 36 C113 38 107 37 102 35 Z" fill="url(#leafGrad)" opacity="0.85"/>
+          <path d="M96 43 C102 45 106 50 106 55 C101 53 97 48 96 43 Z" fill="url(#leafGrad)" opacity="0.8"/>
+          <path d="M98 25 C104 22 110 22 113 25 C109 28 103 28 98 25 Z" fill="url(#leafGrad)" opacity="0.75"/>
+          <g transform="translate(108, 33)">
+            <circle cx="2" cy="-4" r="4.5" fill="url(#roseGrad)"/>
+            <circle cx="-3" cy="-3" r="4" fill="url(#roseGrad)"/>
+            <circle cx="-4" cy="3" r="4.2" fill="url(#roseGrad)"/>
+            <circle cx="2" cy="4" r="4" fill="url(#roseGrad)"/>
+            <circle cx="5" cy="0" r="3.8" fill="url(#roseGrad)"/>
+            <circle cx="0" cy="0" r="2.2" fill="#ffe57f"/>
+          </g>
+          <g transform="translate(118, 23) scale(0.65)">
+            <circle cx="0" cy="-4" r="4" fill="url(#roseGrad)"/>
+            <circle cx="4" cy="0" r="4" fill="url(#roseGrad)"/>
+            <circle cx="0" cy="4" r="4" fill="url(#roseGrad)"/>
+            <circle cx="-4" cy="0" r="4" fill="url(#roseGrad)"/>
+            <circle cx="0" cy="0" r="2" fill="#ffe57f"/>
+          </g>
+
+          <!-- Central Golden Padlock -->
+          <g id="centerPadlock">
+            <!-- Shackle -->
+            <path d="M74 32 V27 C74 23.7 76.7 21 80 21 C83.3 21 86 23.7 86 27 V32" fill="none" stroke="url(#goldGrad)" stroke-width="2.6" stroke-linecap="round"/>
+            <!-- Body -->
+            <rect x="71" y="31" width="18" height="15" rx="3.5" fill="url(#goldGrad)" filter="url(#softGlow)"/>
+            <!-- Keyhole -->
+            <circle cx="80" cy="37" r="1.6" fill="#3a121d"/>
+            <polygon points="79.3,37 80.7,37 81.2,42 78.8,42" fill="#3a121d"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Card Title & Subtitle -->
+      <h2 class="sanctum-card-title">Enter Our Secret Passcode</h2>
+      <p class="sanctum-card-subtitle">
+        A little password to a world made with love,<br>just for Lahari ♡
+      </p>
+
+      <!-- 4-Box PIN Input Form -->
+      <form class="passcode-form" id="passcode-form" autocomplete="off" onsubmit="return false;">
+        
+        <!-- Master input for backwards compatibility & password managers -->
+        <input 
+          type="hidden" 
+          id="passcode-input" 
+          class="passcode-input" 
+          autocomplete="off" 
+          value=""
+        >
+
+        <!-- 4 Separate PIN Digit Boxes -->
+        <div class="sanctum-pin-grid" id="sanctum-pin-grid">
+          <div class="pin-box-wrapper">
+            <input 
+              type="password" 
+              inputmode="numeric" 
+              pattern="[0-9]*" 
+              maxlength="1" 
+              class="pin-digit-box" 
+              id="pin-digit-1" 
+              data-index="0" 
+              placeholder="" 
+              autocomplete="off" 
+              aria-label="Passcode digit 1"
+            >
+            <span class="pin-heart-glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#e86d93" stroke-width="1.8">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </span>
+          </div>
+
+          <div class="pin-box-wrapper">
+            <input 
+              type="password" 
+              inputmode="numeric" 
+              pattern="[0-9]*" 
+              maxlength="1" 
+              class="pin-digit-box" 
+              id="pin-digit-2" 
+              data-index="1" 
+              placeholder="" 
+              autocomplete="off" 
+              aria-label="Passcode digit 2"
+            >
+            <span class="pin-heart-glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#e86d93" stroke-width="1.8">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </span>
+          </div>
+
+          <div class="pin-box-wrapper">
+            <input 
+              type="password" 
+              inputmode="numeric" 
+              pattern="[0-9]*" 
+              maxlength="1" 
+              class="pin-digit-box" 
+              id="pin-digit-3" 
+              data-index="2" 
+              placeholder="" 
+              autocomplete="off" 
+              aria-label="Passcode digit 3"
+            >
+            <span class="pin-heart-glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#e86d93" stroke-width="1.8">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </span>
+          </div>
+
+          <div class="pin-box-wrapper">
+            <input 
+              type="password" 
+              inputmode="numeric" 
+              pattern="[0-9]*" 
+              maxlength="1" 
+              class="pin-digit-box" 
+              id="pin-digit-4" 
+              data-index="3" 
+              placeholder="" 
+              autocomplete="off" 
+              aria-label="Passcode digit 4"
+            >
+            <span class="pin-heart-glyph" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#e86d93" stroke-width="1.8">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Unlock Button -->
+        <button type="submit" class="sanctum-unlock-btn" id="btn-unlock-world" aria-label="Unlock Our World">
+          <span>Unlock Our World</span>
+          <span class="btn-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <!-- Error Feedback Message -->
+        <div class="passcode-error-msg" id="passcode-error" role="alert"></div>
+
+      </form>
+
+      <!-- Romantic Quote Section with Center Heart Divider -->
+      <div class="sanctum-divider-wrap" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-heart">♡</span>
+        <span class="divider-line"></span>
+      </div>
+
+      <div class="sanctum-quote-block">
+        <p class="quote-text">“Behind this passcode lies a world where every moment is you.”</p>
+        <span class="quote-author">— Nisar</span>
+      </div>
+
+      <!-- Bottom 3 Pillars / Feature Columns -->
+      <div class="sanctum-features-row" aria-label="Sanctuary Highlights">
+        
+        <!-- Column 1: Our Memories -->
+        <div class="sanctum-feature-col">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" class="feature-svg-flower">
+              <g fill="#d81b60">
+                <circle cx="12" cy="7" r="3.8"/>
+                <circle cx="16.5" cy="10.5" r="3.8"/>
+                <circle cx="15" cy="16" r="3.8"/>
+                <circle cx="9" cy="16" r="3.8"/>
+                <circle cx="7.5" cy="10.5" r="3.8"/>
+                <circle cx="12" cy="12" r="2.2" fill="#ffe082"/>
+              </g>
+            </svg>
+          </div>
+          <span class="feature-text">Our<br>Memories</span>
+        </div>
+
+        <!-- Column 2: A Private World -->
+        <div class="sanctum-feature-col">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" class="feature-svg-heart">
+              <circle cx="12" cy="12" r="10" fill="none" stroke="#d81b60" stroke-width="1.4"/>
+              <path d="M12 16.8l-1.05-.95C7.2 12.4 4.5 9.9 4.5 7.1 4.5 4.8 6.3 3 8.6 3c1.3 0 2.55.6 3.4 1.55C12.85 3.6 14.1 3 15.4 3c2.3 0 4.1 1.8 4.1 4.1 0 2.8-2.7 5.3-6.45 8.75L12 16.8z" fill="#d81b60" transform="scale(0.7) translate(5, 5)"/>
+            </svg>
+          </div>
+          <span class="feature-text">A Private<br>World</span>
+        </div>
+
+        <!-- Column 3: Just For You -->
+        <div class="sanctum-feature-col">
+          <div class="feature-icon-wrap" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" class="feature-svg-butterfly" fill="#d81b60">
+              <path d="M12 9.2c-1-2.4-3.5-4.7-6.8-4.7-3.4 0-5.2 2.4-4.7 5.7.5 3.2 3.6 5.4 7.2 5.9-.3.9-.6 1.9-.6 2.7 0 .7.4 1.2 1.1 1.2s1.1-.5 1.1-1.2c0-.8-.3-1.8-.6-2.7 3.6-.5 6.7-2.7 7.2-5.9.5-3.3-1.3-5.7-4.7-5.7-3.3 0-5.8 2.3-6.8 4.7zm-5.2 1.6c-2.2-.4-3.8-1.7-4-3.7-.3-1.9.9-3.2 2.7-3.2 2.7 0 4.6 2.3 5.3 4.5-1.3.8-2.6 1.6-4 2.4zm10.4 0c-1.4-.8-2.7-1.6-4-2.4.7-2.2 2.6-4.5 5.3-4.5 1.8 0 3 1.3 2.7 3.2-.2 2-1.8 3.3-4 3.7z"/>
+            </svg>
+          </div>
+          <span class="feature-text">Just<br>For You</span>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PROTECTED EXPERIENCE ROOT CONTAINER
+       Empty while locked — template mounts here when authenticated
+       ============================================================ -->
+  <div id="sanctuary-app-root"></div>
+
+  <!-- ============================================================
+       PROTECTED SANCTUARY EXPERIENCE TEMPLATE
+       Inert in the DOM when locked; zero rendering, zero flash, zero layout paint.
+       ============================================================ -->
+  <template id="sanctuary-experience-template">
+    
+    
+    <!-- ============================================================
+         PAGE VIEW 0: HOME SANCTUARY (ENTRY / SELECTION HUB)
+         Direct visual reconstruction of media_1790422125593.jpg
+         ============================================================ -->
+    <div id="page-home" class="sanctuary-view is-active" aria-label="Home Sanctuary Hub">
+      <div class="home-authoritative-stage">
+        <div class="home-canvas-wrapper">
+
+          <!-- Floating Luxury Atmosphere & Magic Controls Bar (Top Right Corner) -->
+    <div class="top-atmosphere-bar" id="top-atmosphere-bar">
+      <div class="atmos-buttons-row">
+        <!-- 1. Luxury Themes (The Celestial Prism Jewel) -->
+        <button class="atmos-icon-btn theme-toggle-btn" id="theme-toggle-btn" aria-label="Themes" title="Themes">
+          <svg class="custom-jewel-icon" width="26" height="26" viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="prismGold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF8E7"/>
+                <stop offset="45%" stop-color="#F9D976"/>
+                <stop offset="100%" stop-color="#D4AF37"/>
+              </linearGradient>
+              <linearGradient id="prismGold2" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#F9D976"/>
+                <stop offset="50%" stop-color="#AA771C"/>
+                <stop offset="100%" stop-color="#54380B"/>
+              </linearGradient>
+              <linearGradient id="prismWine" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFE4E6"/>
+                <stop offset="50%" stop-color="#E11D48"/>
+                <stop offset="100%" stop-color="#881337"/>
+              </linearGradient>
+              <radialGradient id="prismCore" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="60%" stop-color="#F9D976" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="16" cy="16" r="14" fill="url(#prismCore)" opacity="0.35"/>
+            <path d="M10 7L22 7L27 13L16 27L5 13L10 7Z" fill="url(#prismGold2)" stroke="url(#prismGold1)" stroke-width="1.2" stroke-linejoin="round"/>
+            <path d="M10 7L16 13L22 7" fill="none" stroke="url(#prismGold1)" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M5 13L16 13L27 13" fill="none" stroke="url(#prismGold1)" stroke-width="1"/>
+            <path d="M16 13L16 27" fill="none" stroke="url(#prismGold1)" stroke-width="1.2"/>
+            <polygon points="10,7 16,13 22,7 16,9" fill="url(#prismGold1)" opacity="0.85"/>
+            <polygon points="16,13 27,13 16,27" fill="url(#prismWine)" opacity="0.45"/>
+            <polygon points="16,13 5,13 16,27" fill="url(#prismGold1)" opacity="0.4"/>
+            <path d="M16 3L17.2 6.8L21 8L17.2 9.2L16 13L14.8 9.2L11 8L14.8 6.8Z" fill="#FFFFFF" opacity="0.95"/>
+          </svg>
+        </button>
+
+        <!-- 2. Romantic Petals (The Gilded Velvet Rose) -->
+        <button class="atmos-icon-btn petal-toggle-pill" id="petal-toggle-pill" aria-label="Petals" title="Petals">
+          <span id="petal-current-icon" style="display: none;">🌹</span>
+          <span id="petal-toggle-status" style="display: none;">Petals: Active</span>
+          <svg class="custom-jewel-icon" width="26" height="26" viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="rosePetalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FF4D6D"/>
+                <stop offset="50%" stop-color="#C9184A"/>
+                <stop offset="100%" stop-color="#590D22"/>
+              </linearGradient>
+              <linearGradient id="roseGilt" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFF8E7"/>
+                <stop offset="50%" stop-color="#F9D976"/>
+                <stop offset="100%" stop-color="#AA771C"/>
+              </linearGradient>
+              <radialGradient id="roseAura" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FF758F" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#590D22" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="16" cy="16" r="14" fill="url(#roseAura)"/>
+            <path d="M16 4C21 4 26 8 26 14C26 21 21 27 16 28C11 27 6 21 6 14C6 8 11 4 16 4Z" fill="url(#rosePetalGrad)" stroke="url(#roseGilt)" stroke-width="1.2"/>
+            <path d="M9 13C9 18 13 23 16 25C13 22 11 18 11 14C11 10 13 8 16 7C12 7 9 10 9 13Z" fill="url(#rosePetalGrad)" stroke="url(#roseGilt)" stroke-width="0.9" opacity="0.9"/>
+            <path d="M23 13C23 18 19 23 16 25C19 22 21 18 21 14C21 10 19 8 16 7C20 7 23 10 23 13Z" fill="url(#rosePetalGrad)" stroke="url(#roseGilt)" stroke-width="0.9" opacity="0.9"/>
+            <path d="M13 13C13 11 14.5 9.5 16 9.5C17.5 9.5 19 11 19 13C19 15.5 17 17.5 16 18C15 17.5 13 15.5 13 13Z" fill="#FFF0F3" stroke="url(#roseGilt)" stroke-width="1"/>
+            <circle cx="16" cy="13.5" r="2" fill="url(#roseGilt)"/>
+            <circle cx="18.5" cy="8.5" r="1.2" fill="#FFFFFF"/>
+          </svg>
+        </button>
+
+        <!-- 3. Celestial Meteor Shower (The Starburst Meteor) -->
+        <button class="atmos-icon-btn" id="atmos-meteor-btn" aria-label="Shooting Stars" title="Shooting Stars">
+          <svg class="custom-jewel-icon" width="26" height="26" viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="meteorTail" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#F9D976" stop-opacity="0"/>
+                <stop offset="40%" stop-color="#F9D976" stop-opacity="0.35"/>
+                <stop offset="75%" stop-color="#FFF8E7" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#FFFFFF"/>
+              </linearGradient>
+              <linearGradient id="meteorGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="40%" stop-color="#F9D976"/>
+                <stop offset="100%" stop-color="#D4AF37"/>
+              </linearGradient>
+              <radialGradient id="meteorHalo" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="50%" stop-color="#F9D976" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="21" cy="11" r="11" fill="url(#meteorHalo)" opacity="0.45"/>
+            <path d="M4 28C9 24 14 18 20 12" stroke="url(#meteorTail)" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M7 30C12 26 16 22 22 15" stroke="url(#meteorTail)" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+            <path d="M2 24C7 20 11 15 17 9" stroke="url(#meteorTail)" stroke-width="1.2" stroke-linecap="round" opacity="0.6"/>
+            <path d="M21 4L22.8 9.2L28 11L22.8 12.8L21 18L19.2 12.8L14 11L19.2 9.2Z" fill="url(#meteorGold)" stroke="#FFFFFF" stroke-width="0.8"/>
+            <path d="M21 7.5L22 10L24.5 11L22 12L21 14.5L20 12L17.5 11L20 10Z" fill="#FFFFFF"/>
+            <circle cx="13" cy="19" r="1.2" fill="#FFF8E7"/>
+            <circle cx="9" cy="23" r="0.9" fill="#F9D976"/>
+            <circle cx="16" cy="15" r="1" fill="#FFFFFF"/>
+          </svg>
+        </button>
+
+        <!-- 4. Celestial Golden Sparklers (The Golden Supernova) -->
+        <button class="atmos-icon-btn" id="atmos-sparkler-btn" aria-label="Fireworks" title="Fireworks">
+          <svg class="custom-jewel-icon" width="26" height="26" viewBox="0 0 32 32" fill="none">
+            <defs>
+              <linearGradient id="novaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="35%" stop-color="#FFF3C4"/>
+                <stop offset="70%" stop-color="#F9D976"/>
+                <stop offset="100%" stop-color="#B48A28"/>
+              </linearGradient>
+              <radialGradient id="novaCore" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFFFFF"/>
+                <stop offset="40%" stop-color="#FFE082"/>
+                <stop offset="80%" stop-color="#FF8F00" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#E65100" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="16" cy="16" r="13" fill="url(#novaCore)" opacity="0.5"/>
+            <path d="M16 3V11M16 21V29M3 16H11M21 16H29" stroke="url(#novaGold)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M6.8 6.8L12.5 12.5M19.5 19.5L25.2 25.2M6.8 25.2L12.5 19.5M19.5 12.5L25.2 6.8" stroke="url(#novaGold)" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="16" cy="3" r="1.4" fill="#FFFFFF"/>
+            <circle cx="16" cy="29" r="1.4" fill="#FFFFFF"/>
+            <circle cx="3" cy="16" r="1.4" fill="#FFFFFF"/>
+            <circle cx="29" cy="16" r="1.4" fill="#FFFFFF"/>
+            <circle cx="6.8" cy="6.8" r="1.1" fill="#FFF3C4"/>
+            <circle cx="25.2" cy="25.2" r="1.1" fill="#FFF3C4"/>
+            <circle cx="6.8" cy="25.2" r="1.1" fill="#FFF3C4"/>
+            <circle cx="25.2" cy="6.8" r="1.1" fill="#FFF3C4"/>
+            <circle cx="16" cy="16" r="3.2" fill="#FFFFFF" stroke="url(#novaGold)" stroke-width="1.2"/>
+            <circle cx="16" cy="16" r="1.5" fill="#FFE57F"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Atmosphere Toast Notification -->
+    <div class="atmos-toast" id="atmos-toast" role="status" aria-live="polite"></div>
+
+          
+          <!-- 1. Top-Left Branding Monogram (Royal Square Glass Plaque) -->
+          <div class="home-brand-layer brand-glass-frame" aria-label="Branding">
+            <span class="brand-glass-corner corner-tl" aria-hidden="true"></span>
+            <span class="brand-glass-corner corner-tr" aria-hidden="true"></span>
+            <span class="brand-glass-corner corner-bl" aria-hidden="true"></span>
+            <span class="brand-glass-corner corner-br" aria-hidden="true"></span>
+
+            <div class="home-brand-monogram">
+              <span class="brand-letter">N</span>
+              <span class="brand-heart">♥</span>
+              <span class="brand-letter">L</span>
+            </div>
+            <div class="home-brand-names">NISAR <span class="brand-times">×</span> LAHARI</div>
+            <div class="brand-glass-divider" aria-hidden="true"></div>
+            <div class="home-brand-tag">A PRIVATE SANCTUARY</div>
+          </div>
+
+          <!-- 2. Center Welcome Note Content -->
+          <div class="home-welcome-layer">
+            <p class="welcome-script-text">Welcome to</p>
+            <h1 class="welcome-title-names">
+              NISAR <span class="welcome-heart-outline">♡</span> LAHARI
+            </h1>
+            <div class="welcome-tagline">— A PRIVATE SANCTUARY —</div>
+            <p class="welcome-description">
+              A world made of our moments, words, laughter, and a love that only grows brighter with time.
+            </p>
+            <!-- Lahari Life-Clock Frame (29 Sept 2007 Live Ticker) -->
+            <div class="lahari-clock-frame" aria-label="Lahari Life Clock">
+              <div class="lahari-clock-header">
+                <div class="lahari-clock-title-wrap">
+                  <span class="lahari-clock-name">LAHARI</span>
+                  <span class="lahari-clock-heart">♡</span>
+                </div>
+                <span class="lahari-clock-tag">Since 29 September 2007</span>
+              </div>
+              
+              <div class="lahari-clock-digits">
+                <!-- Years -->
+                <div class="lahari-clock-unit">
+                  <span class="lahari-clock-num" id="live-years">18</span>
+                  <span class="lahari-clock-lbl">Years</span>
+                </div>
+                <div class="lahari-clock-divider"></div>
+
+                <!-- Months -->
+                <div class="lahari-clock-unit">
+                  <span class="lahari-clock-num" id="live-months">11</span>
+                  <span class="lahari-clock-lbl">Months</span>
+                </div>
+                <div class="lahari-clock-divider"></div>
+
+                <!-- Days -->
+                <div class="lahari-clock-unit">
+                  <span class="lahari-clock-num" id="live-days">29</span>
+                  <span class="lahari-clock-lbl">Days</span>
+                </div>
+                <div class="lahari-clock-divider"></div>
+
+                <!-- Hours -->
+                <div class="lahari-clock-unit">
+                  <span class="lahari-clock-num" id="live-hours">06</span>
+                  <span class="lahari-clock-lbl">Hours</span>
+                </div>
+                <div class="lahari-clock-divider"></div>
+
+                <!-- Minutes -->
+                <div class="lahari-clock-unit">
+                  <span class="lahari-clock-num" id="live-minutes">52</span>
+                  <span class="lahari-clock-lbl">Minutes</span>
+                </div>
+                <div class="lahari-clock-divider"></div>
+
+                <!-- Seconds -->
+                <div class="lahari-clock-unit">
+                  <span class="lahari-clock-num" id="live-seconds" style="color: #e6005c;">14</span>
+                  <span class="lahari-clock-lbl">Seconds</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. Top-Right Countdown Panel -->
+          <div class="home-countdown-layer" aria-label="Countdown">
+            <div class="countdown-tag-row">
+              <span>Our Special Day</span>
+              <span class="countdown-dash">--</span>
+            </div>
+            <div class="countdown-digits-row">
+              <div class="countdown-unit">
+                <span class="countdown-num" id="home-count-days">04</span>
+                <span class="countdown-lbl">Days</span>
+              </div>
+              <div class="countdown-divider"></div>
+              <div class="countdown-unit">
+                <span class="countdown-num" id="home-count-hours">09</span>
+                <span class="countdown-lbl">Hours</span>
+              </div>
+              <div class="countdown-divider"></div>
+              <div class="countdown-unit">
+                <span class="countdown-num" id="home-count-minutes">27</span>
+                <span class="countdown-lbl">Minutes</span>
+              </div>
+              <div class="countdown-divider"></div>
+              <div class="countdown-unit">
+                <span class="countdown-num" id="home-count-seconds">32</span>
+                <span class="countdown-lbl">Seconds</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Top-Right Voice Player Pill -->
+          <div class="home-player-layer" id="home-voice-card" aria-label="Voice Note Player">
+            <div class="player-avatar-click" onclick="document.getElementById('home-voice-toggle-btn') && document.getElementById('home-voice-toggle-btn').click()">
+              <img src="assets/images/polaroid-1.jpg" alt="Lahari" class="player-avatar-img">
+            </div>
+            <div class="player-meta-box">
+              <div class="player-title">Happy Birthday Lahari ❤️</div>
+              <div class="player-subtitle">A message for Lahari</div>
+              <div class="player-waveform-box">
+                <canvas id="home-waveform-canvas" width="220" height="24"></canvas>
+              </div>
+            </div>
+            <div class="player-ctrl-box">
+              <button type="button" class="player-circle-play-btn" id="home-voice-toggle-btn" aria-label="Play Voice Message">
+                <span id="home-voice-icon">▶</span>
+              </button>
+              <span class="player-time-tag" id="home-voice-time">00:00 / --:--</span>
+            </div>
+          </div>
+
+          <!-- 5. Bottom Row: 6 Arched Chapter Cards -->
+          <div class="home-cards-layer" aria-label="Chapter Portals">
+            <!-- Card 01 -->
+            <div class="home-arch-card card-01" id="portal-card-01" data-href="#/sanctuary" role="link" tabindex="0" aria-label="Chapter 01 — The Sanctuary">
+              <a href="#/sanctuary" class="card-full-link" tabindex="-1" aria-hidden="true"></a>
+              <div class="card-arch-visual">
+                <img src="assets/images/chapter-1-sanctuary-bg.jpg" alt="The Sanctuary">
+              </div>
+              <h2 class="card-title">The Sanctuary</h2>
+              <span class="card-dot">·</span>
+              <div class="card-circle-arrow">→</div>
+            </div>
+
+            <!-- Card 02 -->
+            <div class="home-arch-card card-02" id="portal-card-02" data-href="#/universe" role="link" tabindex="0" aria-label="Chapter 02 — Our Little Universe">
+              <a href="#/universe" class="card-full-link" tabindex="-1" aria-hidden="true"></a>
+              <div class="card-arch-visual">
+                <img src="assets/images/chapter-2-universe-bg.jpg" alt="Our Little Universe">
+              </div>
+              <h2 class="card-title">Our Little Universe</h2>
+              <span class="card-dot">·</span>
+              <div class="card-circle-arrow">→</div>
+            </div>
+
+            <!-- Card 03 -->
+            <div class="home-arch-card card-03" id="portal-card-03" data-href="#/museum" role="link" tabindex="0" aria-label="Chapter 03 — The Living Museum">
+              <a href="#/museum" class="card-full-link" tabindex="-1" aria-hidden="true"></a>
+              <div class="card-arch-visual">
+                <img src="assets/images/chapter-3-museum-bg.jpg" alt="The Living Museum">
+              </div>
+              <h2 class="card-title">The Living Museum</h2>
+              <span class="card-dot">·</span>
+              <div class="card-circle-arrow">→</div>
+            </div>
+
+            <!-- Card 04 -->
+            <div class="home-arch-card card-04" id="portal-card-04" data-href="#/words" role="link" tabindex="0" aria-label="Chapter 04 — Words I Keep For You">
+              <a href="#/words" class="card-full-link" tabindex="-1" aria-hidden="true"></a>
+              <div class="card-arch-visual">
+                <img src="assets/images/chapter-4-words-bg.jpg" alt="Words I Keep For You">
+              </div>
+              <h2 class="card-title">Words I Keep For You</h2>
+              <span class="card-dot">·</span>
+              <div class="card-circle-arrow">→</div>
+            </div>
+
+            <!-- Card 05 -->
+            <div class="home-arch-card card-05" id="portal-card-05" data-href="#/about-you" role="link" tabindex="0" aria-label="Chapter 05 — All About You">
+              <a href="#/about-you" class="card-full-link" tabindex="-1" aria-hidden="true"></a>
+              <div class="card-arch-visual">
+                <img src="assets/images/chapter-5-about-bg.jpg" alt="All About You">
+              </div>
+              <h2 class="card-title">All About You</h2>
+              <span class="card-dot">·</span>
+              <div class="card-circle-arrow">→</div>
+            </div>
+
+            <!-- Card 06 -->
+            <div class="home-arch-card card-06" id="portal-card-06" data-href="#/future" role="link" tabindex="0" aria-label="Chapter 06 — Our Future">
+              <a href="#/future" class="card-full-link" tabindex="-1" aria-hidden="true"></a>
+              <div class="card-arch-visual">
+                <img src="assets/images/chapter-6-future-bg.jpg" alt="Our Future">
+              </div>
+              <h2 class="card-title">Our Future</h2>
+              <span class="card-dot">·</span>
+              <div class="card-circle-arrow">→</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Preserved Music Pill Container for ID continuity -->
+    <div style="display:none;" aria-hidden="true">
+      <div class="music-player-pill" id="music-pill" role="region" aria-label="Romantic Music Player">
+    <div class="music-bars" aria-hidden="true">
+      <div class="music-bar"></div>
+      <div class="music-bar"></div>
+      <div class="music-bar"></div>
+    </div>
+    <div class="music-info-wrap">
+      <span class="music-track-num" id="music-track-num">1/3</span>
+      <span class="music-label" id="music-label">A Melody For Lahari</span>
+    </div>
+    <div class="music-controls">
+      <button class="music-ctrl-btn" id="music-prev-btn" title="Previous Track" aria-label="Previous Track">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="19 20 9 12 19 4 19 20"></polygon>
+          <line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="2"></line>
+        </svg>
+      </button>
+      <button class="music-ctrl-btn music-play-btn" id="music-toggle-btn" title="Play or Pause" aria-label="Play or Pause">
+        <svg class="music-progress-ring" viewBox="0 0 40 40">
+          <circle class="music-progress-ring-circle" id="music-progress-circle" cx="20" cy="20" r="18"></circle>
+        </svg>
+        <svg id="music-icon-play" width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <svg id="music-icon-pause" width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+      </button>
+      <button class="music-ctrl-btn" id="music-next-btn" title="Next Track" aria-label="Next Track">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="5 4 15 12 5 20 5 4"></polygon>
+          <line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="2"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="music-lyric-bar" id="music-lyric-bar">
+      <span class="music-lyric-text" id="music-lyric-text">“You look like someone I could love forever...”</span>
+    </div>
+  </div>
+  -->
+    </div>
+
+    
+    <!-- ============================================================
+         PAGE VIEW 1: CHAPTER 01 — THE SANCTUARY
+         ============================================================ -->
+    <div id="page-chapter-1" class="sanctuary-view chapter-page-wrapper" data-chapter="1" hidden>
+      <!-- Dedicated Fixed Background Layer -->
+      <div class="chapter-fixed-backdrop" id="chapter-1-fixed-backdrop" aria-hidden="true"></div>
+
+      <div class="chapter-hero-banner">
+        <span class="chapter-badge-tag">CHAPTER 01</span>
+        <h1 class="chapter-hero-title">The Sanctuary</h1>
+        <p class="chapter-hero-sub">Where our story begins and forever feels like home.</p>
+        <div class="chapter-divider-ornament"><span>♡</span></div>
+      </div>
+
+      <!-- MASTER CHAPTER 01 BENTO COLLAGE TEMPLATE (Exact Match to media_1790693458789.jpg) -->
+      <div class="ch1-bento-collage">
+
+        <!-- ═══ ROW 1: DUAL CARDS (01 & 02) ═══ -->
+        <div class="ch1-bento-row ch1-row-top">
+
+          <!-- CARD 01: First of All... You. -->
+          <div class="ch1-card ch1-card-1">
+            <span class="ch1-card-num">01</span>
+            <div class="ch1-card-1-content">
+              <div class="ch1-card-1-text">
+                <div class="ch1-pill-row">
+                  <span class="ch1-pill-badge">THE HEART OF EVERYTHING</span>
+                </div>
+                <h2 class="ch1-card-title">First of All... You.</h2>
+                <p class="ch1-card-p">There are people who walk into your life and change the temperature of the room just by being there. That is what you did. Without demanding attention, without trying to be anything other than yourself, you brought a warmth that I didn't even realize was missing.</p>
+                <div class="ch1-highlight-quote">
+                  &ldquo;In a world that is always rushing, your presence is the one place where everything feels calm, gentle, and right.&rdquo;
+                </div>
+                <p class="ch1-card-p">This website isn't here because of an occasion or a calendar date. It exists simply because you exist, and having you in my life is something I never want to take for granted. You deserve to be celebrated—not just quietly in my thoughts, but in a space crafted solely to honor you.</p>
+              </div>
+              <div class="ch1-card-1-media">
+                <div class="ch1-roses-wrapper">
+                  <img src="assets/media/first-of-all.jpg" alt="Pink Roses for Lahari" class="ch1-roses-img" />
+                  <div class="ch1-roses-cursive-overlay">
+                    <span>Make</span>
+                    <span>My World</span>
+                    <span>Everything</span>
+                    <span>Brighter ♡</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 02: To Lahari, The Girl Who Makes My World Beautiful -->
+          <div class="ch1-card ch1-card-2">
+            <span class="ch1-card-num">02</span>
+            <div class="ch1-card-2-content">
+              <div class="ch1-card-2-text">
+                <div class="ch1-pill-row">
+                  <span class="ch1-pill-badge">EXCLUSIVELY FOR LAHARI</span>
+                </div>
+                <h2 class="ch1-card-title">
+                  To Lahari,<br>
+                  <span class="ch1-title-italic">The Girl Who Makes My World Beautiful</span>
+                </h2>
+                <p class="ch1-editorial-sub">
+                  &ldquo;In all of time, across every star and silence, my heart chose you. This sanctuary is built from memories, laughter, and the quiet moments where forever began.&rdquo;
+                </p>
+                <div class="ch1-quote-box">
+                  <p>&ldquo;You are not just a part of my story, Lahari. You are the reason the story is beautiful.&rdquo;</p>
+                  <cite>&mdash; Nisar</cite>
+                </div>
+              </div>
+              <div class="ch1-card-2-media">
+                <div class="ch1-portrait-frame">
+                  <img src="assets/images/hero-lahari.jpg" alt="Lahari" class="ch1-portrait-img" />
+                  <div class="ch1-floating-tag">
+                    <span>Forever my favorite view</span>
+                    <small>NISAR X LAHARI</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ═══ ROW 2: FULL WIDTH LOVE WHISPER RIBBON (03) ═══ -->
+        <div class="ch1-bento-row ch1-row-mid">
+          <div class="ch1-card ch1-card-3 love-whisper-ribbon" id="love-whisper-ribbon">
+            <span class="ch1-card-num">03</span>
+            <div class="whisper-left">
+              <div class="whisper-icon-badge" id="whisper-icon">♡</div>
+              <div class="whisper-details">
+                <div class="whisper-pill-tag" id="whisper-tag">SUNSET GLOW • 5 PM – 9 PM</div>
+                <h4 class="whisper-title" id="whisper-title">Golden Hour Serenade 🌇</h4>
+                <p class="whisper-quote" id="whisper-quote">Loading sweet words from Nisar's heart...</p>
+              </div>
+            </div>
+            <button class="whisper-refresh-btn" id="whisper-refresh-btn" title="Get a fresh whisper" aria-label="Fresh Whisper">
+              <span>Fresh Whisper ✨ &rarr;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ═══ ROW 3: DUAL CARDS (04 & 05) ═══ -->
+        <div class="ch1-bento-row ch1-row-bottom">
+
+          <!-- CARD 04: A Quiet Perspective -->
+          <div class="ch1-card ch1-card-4" id="quiet-perspective">
+            <span class="ch1-card-num">04</span>
+            <div class="ch1-card-4-content">
+              <div class="ch1-card-4-media">
+                <div class="ch1-perspective-frame">
+                  <img src="assets/media/perspective.jpg" alt="Lahari in elegant Kerala saree" class="ch1-perspective-img" />
+                </div>
+              </div>
+              <div class="ch1-card-4-text">
+                <div class="ch1-pill-row">
+                  <span class="ch1-pill-badge">SACRED VIEW</span>
+                </div>
+                <h2 class="ch1-card-title">A Quiet Perspective</h2>
+                <blockquote class="ch1-pullquote">
+                  &ldquo;In every glance, I find a calm that nowhere else can offer.&rdquo;
+                </blockquote>
+                <p class="ch1-card-p">
+                  You don’t just exist in my thoughts—you elevate them. With every step you take, you bring grace into the simplest of days. In a world full of noise, your gentle spirit is my favorite sanctuary.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 05: That Smile Stops Time & Polaroid Stack -->
+          <div class="ch1-card ch1-card-5">
+            <span class="ch1-card-num">05</span>
+            <div class="ch1-card-5-content">
+              <div class="ch1-card-5-text">
+                <div class="ch1-pill-row">
+                  <span class="ch1-pill-badge">MOMENTS THAT STAY</span>
+                </div>
+                <h2 class="ch1-card-title ch1-smile-title">
+                  <span class="ch1-bullet">&bull;</span> That Smile<br>
+                  <span class="ch1-bullet">&bull;</span> Stops Time
+                </h2>
+                <blockquote class="ch1-pullquote">
+                  &ldquo;Some moments don’t just pass, they stay, quietly, forever.&rdquo;
+                </blockquote>
+                <p class="ch1-card-p">
+                  There’s something about your smile that makes the world slow down. In that one moment, everything feels lighter, softer, and a little more beautiful. It’s a feeling I never want to forget.
+                </p>
+              </div>
+              <div class="ch1-card-5-media">
+                <div class="polaroid-stack-wrap" id="polaroid-stack">
+                  <!-- Dynamically populated from js/config.js -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Navigation buttons at bottom -->
+      <nav class="chapter-bottom-nav">
+        <span class="chapter-bottom-btn prev-btn is-disabled">← Previous Chapter</span>
+        <a href="#/home" class="chapter-bottom-btn home-btn">⌂ Return to Home</a>
+        <a href="#/universe" class="chapter-bottom-btn next-btn">Chapter 02: Our Little Universe →</a>
+      </nav>
+    </div>
+
+    <!-- ============================================================
+         PAGE VIEW 2: CHAPTER 02 — OUR LITTLE UNIVERSE
+         ============================================================ -->
+    <div id="page-chapter-2" class="sanctuary-view chapter-page-wrapper" data-chapter="2" hidden>
+      <!-- Dedicated Fixed Background Layer (Option A: Fixed, No-lag, Exact Proportions) -->
+      <div class="chapter-fixed-backdrop" id="chapter-2-fixed-backdrop" aria-hidden="true"></div>
+
+      <div class="chapter-hero-banner">
+        <span class="chapter-badge-tag">CHAPTER 02</span>
+        <h1 class="chapter-hero-title">Our Little Universe</h1>
+        <p class="chapter-hero-sub">Interactive keepsakes, sacred locks, and the rhythm of two souls.</p>
+        <div class="chapter-divider-ornament"><span>♡</span></div>
+      </div>
+      <!-- ============================================================
+           CHAPTER 02 — BENTO COLLAGE TEMPLATE (EXACT REFERENCE GEOMETRY)
+           ============================================================ -->
+      <div class="chapter-bento-collage">
+
+        <!-- ═══ TOP BENTO CLUSTER (Cells 1 to 5) ═══ -->
+        <div class="bento-cluster-top">
+
+          <!-- Cell 1: Tall Left (Royal Monogram Crest) -->
+          <div class="bento-cell bento-cell-1 bento-tall-left" id="love-beacon-page">
+            <div class="royal-monogram-frame secret-monogram-trigger" id="secret-monogram-trigger" title="N × L — Tap to unlock the secret midnight vault" role="button" tabindex="0" aria-label="Nisar and Lahari Monogram Crest">
+            
+            <!-- Ornate Filigree Corner Accents -->
+            <div class="monogram-filigree-corner corner-tl">✦</div>
+            <div class="monogram-filigree-corner corner-tr">✦</div>
+            <div class="monogram-filigree-corner corner-bl">✦</div>
+            <div class="monogram-filigree-corner corner-br">✦</div>
+
+            <!-- Rotating Celestial Constellation Halo Ring -->
+            <div class="monogram-halo-ring"></div>
+
+            <!-- Shimmer Light Sweep Effect -->
+            <div class="monogram-shimmer-sweep"></div>
+
+            <!-- Monogram Letters with Beating Heart Knot -->
+            <div class="monogram-letters-row">
+              <span class="monogram-letter letter-n">N</span>
+              <div class="monogram-heart-knot">
+                <span class="knot-pulse-ring"></span>
+                <span class="knot-heart-glyph">💖</span>
+              </div>
+              <span class="monogram-letter letter-l">L</span>
+            </div>
+
+            <!-- Royal Gilded Inscription Ribbon -->
+            <div class="monogram-ribbon-bar">
+              <span class="ribbon-flourish">⟡</span>
+              <span class="world-names">NISAR × LAHARI</span>
+              <span class="ribbon-flourish">⟡</span>
+            </div>
+
+            <!-- Bottom Sanctum Seal Tag -->
+            <div class="monogram-sanctum-tag">
+              <span>✧ A PRIVATE SANCTUM ✧</span>
+            </div>
+
+          </div>
+
+          <!-- Romantic Italic Quote below card -->
+          <p class="sanctum-quote-sub">
+            &ldquo;A private corner crafted from genuine affection, honest words, and moments that belong exclusively to us.&rdquo;
+          </p>
+          </div>
+
+          <!-- Cell 7: Bottom-Right Tall (Our Name in Lights - Neon Wall) -->
+          <div class="bento-cell bento-cell-7 bento-tall-right" id="neon-sign-section">
+            <div class="neon-wall-card reveal-on-scroll" id="neon-wall-card">
+          <div class="neon-brick-wall" id="neon-board">
+            <!-- Pull Chain Switch -->
+            <div class="neon-pull-chain-wrap" id="neon-switch-wrap" role="button" tabindex="0" title="Pull the chain to flick the neon light">
+              <div class="neon-chain-mount"></div>
+              <div class="neon-chain-beads"></div>
+              <div class="neon-chain-handle" id="neon-chain-handle">
+                <span id="pull-chain-btn">PULL 💡</span>
+              </div>
+            </div>
+
+            <!-- Glass Neon Tube Sign (OFF by default on page load) -->
+            <div class="neon-sign-frame neon-is-off" id="neon-sign-frame">
+              <div class="neon-sub-wire">HANDCRAFTED FOR LAHARI</div>
+              <div class="neon-tube-text" id="neon-tube-text">
+                <span class="neon-word-nisar">Nisar</span>
+                <span class="neon-heart">♡</span>
+                <span class="neon-word-lahari">Lahari</span>
+              </div>
+              <div class="neon-glow-floor"></div>
+            </div>
+          </div>
+          <p class="neon-status-caption" id="neon-status-caption"><span id="neon-status-hint">🌙 Dimmed • Pull the golden chain to ignite our radiant glow</span></p>
+        </div>
+          </div>
+
+          <!-- Cell 4: Right Lower (The Magic Blooming Rose) -->
+          <div class="bento-cell bento-cell-4 bento-right-lower" id="love-barometer-section">
+            <div class="love-barometer-card reveal-on-scroll" id="love-barometer-card">
+          <div class="barometer-gauge-box">
+            <div class="barometer-dial-rim">
+              <!-- Ultra-Luxury Calibrated SVG Dial -->
+              <svg class="barometer-dial-svg" viewBox="0 0 240 240" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="baroFaceGrad" cx="50%" cy="45%" r="55%">
+                    <stop offset="0%" stop-color="#2a0d1e" />
+                    <stop offset="65%" stop-color="#14050e" />
+                    <stop offset="100%" stop-color="#070104" />
+                  </radialGradient>
+                  <linearGradient id="baroArcGrad" x1="0%" y1="100%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#dfb76c" />
+                    <stop offset="45%" stop-color="#ffe6a3" />
+                    <stop offset="70%" stop-color="#ff8da1" />
+                    <stop offset="90%" stop-color="#ff3366" />
+                    <stop offset="100%" stop-color="#ff1744" />
+                  </linearGradient>
+                  <radialGradient id="hubGrad" cx="35%" cy="35%" r="65%">
+                    <stop offset="0%" stop-color="#ffe8a3" />
+                    <stop offset="50%" stop-color="#dfb76c" />
+                    <stop offset="100%" stop-color="#6e4f16" />
+                  </radialGradient>
+                  <linearGradient id="glassReflect" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0.22)" />
+                    <stop offset="35%" stop-color="rgba(255,255,255,0.06)" />
+                    <stop offset="70%" stop-color="rgba(255,255,255,0)" />
+                  </linearGradient>
+                  <filter id="needleShadow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#000000" flood-opacity="0.8"/>
+                    <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="#ff3366" flood-opacity="0.4"/>
+                  </filter>
+                  <filter id="crackGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="2.5" flood-color="#ffffff" flood-opacity="0.85"/>
+                  </filter>
+                </defs>
+
+                <!-- Dial Face Disc -->
+                <circle cx="120" cy="120" r="106" fill="url(#baroFaceGrad)" stroke="#a37c2d" stroke-width="2" />
+                <circle cx="120" cy="120" r="101" fill="none" stroke="rgba(223, 183, 108, 0.25)" stroke-width="1" stroke-dasharray="2,3" />
+
+                <!-- Scale Arc Track -->
+                <path d="M 49 161 A 82 82 0 1 1 191 161" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="6" stroke-linecap="round" />
+                <path d="M 49 161 A 82 82 0 1 1 191 161" fill="none" stroke="url(#baroArcGrad)" stroke-width="4" stroke-linecap="round" />
+                <!-- Danger Zone Arc Segment -->
+                <path d="M 191 161 A 82 82 0 0 1 164 189" fill="none" stroke="#ff1744" stroke-width="5" stroke-linecap="round" stroke-dasharray="3,3" />
+
+                <!-- Major Ticks -->
+                <!-- 0% Tick (-120°) -->
+                <line x1="56" y1="157" x2="47" y2="162" stroke="#dfb76c" stroke-width="2.5" stroke-linecap="round" />
+                <!-- 12.5% Tick (-90°) -->
+                <line x1="46" y1="120" x2="37" y2="120" stroke="#dfb76c" stroke-width="2" stroke-linecap="round" />
+                <!-- 25% Tick (-60°) -->
+                <line x1="56" y1="83" x2="47" y2="78" stroke="#dfb76c" stroke-width="2.5" stroke-linecap="round" />
+                <!-- 37.5% Tick (-30°) -->
+                <line x1="83" y1="56" x2="78" y2="47" stroke="#ffd983" stroke-width="2" stroke-linecap="round" />
+                <!-- 50% Tick (0°) -->
+                <line x1="120" y1="46" x2="120" y2="36" stroke="#ffd983" stroke-width="2.8" stroke-linecap="round" />
+                <!-- 62.5% Tick (+30°) -->
+                <line x1="157" y1="56" x2="162" y2="47" stroke="#ffa3b5" stroke-width="2" stroke-linecap="round" />
+                <!-- 75% Tick (+60°) -->
+                <line x1="184" y1="83" x2="193" y2="78" stroke="#ff6685" stroke-width="2.5" stroke-linecap="round" />
+                <!-- 87.5% Tick (+90°) -->
+                <line x1="194" y1="120" x2="203" y2="120" stroke="#ff4065" stroke-width="2" stroke-linecap="round" />
+                <!-- 100% Tick (+120°) -->
+                <line x1="184" y1="157" x2="193" y2="162" stroke="#ff2b55" stroke-width="2.8" stroke-linecap="round" />
+                <!-- MAX Danger Tick (+148°) -->
+                <line x1="159" y1="183" x2="165" y2="191" stroke="#ff1744" stroke-width="3" stroke-linecap="round" />
+
+                <!-- Minor Ticks -->
+                <line x1="50" y1="139" x2="44" y2="141" stroke="#dfb76c" stroke-width="1.2" opacity="0.6" />
+                <line x1="49" y1="101" x2="43" y2="99" stroke="#dfb76c" stroke-width="1.2" opacity="0.6" />
+                <line x1="68" y1="68" x2="64" y2="61" stroke="#ffd983" stroke-width="1.2" opacity="0.6" />
+                <line x1="100" y1="48" x2="98" y2="41" stroke="#ffd983" stroke-width="1.2" opacity="0.6" />
+                <line x1="140" y1="48" x2="142" y2="41" stroke="#ffa3b5" stroke-width="1.2" opacity="0.6" />
+                <line x1="172" y1="68" x2="176" y2="61" stroke="#ff6685" stroke-width="1.2" opacity="0.6" />
+                <line x1="191" y1="101" x2="197" y2="99" stroke="#ff4065" stroke-width="1.2" opacity="0.6" />
+                <line x1="190" y1="139" x2="196" y2="141" stroke="#ff2b55" stroke-width="1.2" opacity="0.6" />
+
+                <!-- Scale Labels -->
+                <text x="35" y="178" font-size="9.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#dfb76c">0%</text>
+                <text x="32" y="78" font-size="9.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#dfb76c">25%</text>
+                <text x="120" y="27" text-anchor="middle" font-size="9.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#ffd983">50%</text>
+                <text x="208" y="78" font-size="9.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#ff758f">75%</text>
+                <text x="204" y="178" font-size="9.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" fill="#ff3366">100%</text>
+                <text x="152" y="206" text-anchor="middle" font-size="8.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" fill="#ff1744">MAX ⚠️</text>
+
+                <!-- Vintage Dial Branding Inscription -->
+                <text x="120" y="88" text-anchor="middle" font-size="7" font-family="'Cinzel Decorative', Georgia, serif" font-weight="700" fill="#dfb76c" letter-spacing="2">LOVE BAROMETER</text>
+                <text x="120" y="100" text-anchor="middle" font-size="6.5" font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" fill="#fcedb8" letter-spacing="1.5">NISAR × LAHARI</text>
+                <text x="120" y="148" text-anchor="middle" font-size="5.8" font-family="'Plus Jakarta Sans', sans-serif" fill="rgba(223, 183, 108, 0.6)" letter-spacing="1">UNITS: INFINITE AFFECTION</text>
+
+                <!-- Needle Assembly (Rotates around 120, 120) -->
+                <g id="barometer-needle-pivot" style="transform-origin: 120px 120px; transform: rotate(-120deg); transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);" filter="url(#needleShadow)">
+                  <!-- Counterbalance Tail -->
+                  <polygon points="117,120 114,142 126,142 123,120" fill="#a37c2d" stroke="#ffd983" stroke-width="0.8" />
+                  <circle cx="120" cy="138" r="3.2" fill="#dfb76c" />
+                  <!-- Needle Main Body -->
+                  <polygon points="116.5,120 118.5,42 120,32 121.5,42 123.5,120" fill="#ff1744" />
+                  <!-- Gold Center Spine -->
+                  <line x1="120" y1="120" x2="120" y2="34" stroke="#ffe6a3" stroke-width="1.2" />
+                  <!-- White Accent Tip -->
+                  <polygon points="118.5,44 120,32 121.5,44" fill="#ffffff" />
+                </g>
+
+                <!-- Center Brass Nut / Hub -->
+                <circle cx="120" cy="120" r="11" fill="url(#hubGrad)" stroke="#ffe6a3" stroke-width="1.5" />
+                <circle cx="120" cy="120" r="5.5" fill="#3d2305" />
+                <circle cx="120" cy="120" r="2.8" fill="#dfb76c" />
+
+                <!-- Glass Crack Overlay (Shown when overloaded) -->
+                <g id="barometer-glass-crack" style="display: none;" filter="url(#crackGlow)">
+                  <path d="M 166 186 L 152 165 L 140 168 L 128 145 L 134 132 L 122 120 L 112 108 L 98 94 L 92 72 L 78 58" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                  <path d="M 152 165 L 164 148 L 184 142" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M 128 145 L 114 156 L 98 170 L 92 188" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4" stroke-linecap="round" />
+                  <path d="M 122 120 L 106 126 L 82 122 L 62 134" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.4" stroke-linecap="round" />
+                  <path d="M 98 94 L 112 78 L 106 56" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="1.3" stroke-linecap="round" />
+                  <polygon points="162,178 154,170 158,162" fill="rgba(255,255,255,0.4)" stroke="#fff" stroke-width="0.8" />
+                  <polygon points="132,148 126,140 135,138" fill="rgba(255,255,255,0.35)" stroke="#fff" stroke-width="0.8" />
+                </g>
+
+                <!-- Specular Reflection Highlight Across Upper Dial Glass -->
+                <path d="M 38 75 A 98 98 0 0 1 202 75 A 98 68 0 0 0 38 75 Z" fill="url(#glassReflect)" pointer-events="none" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="barometer-status-box">
+            <span class="barometer-telemetry-label">CURRENT READING</span>
+            <div class="barometer-reading-display" id="barometer-reading-text">0.00% • Standard Scale</div>
+          </div>
+
+          <div style="margin-top: 1.2rem;">
+            <button class="btn-primary" id="measure-love-btn" style="padding: 0.75rem 2rem; font-size: 0.9rem;">
+              <span id="measure-love-btn-text">CALCULATE CAPACITY 🔬</span>
+            </button>
+          </div>
+        </div>
+          </div>
+
+                      <!-- Cell Rose: 4th Card in Top Row (The Magic Blooming Rose) -->
+          <div class="bento-cell bento-cell-rose" id="blooming-rose-section">
+            <div class="keepsake-pod-card rose-pod" id="rose-pod">
+            <div class="keepsake-pod-header">
+              <span class="pod-badge">🌹 Living Blossom</span>
+              <h3 class="pod-title">The Magic Blooming Rose</h3>
+              <p class="pod-subtitle">Water this gentle sprout with care and watch a velvet rose unfold its petals for you.</p>
+            </div>
+
+            <div class="rose-interactive-stage">
+              <div class="rosepot-stage" id="rosepot-stage">
+                <!-- Soil Pot -->
+                <div class="rosepot-pot">
+                  <div class="rosepot-rim"></div>
+                  <div class="rosepot-body">
+                    <span class="rosepot-monogram">N × L</span>
+                  </div>
+                </div>
+
+                <!-- Living Flower Stem & Blossom -->
+                <div class="rose-plant" id="rose-plant">
+                  <div class="rose-stem" id="rose-stem">
+                    <!-- Leaves on the stem -->
+                    <div class="rose-leaf leaf-left"></div>
+                    <div class="rose-leaf leaf-right"></div>
+
+                    <!-- Flower Blossom sits on TOP of the growing stem -->
+                    <div class="rose-blossom" id="rose-blossom">
+                      <svg class="rose-blossom-svg" viewBox="0 0 120 120" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <radialGradient id="rosePetalGrad1" cx="50%" cy="40%" r="55%">
+                            <stop offset="0%" stop-color="#ff3358" />
+                            <stop offset="45%" stop-color="#cc082d" />
+                            <stop offset="85%" stop-color="#730315" />
+                            <stop offset="100%" stop-color="#3d010a" />
+                          </radialGradient>
+                          <radialGradient id="rosePetalGrad2" cx="45%" cy="45%" r="50%">
+                            <stop offset="0%" stop-color="#ff6b85" />
+                            <stop offset="50%" stop-color="#b80928" />
+                            <stop offset="100%" stop-color="#52020f" />
+                          </radialGradient>
+                          <radialGradient id="roseCenterPollen" cx="40%" cy="40%" r="50%">
+                            <stop offset="0%" stop-color="#fff2a8" />
+                            <stop offset="60%" stop-color="#dfb76c" />
+                            <stop offset="100%" stop-color="#8a5c13" />
+                          </radialGradient>
+                          <filter id="roseShadow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.6"/>
+                          </filter>
+                        </defs>
+
+                        <!-- Calyx base green sepals under the rose -->
+                        <path d="M 45 78 Q 30 92 20 98 Q 40 85 50 82 Z" fill="#2d6e1b" stroke="#1d4d11" stroke-width="1" />
+                        <path d="M 75 78 Q 90 92 100 98 Q 80 85 70 82 Z" fill="#2d6e1b" stroke="#1d4d11" stroke-width="1" />
+
+                        <!-- Outer Petals (Layer 1 - Broad Velvet Petals) -->
+                        <g class="rose-layer-outer" filter="url(#roseShadow)">
+                          <path d="M 60 12 C 40 12 28 28 32 46 C 36 62 54 74 60 76 C 66 74 84 62 88 46 C 92 28 80 12 60 12 Z" fill="url(#rosePetalGrad1)" />
+                          <path d="M 22 46 C 18 28 36 18 52 26 C 42 42 36 62 46 76 C 30 70 24 58 22 46 Z" fill="url(#rosePetalGrad1)" />
+                          <path d="M 98 46 C 102 28 84 18 68 26 C 78 42 84 62 74 76 C 90 70 96 58 98 46 Z" fill="url(#rosePetalGrad1)" />
+                          <path d="M 36 68 C 28 82 48 94 60 92 C 54 84 48 76 44 68 Z" fill="url(#rosePetalGrad1)" />
+                          <path d="M 84 68 C 92 82 72 94 60 92 C 66 84 72 76 76 68 Z" fill="url(#rosePetalGrad1)" />
+                        </g>
+
+                        <!-- Middle Petals (Layer 2 - Cupped Petals) -->
+                        <g class="rose-layer-mid">
+                          <path d="M 38 36 C 30 50 42 66 60 70 C 48 56 46 44 50 34 C 44 34 40 34 38 36 Z" fill="url(#rosePetalGrad2)" />
+                          <path d="M 82 36 C 90 50 78 66 60 70 C 72 56 74 44 70 34 C 76 34 80 34 82 36 Z" fill="url(#rosePetalGrad2)" />
+                          <path d="M 44 24 C 60 20 76 24 78 38 C 70 48 50 48 42 38 C 40 32 42 26 44 24 Z" fill="url(#rosePetalGrad2)" />
+                        </g>
+
+                        <!-- Core Rose Center Spiral (Layer 3) -->
+                        <g class="rose-layer-core">
+                          <path d="M 52 40 C 48 48 54 58 60 58 C 66 58 72 48 68 40 C 64 34 56 34 52 40 Z" fill="#b00624" stroke="#ff8da1" stroke-width="0.8" />
+                          <path d="M 56 44 C 54 48 58 52 61 52 C 64 52 66 48 64 44 C 62 42 58 42 56 44 Z" fill="#e61033" />
+                          <!-- Golden Stardust Core -->
+                          <circle cx="60" cy="46" r="4.5" fill="url(#roseCenterPollen)" stroke="#ffe6a3" stroke-width="0.8" />
+                          <circle cx="58.5" cy="45" r="1.2" fill="#ffffff" />
+                          <circle cx="61.5" cy="47" r="0.9" fill="#ffffff" />
+                          <circle cx="60" cy="48" r="0.6" fill="#ffe6a3" />
+                        </g>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Falling Water Droplets (when watering) -->
+                <div class="water-droplets-box" id="water-droplets-box" style="display: none;"></div>
+              </div>
+            </div>
+
+            <!-- Keepsake Pod Footer -->
+            <div class="keepsake-pod-footer">
+              <button class="btn btn-outline" id="water-rose-btn" type="button">
+                <span id="water-rose-btn-text">Water with Love 💧</span>
+              </button>
+            </div>
+          </div>
+          </div>
+
+          <!-- Cell 5: Middle Wide Banner (Love Barometer on Left + Hold to Embrace on Right) -->
+          <div class="bento-cell bento-cell-5 bento-mid-wide" id="intimate-connection">
+            <div class="bento-dual-split">
+              <!-- Left: Two Hearts, One Rhythm (ECG Monitor) -->
+              <div class="intimate-card rhythm-card rhythm-card-landscape">
+          <!-- Left Column: Narrative & Action Controls -->
+          <div class="rhythm-info-col">
+            <div class="rhythm-pill-badges">
+              <span class="rhythm-badge badge-pulse"><span class="badge-heart-icon">&#x2764;&#xFE0F;</span> PULSE OF LOVE</span>
+              <span id="badge-live-sync" class="rhythm-badge badge-live"><span class="badge-live-dot">&#x25CF;</span> LIVE SYNC</span>
+            </div>
+            <h3 class="rhythm-card-title">Two Hearts, One Rhythm</h3>
+            <p class="rhythm-card-desc">Feel Nisar's heartbeat synchronize with yours in real-time acoustic &amp; haptic rhythm.</p>
+            <div class="rhythm-action-row">
+              <button id="btn-sync-heartbeat" class="btn-sync-pulse" aria-label="Sync Heartbeat Pulse">
+                SYNC HEARTBEAT PULSE <span class="btn-pulse-icon">&#x1F493;</span>
+              </button>
+              <p id="rhythm-sync-status" class="rhythm-sync-status">Waves independent &bull; Tap to synchronize</p>
+              <p class="rhythm-counter-text">
+                Total heartbeats shared together today: <strong id="rhythm-counter-number">12,631</strong>
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Column: Wide ECG Oscilloscope & Dual Beating Hearts -->
+          <div class="rhythm-monitor-col">
+            <div class="ecg-monitor-container">
+              <div class="ecg-monitor-bar">
+                <span class="ecg-monitor-title">NISAR &amp; LAHARI DUAL-PULSE MONITOR</span>
+                <span id="ecg-monitor-bpm-tag" class="ecg-monitor-bpm-tag">72 BPM</span>
+              </div>
+              <div class="ecg-canvas-wrap">
+                <canvas id="ecg-canvas" class="ecg-oscilloscope-canvas"></canvas>
+              </div>
+              <div class="ecg-wave-legend">
+                <span class="legend-item legend-lahari"><span class="legend-dot dot-pink"></span> Lahari</span>
+                <span class="legend-item legend-nisar"><span class="legend-dot dot-gold"></span> Nisar</span>
+                <span id="legend-sync-tag" class="legend-sync-tag" style="display:none;">&#x2727; SYNCHRONIZED &#x2727;</span>
+              </div>
+            </div>
+
+            <!-- Dual Beating Hearts + Large 72 BPM Readout -->
+            <div class="rhythm-stats-row">
+              <div class="dual-beating-hearts-wrap">
+                <span id="heart-lahari" class="beating-heart heart-left" aria-hidden="true">&#x2764;&#xFE0F;</span>
+                <span class="beating-hearts-sparkle" aria-hidden="true">&#x2727;</span>
+                <span id="heart-nisar" class="beating-heart heart-right" aria-hidden="true">&#x1F496;</span>
+              </div>
+              <div class="ecg-large-bpm-display">
+                <span id="ecg-bpm-number" class="bpm-digits">72</span>
+                <span class="bpm-unit-text">BPM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+              <!-- Right: Hold to Embrace (Hug Simulator - First Screenshot, with reduced width) -->
+              <div class="intimate-card hug-card-landscape">
+          <div class="hug-info-col">
+            <span class="section-pill-tag">HUG SIMULATOR</span>
+            <h3 class="intimate-card-title">Hold to Embrace</h3>
+            <p class="intimate-card-desc">Press and hold the heart for 3 seconds to send an intimate digital embrace to Nisar.</p>
+            <p id="page-hug-status-text" class="intimate-status-hint">Hold for 3 seconds to send your embrace...</p>
+            
+            <!-- Surprise Whisper Note (Unfurls on 3s complete) -->
+            <div id="embrace-whisper-box" class="embrace-whisper-box" style="display: none;">
+              <span class="whisper-pill-tag">&#x2727; WHISPERED IN YOUR EAR &#x2727;</span>
+              <p id="embrace-whisper-text" class="whisper-quote-text"></p>
+              <span class="whisper-signoff">&mdash; Hamesha sirf tumhara, Nisar &#x2764;&#xFE0F;</span>
+            </div>
+          </div>
+          <div class="hug-action-col">
+            <div class="hug-btn-wrap">
+              <svg class="hug-progress-svg" viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="hug-progress-bg" cx="50" cy="50" r="44" />
+                <circle id="hug-progress-circle" class="hug-progress-bar" cx="50" cy="50" r="44" />
+              </svg>
+              <div id="btn-hold-hug" class="hug-heart-btn" role="button" tabindex="0" aria-label="Hold to embrace">
+                &#x2764;&#xFE0F;
+              </div>
+            </div>
+            <div class="hug-counter-pill">
+              <span id="hug-counter-number">1,248</span> Embraces Shared
+            </div>
+          </div>
+        </div>
+            </div>
+          </div>
+
+        </div> <!-- /bento-cluster-top -->
+
+        <!-- ═══ BOTTOM BENTO CLUSTER (Cells 6 to 9) ═══ -->
+        <div class="bento-cluster-bottom">
+
+          <!-- Cell 6: Middle-Left (Sacred Love Lock) -->
+          <div class="bento-cell bento-cell-6 bento-mid-left" id="lock-and-dna-section">
+            <div class="scratch-card-wrap reveal-on-scroll">
+          <div class="scratch-canvas-box" id="scratch-box">
+            <div class="scratch-secret-content">
+              <span class="scratch-secret-title" id="scratch-secret-title">Secret Vow #01</span>
+              <p class="scratch-secret-note" id="scratch-secret-note">“My secret promise: I will never stop looking at you like you are the most incredible miracle that ever happened to me.”</p>
+              <span class="scratch-secret-sign" id="scratch-secret-sign">— Forever Nisar</span>
+            </div>
+            <canvas id="scratch-canvas" width="480" height="380"></canvas>
+          </div>
+          
+          <div style="margin-top: 1.25rem;">
+            <button class="btn-secondary" id="scratch-another-btn" style="padding: 0.55rem 1.4rem; font-size: 0.85rem;">
+              <span>Scratch Another Note ✨</span>
+            </button>
+          </div>
+        </div>
+          </div>
+
+          <!-- Cell 8: Bottom-Left (The Mood Care Oracle) -->
+          <div class="bento-cell bento-cell-8 bento-bottom-left" id="compass-and-mood-section">
+            <div class="mood-oracle-card reveal-on-scroll">
+              <div class="mood-chips-grid" id="mood-chips-container">
+                <button class="mood-chip-btn" data-mood="missing"><span>🥺</span> Missing Nisar</button>
+                <button class="mood-chip-btn" data-mood="exhausted"><span>😴</span> Exhausted &amp; Tired</button>
+                <button class="mood-chip-btn" data-mood="stressed"><span>😔</span> Stressed / Overwhelmed</button>
+                <button class="mood-chip-btn" data-mood="happy"><span>🥰</span> Happy &amp; Loved</button>
+                <button class="mood-chip-btn" data-mood="smile"><span>🌸</span> Need a Smile</button>
+              </div>
+              <div class="mood-prescription-card" id="mood-prescription-card">
+                <h4 id="mood-presc-title" style="font-family: var(--font-serif); font-size: 1.25rem; color: var(--color-gold-light); margin-bottom: 0.5rem;">A Gentle Whisper</h4>
+                <p id="mood-presc-text" style="font-family: var(--font-serif); font-size: 1.05rem; color: var(--color-cream); line-height: 1.6; margin-bottom: 0.8rem;">Select a mood above...</p>
+              </div>
+            </div>
+          </div>
+                          
+          <!-- Cell 2: Center Square (Bedside Love Beacon) -->
+          <div class="bento-cell bento-cell-2 bento-center-square">
+            <div id="love-beacon-box" class="love-beacon-box" role="region" aria-label="Bedside Love Beacon">
+            <!-- 4 Corner Stars -->
+            <span class="card-corner-star star-tl" aria-hidden="true">&#x2726;</span>
+            <span class="card-corner-star star-tr" aria-hidden="true">&#x2726;</span>
+            <span class="card-corner-star star-bl" aria-hidden="true">&#x2726;</span>
+            <span class="card-corner-star star-br" aria-hidden="true">&#x2726;</span>
+
+            <!-- Card Header -->
+            <div class="beacon-card-header">
+              <span class="beacon-pill-tag">&#x25C7; WARM RADIANCE &#x25C7;</span>
+              <h3 class="beacon-card-title">The Love Beacon</h3>
+              <p class="beacon-card-sub">Whenever you miss me or need a warm presence, tap this bedside lamp to light our connection.</p>
+            </div>
+
+            <!-- Antique Cloche Glass Dome Lamp -->
+            <div id="beacon-lamp-box" class="beacon-cloche-wrap" role="button" tabindex="0" aria-label="Tap to light the bedside beacon lamp">
+              <svg class="cloche-lamp-svg" width="130" height="170" viewBox="0 0 130 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <!-- Warm Glow Filter when Lit -->
+                  <filter id="filament-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="3.5" result="blur1" />
+                    <feGaussianBlur stdDeviation="12" result="blur2" />
+                    <feMerge>
+                      <feMergeNode in="blur2" />
+                      <feMergeNode in="blur1" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  <radialGradient id="lamp-radial-aura" cx="50%" cy="40%" r="50%">
+                    <stop offset="0%" stop-color="#FFE484" stop-opacity="0.75" />
+                    <stop offset="40%" stop-color="#FF9E2C" stop-opacity="0.35" />
+                    <stop offset="80%" stop-color="#FF5722" stop-opacity="0.08" />
+                    <stop offset="100%" stop-color="#FF5722" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="brass-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#b68d40" />
+                    <stop offset="30%" stop-color="#f4e09d" />
+                    <stop offset="50%" stop-color="#d4af37" />
+                    <stop offset="70%" stop-color="#f8e7b4" />
+                    <stop offset="100%" stop-color="#8a631c" />
+                  </linearGradient>
+                  <linearGradient id="brass-plate-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#936d28" />
+                    <stop offset="50%" stop-color="#edd58c" />
+                    <stop offset="100%" stop-color="#734e12" />
+                  </linearGradient>
+                  <linearGradient id="glass-specular" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="rgba(255,255,255,0.3)" />
+                    <stop offset="15%" stop-color="rgba(255,255,255,0.08)" />
+                    <stop offset="85%" stop-color="rgba(255,255,255,0.03)" />
+                    <stop offset="100%" stop-color="rgba(255,255,255,0.22)" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Radial Aura Behind Lamp (Visible when Lit) -->
+                <circle class="beacon-aura-bg" cx="65" cy="70" r="58" fill="url(#lamp-radial-aura)" opacity="0" />
+
+                <!-- Top Brass Finial Knob -->
+                <path d="M62 14 C62 10, 68 10, 68 14 C68 17, 66 18, 66 21 L64 21 C64 18, 62 17, 62 14 Z" fill="url(#brass-grad)" stroke="#664614" stroke-width="0.8" />
+                <ellipse cx="65" cy="21" rx="5" ry="1.5" fill="url(#brass-grad)" />
+
+                <!-- Glass Bell Dome (Cloche Body) -->
+                <path class="cloche-glass" d="M36 48 C36 28, 94 28, 94 48 L94 116 C94 118, 92 120, 90 120 L40 120 C38 120, 36 118, 36 116 Z" fill="rgba(32, 16, 26, 0.45)" stroke="rgba(255, 220, 180, 0.28)" stroke-width="1.6" />
+                <!-- Glass Specular Reflection Highlight -->
+                <path d="M40 48 C40 33, 90 33, 90 48 L90 114 L88 114 L88 48 C88 35, 42 35, 42 48 L42 114 L40 114 Z" fill="url(#glass-specular)" />
+
+                <!-- Edison Filament Structure (Support Posts & Arched Loop) -->
+                <!-- Left Support Post -->
+                <line class="filament-post" x1="56" y1="120" x2="56" y2="78" stroke="#523c28" stroke-width="1.4" stroke-linecap="round" />
+                <circle class="filament-joint" cx="56" cy="78" r="1.4" fill="#523c28" />
+                <!-- Right Support Post -->
+                <line class="filament-post" x1="74" y1="120" x2="74" y2="78" stroke="#523c28" stroke-width="1.4" stroke-linecap="round" />
+                <circle class="filament-joint" cx="74" cy="78" r="1.4" fill="#523c28" />
+
+                <!-- The Glowing Hairpin / Teardrop Filament Loop -->
+                <path class="beacon-filament-wire" d="M56 78 C56 50, 74 50, 74 78" stroke="#483424" stroke-width="2.2" stroke-linecap="round" fill="none" />
+
+                <!-- Tiered Golden Base -->
+                <!-- Tier 1: Top Collar -->
+                <path d="M34 120 L96 120 L94 127 L36 127 Z" fill="url(#brass-grad)" stroke="#52380f" stroke-width="0.8" />
+                <!-- Tier 2: Main Pedestal Body -->
+                <path d="M30 127 L100 127 L97 146 L33 146 Z" fill="url(#brass-grad)" stroke="#52380f" stroke-width="0.8" />
+                <!-- Tier 3: Bottom Plinth -->
+                <path d="M26 146 L104 146 L102 153 L28 153 Z" fill="url(#brass-grad)" stroke="#422c0b" stroke-width="0.8" />
+
+                <!-- Plaque: TOUCH TO LIGHT -->
+                <rect class="beacon-plaque-rect" x="38" y="132" width="54" height="10" rx="3" fill="url(#brass-plate-grad)" stroke="#3e2607" stroke-width="0.6" />
+                <text x="65" y="139.5" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="5" font-weight="800" fill="#2d1c04" letter-spacing="0.6">TOUCH TO LIGHT 💡</text>
+              </svg>
+            </div>
+
+            <!-- State Pill Badge -->
+            <div id="beacon-state-badge" class="beacon-state-badge">
+              <span class="beacon-state-dot"></span>
+              <span id="beacon-status-pill">LAMP: DORMANT &bull; TAP TO LIGHT</span>
+            </div>
+
+            <!-- Velvet Pill Action Button -->
+            <button id="beacon-toggle-btn" class="btn-light-beacon" aria-label="Light The Bedside Beacon">
+              <span id="beacon-btn-text">LIGHT THE BEACON</span> <span class="btn-beacon-icon">&#x1F3EE;</span>
+            </button>
+          </div>
+
+          <!-- Romantic Italic Quote -->
+          <p id="beacon-whisper-text" class="beacon-quote-text">
+            &ldquo;Tap the golden lamp above to illuminate our shared warmth across the night.&rdquo;
+          </p>
+          </div>
+
+          <!-- Cell 3: Right Upper (Message in a Bottle) -->
+          <div class="bento-cell bento-cell-3 bento-right-upper" id="message-bottle-section">
+            <div class="keepsake-pod-card bottle-pod" id="message-bottle-section">
+            <div class="keepsake-pod-header">
+              <span class="pod-badge">🌊 Ocean Drift</span>
+              <h3 class="pod-title">Message in a Bottle</h3>
+              <p class="pod-subtitle">Floating through the tides of time, washed ashore from Nisar's heart.</p>
+            </div>
+
+            <div class="bottle-interactive-stage">
+              <div class="bottle-visual-box" id="bottle-visual-box" role="button" aria-label="Open Message in a Bottle">
+                <span class="bottle-icon">🍾</span>
+              </div>
+              
+            </div>
+
+            <div class="keepsake-pod-footer">
+              <button class="btn-secondary" id="pop-bottle-btn" style="padding: 0.72rem 1.8rem; font-size: 0.88rem; border-color: rgba(86, 178, 255, 0.4); color: #cbe7ff;">
+                <span>Pop The Cork & Read 📜</span>
+              </button>
+            </div>
+          </div>
+          </div>
+
+          </div> <!-- /bento-cluster-bottom -->
+
+      </div> <!-- /chapter-bento-collage -->
+
+<nav class="chapter-bottom-nav">
+        <a href="#/sanctuary" class="chapter-bottom-btn prev-btn">← Chapter 01: The Sanctuary</a>
+        <a href="#/home" class="chapter-bottom-btn home-btn">⌂ Return to Home</a>
+        <a href="#/museum" class="chapter-bottom-btn next-btn">Chapter 03: The Living Museum →</a>
+      </nav>
+    </div>
+
+    
+    <!-- ============================================================
+         PAGE VIEW 3: CHAPTER 03 — THE LIVING MUSEUM
+         ============================================================ -->
+    <div id="page-chapter-3" class="sanctuary-view chapter-page-wrapper" data-chapter="3" hidden>
+      <!-- Dedicated Fixed Background Layer (Option A: Fixed, No-lag, Exact Proportions) -->
+      <div class="chapter-fixed-backdrop" id="chapter-3-fixed-backdrop" aria-hidden="true"></div>
+
+      <div class="chapter-hero-banner">
+        <span class="chapter-badge-tag">CHAPTER 03</span>
+        <h1 class="chapter-hero-title">The Living Museum</h1>
+        <p class="chapter-hero-sub">A curated gallery of moments, vintage film reels, and chapters of your life.</p>
+        <div class="chapter-divider-ornament"><span>♡</span></div>
+      </div>
+
+      <!-- Chapter 03 Feature Contents -->
+      <section id="living-museum-wall" class="living-museum-section" aria-label="Living Museum Wall">
+      <div class="section-header">
+        <span class="section-pill-tag">PERMANENT ARCHIVE</span>
+        <h2 class="section-title">The Living Museum Wall</h2>
+        <p class="section-subtitle">A curated gallery of grace, spontaneous smiles, and living motion.</p>
+      </div>
+
+      <!-- Set I: Candid Radiance -->
+      <div class="collage-board">
+        <div class="collage-grid-5">
+          <img class="collage-photo" src="assets/media/museum-s1-1.jpg" alt="Lahari collage 1" loading="lazy" />
+          <img class="collage-photo collage-center-tall" src="assets/media/museum-s1-2.jpg" alt="Lahari collage center 1" loading="lazy" />
+          <img class="collage-photo" src="assets/media/museum-s1-3.jpg" alt="Lahari collage 3" loading="lazy" />
+          <img class="collage-photo" src="assets/media/museum-s1-4.jpg" alt="Lahari collage 4" loading="lazy" />
+          <img class="collage-photo" src="assets/media/museum-s1-5.jpg" alt="Lahari collage 5" loading="lazy" />
+        </div>
+        <div class="collage-caption">
+          <h3 class="collage-title">Set I &bull; Candid Radiance</h3>
+          <p class="collage-sub">The unposed beauty that captures the light so effortlessly.</p>
+        </div>
+      </div>
+
+      <!-- Set II: Living Motion (AUTOPLAYING LOOPED VIDEO FRAMES) -->
+      <div class="collage-board">
+        <div class="collage-grid-5">
+          <video class="collage-photo" src="assets/media/motion-1.mp4" autoplay loop muted playsinline></video>
+          <video class="collage-photo collage-center-tall" src="assets/media/motion-2.mp4" autoplay loop muted playsinline></video>
+          <img class="collage-photo" src="assets/media/museum-s2-1.jpg" alt="Lahari still in motion set" loading="lazy" />
+          <img class="collage-photo" src="assets/media/museum-s2-2.jpg" alt="Lahari still in motion set 2" loading="lazy" />
+          <video class="collage-photo" src="assets/media/motion-3.mp4" autoplay loop muted playsinline></video>
+        </div>
+        <div class="collage-caption">
+          <h3 class="collage-title">Set II &bull; Living Motion</h3>
+          <p class="collage-sub">Moving memories that keep the cadence of your laughter alive.</p>
+        </div>
+      </div>
+
+      <!-- Set III: Quiet Poise & Grace -->
+      <div class="collage-board">
+        <div class="collage-grid-5">
+          <img class="collage-photo" src="assets/media/museum-s3-1.jpg" alt="Lahari collage set 3" loading="lazy" />
+          <img class="collage-photo collage-center-tall" src="assets/media/museum-s3-2.jpg" alt="Lahari center set 3" loading="lazy" />
+          <img class="collage-photo" src="assets/media/museum-s3-3.jpg" alt="Lahari set 3 photo 3" loading="lazy" />
+          <img class="collage-photo" src="assets/media/museum-s3-4.jpg" alt="Lahari set 3 photo 4" loading="lazy" />
+          <img class="collage-photo" src="assets/media/museum-s3-5.jpg" alt="Lahari set 3 photo 5" loading="lazy" />
+        </div>
+        <div class="collage-caption">
+          <h3 class="collage-title">Set III &bull; Quiet Poise &amp; Grace</h3>
+          <p class="collage-sub">Every angle reflects the natural elegance you carry with such ease.</p>
+        </div>
+      </div>
+    </section>
+      <section id="chapters-of-you" class="chapters-section" aria-label="Chapters of You">
+      <div class="section-header">
+        <span class="section-pill-tag">VISUAL POETRY</span>
+        <h2 class="section-title">Chapters of You</h2>
+        <p class="section-subtitle">Every photograph holds a feeling that words can only begin to describe.</p>
+      </div>
+
+      <div class="chapters-stream">
+        <!-- Chapter I -->
+        <article class="chapter-item chapter-left">
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-01.jpg" alt="Lahari smiling radiantly in vibrant attire" loading="lazy" />
+            </div>
+          </div>
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER I</span>
+            <h3 class="chapter-heading">That Smile</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;Some smiles brighten a room; yours simply redefines what light feels like.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              You have that rare, effortless smile that instantly erases every heavy thought and makes the world feel infinitely lighter.
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter II -->
+        <article class="chapter-item chapter-right">
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER II</span>
+            <h3 class="chapter-heading">Those Eyes</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;There is an entire universe of softness and honesty whenever you look my way.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              Your eyes have a depth that speaks without speaking a word. Pure in silence, they tell a story that I could spend forever listening to.
+            </div>
+          </div>
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-02.jpg" alt="Lahari with deep expressive gaze" loading="lazy" />
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter III -->
+        <article class="chapter-item chapter-left">
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-03.jpg" alt="Lahari tying her hair in playful candid moment" loading="lazy" />
+            </div>
+          </div>
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER III</span>
+            <h3 class="chapter-heading">Just You</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;You never have to perform or pretend. The version of you that simply exists is already extraordinary.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              My favorite side of you is the unscripted one—your natural poise, your honest expressions, and the effortless way you carry yourself.
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter IV -->
+        <article class="chapter-item chapter-right">
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER IV</span>
+            <h3 class="chapter-heading">The Little Things</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;It’s rarely the grand gestures; it is always the quiet, unnoticed moments that stay etched the deepest.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              The gentle way you speak, the sudden tilt of your head when you listen, and how you bring so much warmth into ordinary moments.
+            </div>
+          </div>
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-04.jpg" alt="Lahari in cheerful playful pose" loading="lazy" />
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter V -->
+        <article class="chapter-item chapter-left">
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-05.jpg" alt="Lahari graceful silhouette under ambient lights" loading="lazy" />
+            </div>
+          </div>
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER V</span>
+            <h3 class="chapter-heading">Your Presence</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;Being near you feels like stepping into warmth after walking through a storm.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              Your presence has a grounding stillness. When everything around is chaotic, knowing you are there anchors my peace.
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter VI -->
+        <article class="chapter-item chapter-right">
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER VI</span>
+            <h3 class="chapter-heading">Beautiful Without Trying</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;Real beauty doesn’t demand applause; it radiates quietly and touches everything around it.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              You are breathtaking not because you try to be, but because grace, warmth, and sincerity are woven into who you are.
+            </div>
+          </div>
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-06.jpg" alt="Lahari natural candid beauty" loading="lazy" />
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter VII -->
+        <article class="chapter-item chapter-left">
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-07.jpg" alt="Lahari glowing portrait" loading="lazy" />
+            </div>
+          </div>
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER VII</span>
+            <h3 class="chapter-heading">My Favorite Person</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;Of all the conversations, all the faces, and all the moments in this lifetime, you are the one I look for first.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              You became the person I immediately want to share good news with, the one I seek solace in, and the one whose laughter makes everything complete.
+            </div>
+          </div>
+        </article>
+
+        <!-- Chapter VIII -->
+        <article class="chapter-item chapter-right">
+          <div class="chapter-narrative">
+            <span class="chapter-num">CHAPTER VIII</span>
+            <h3 class="chapter-heading">The Moments I Keep</h3>
+            <blockquote class="chapter-pullquote">
+              &ldquo;If memories were stars, the ones with you would fill the night sky until it shone like noon.&rdquo;
+            </blockquote>
+            <div class="chapter-sentiment-card">
+              Every smile you gave me, every quiet glance, every soft word—they are preserved in this private sanctuary forever.
+            </div>
+          </div>
+          <div class="chapter-media">
+            <div class="chapter-photo-frame">
+              <img class="chapter-photo" src="assets/media/chapter-08.jpg" alt="Lahari thoughtful soulful portrait" loading="lazy" />
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+      <section class="section-spacing" id="film-reel-section" style="padding-top: 1rem; padding-bottom: 2.5rem;">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">Cinematic Strip</span>
+          <h2 class="section-title">35mm Vintage Film Reel</h2>
+          <p class="section-subtitle">16 exclusive candid frames never seen before, preserved like a classic romantic motion picture roll.</p>
+        </div>
+        <div class="film-reel-container" id="film-reel-container">
+          <div class="film-reel-strip" id="film-reel-strip">
+            <!-- Dynamically populated with 16 unreleased candid moments from config.filmReel -->
+          </div>
+        </div>
+        <p style="text-align: center; font-size: 0.82rem; color: var(--color-text-muted); font-style: italic; margin-top: 0.5rem;">
+          Continuous vintage projection • Hover or drag to pause • Tap any frame to enlarge ✨
+        </p>
+      </div>
+    </section>
+      <section id="moments-worth-keeping" class="vertical-timeline-section" aria-label="Moments Worth Keeping">
+      <div class="section-header">
+        <span class="section-pill-tag">FIVE CONSTELLATIONS</span>
+        <h2 class="section-title">Moments Worth Keeping</h2>
+        <p class="section-subtitle">Follow the glowing constellation across the chapters of our journey together.</p>
+      </div>
+
+      <div class="vertical-timeline-tree">
+        <div class="timeline-central-spine"></div>
+
+        <!-- Node 1: The Spark -->
+        <div class="timeline-row">
+          <div class="timeline-node-card">
+            <span class="timeline-card-tag">STAGE I &bull; 29 SEP 2007</span>
+            <h3 class="timeline-card-title">The Spark</h3>
+            <p class="timeline-card-desc">The universe shifted the moment you arrived. Before we ever spoke, your existence was already writing the opening lines of my greatest story.</p>
+          </div>
+          <div class="timeline-spine-dot"></div>
+          <div class="timeline-row-empty"></div>
+        </div>
+
+        <!-- Node 2: The Deepening -->
+        <div class="timeline-row">
+          <div class="timeline-row-empty"></div>
+          <div class="timeline-spine-dot"></div>
+          <div class="timeline-node-card">
+            <span class="timeline-card-tag">STAGE II &bull; MIDNIGHT WHISPERS</span>
+            <h3 class="timeline-card-title">The Deepening</h3>
+            <p class="timeline-card-desc">Conversations that dissolved into hours without either of us noticing. In your voice, I found a sanctuary where every vulnerability was met with grace.</p>
+          </div>
+        </div>
+
+        <!-- Node 3: The Realization -->
+        <div class="timeline-row">
+          <div class="timeline-node-card">
+            <span class="timeline-card-tag">STAGE III &bull; SACRED TRUTH</span>
+            <h3 class="timeline-card-title">The Realization</h3>
+            <p class="timeline-card-desc">There was no single turning point, but a thousand gentle instances. Watching you smile, I realized: there is no one else in this universe I would rather share every heartbeat with.</p>
+          </div>
+          <div class="timeline-spine-dot"></div>
+          <div class="timeline-row-empty"></div>
+        </div>
+
+        <!-- Node 4: The Little Traditions -->
+        <div class="timeline-row">
+          <div class="timeline-row-empty"></div>
+          <div class="timeline-spine-dot"></div>
+          <div class="timeline-node-card">
+            <span class="timeline-card-tag">STAGE IV &bull; EVERYDAY JOY</span>
+            <h3 class="timeline-card-title">The Little Traditions</h3>
+            <p class="timeline-card-desc">The inside jokes that only we decipher, the silly faces, the shared glances across crowded rooms. It is in these tender unscripted moments that real love builds its home.</p>
+          </div>
+        </div>
+
+        <!-- Node 5: Every Tomorrow -->
+        <div class="timeline-row">
+          <div class="timeline-node-card">
+            <span class="timeline-card-tag">STAGE V &bull; INFINITY</span>
+            <h3 class="timeline-card-title">Every Tomorrow</h3>
+            <p class="timeline-card-desc">All the sunrises we have yet to watch, every quiet evening waiting for us. Whatever tomorrow holds, my hand is already holding yours.</p>
+          </div>
+          <div class="timeline-spine-dot"></div>
+          <div class="timeline-row-empty"></div>
+        </div>
+      </div>
+    </section>
+
+      <nav class="chapter-bottom-nav">
+        <a href="#/universe" class="chapter-bottom-btn prev-btn">← Chapter 02: Our Little Universe</a>
+        <a href="#/home" class="chapter-bottom-btn home-btn">⌂ Return to Home</a>
+        <a href="#/words" class="chapter-bottom-btn next-btn">Chapter 04: Words I Keep For You →</a>
+      </nav>
+    </div>
+
+    
+    <!-- ============================================================
+         PAGE VIEW 4: CHAPTER 04 — WORDS I KEEP FOR YOU
+         ============================================================ -->
+    <div id="page-chapter-4" class="sanctuary-view chapter-page-wrapper" data-chapter="4" hidden>
+      <!-- Dedicated Fixed Background Layer (Option A: Fixed, No-lag, Exact Proportions) -->
+      <div class="chapter-fixed-backdrop" id="chapter-4-fixed-backdrop" aria-hidden="true"></div>
+
+      <div class="chapter-hero-banner">
+        <span class="chapter-badge-tag">CHAPTER 04</span>
+        <h1 class="chapter-hero-title">Words I Keep For You</h1>
+        <p class="chapter-hero-sub">Letters from my heart, quiet whispers, and confessions never forgotten.</p>
+        <div class="chapter-divider-ornament"><span>♡</span></div>
+      </div>
+
+      <!-- Chapter 04 Feature Contents -->
+      <section class="section-spacing letter-section" id="letter-from-nisar">
+      <div class="container">
+        <!-- FEATURE 1: QUILL WRITING SWITCH -->
+        <div class="candlelight-toggle-wrap reveal-on-scroll">
+          <button class="candlelight-btn" id="quill-write-btn" title="Watch Nisar Write This Live" aria-label="Watch Nisar Write This Live">
+            <span>✒️</span>
+            <span id="quill-btn-text">Watch Nisar Write This</span>
+          </button>
+        </div>
+
+        <div class="letter-parchment reveal-on-scroll" id="main-letter-parchment">
+          <div class="quill-live-banner" id="quill-live-banner" style="display: none;">
+            <div class="quill-live-indicator">
+              <span class="quill-dot-pulse"></span>
+              <span id="quill-progress-status">Nisar is writing for you live with feather &amp; ink... ✒️</span>
+            </div>
+            <button type="button" class="quill-skip-btn" id="quill-skip-btn">Skip Animation ⏩</button>
+          </div>
+
+          <span class="section-badge" style="margin-bottom: 2rem;">Personal Love Letter</span>
+          <h2 class="letter-salutation">Lahari,</h2>
+          <div class="letter-body" id="letter-body-content">
+            <p>I wanted to create something that would stand still in time—a private little sanctuary where words don't rush, where memories are treasured, and where you are reminded of how deeply and sincerely you are loved.</p>
+            <p>From the moment you came into my life, you brought a gentle clarity that I cherish more than words could ever convey. You have this extraordinary way of making the world feel softer, safer, and infinitely more meaningful. Whether in moments of shared laughter or quiet contemplation, knowing you are with me makes every day an absolute privilege.</p>
+            <p>Thank you for being who you are—for your warmth, your compassion, your patient heart, and the effortless beauty you bring into my existence. I love you for all that you are, all that you have been, and all that you will ever be.</p>
+            <p>No matter where life takes us, this little corner of our world will always belong to you.</p>
+          </div>
+          <div class="letter-closing">
+            <span class="letter-closing-text">Always yours,</span>
+            <span class="letter-signature-name">Nisar</span>
+          </div>
+          <div class="letter-wax-seal" title="Nisar × Lahari">N × L</div>
+
+          <!-- FEATURE 9: DOWNLOAD LETTER AS KEEPSAKE -->
+          <div style="text-align: center; margin-top: 2rem; border-top: 1px dashed rgba(223, 183, 108, 0.3); padding-top: 1.5rem;">
+            <button class="btn-secondary" id="letter-download-btn" style="padding: 0.55rem 1.5rem; font-size: 0.85rem;">
+              <span>Save Letter As Keepsake 📜</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- FEATURE 16: "VIRTUAL WAX SEAL REPLY" -->
+        <div class="wax-reply-card reveal-on-scroll" id="wax-reply-card">
+          <span class="section-badge">Your Private Words</span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.45rem; color: var(--color-gold-light); margin: 0.6rem 0 0.3rem 0;">A Secret Reply For Nisar</h3>
+          <p style="font-size: 0.88rem; color: var(--color-text-secondary);">Write a private little note back to Nisar. It will be sealed in hot wax and saved forever in our private vault.</p>
+          <textarea class="wax-reply-textarea" id="wax-reply-input" placeholder="Whisper something back to Nisar, Lahari..."></textarea>
+          <div>
+            <button class="wax-stamp-btn" id="wax-stamp-btn">
+              <span>SEAL WITH WAX 💌</span>
+            </button>
+          </div>
+          <p class="wax-seal-success" id="wax-seal-success">Sealed with hot wax and saved forever in our heart vault ❤️</p>
+        </div>
+
+        <div class="one-more-thing-wrap reveal-on-scroll">
+          <button class="btn-primary" id="one-more-btn" aria-label="One More Thing">
+            <span>One More Thing...</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+      <section class="section-spacing" id="open-when-section">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">Virtual Letters</span>
+          <h2 class="section-title">Open When...</h2>
+          <p class="section-subtitle">Letters sealed with love, waiting for the moments you need them most.</p>
+        </div>
+        <div class="open-when-grid" id="open-when-container">
+          <!-- Dynamically populated from js/config.js -->
+        </div>
+      </div>
+    </section>
+      
+      <section class="section-spacing" id="confessions">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">Quiet Truths</span>
+          <h2 class="section-title">You Probably Don't Know This...</h2>
+          <p class="section-subtitle">A few tender thoughts I carry quietly in my heart.</p>
+        </div>
+        <div class="confessions-grid" id="confessions-container">
+          <!-- Dynamically populated from js/config.js -->
+        </div>
+      </div>
+    </section>
+
+      <nav class="chapter-bottom-nav">
+        <a href="#/museum" class="chapter-bottom-btn prev-btn">← Chapter 03: The Living Museum</a>
+        <a href="#/home" class="chapter-bottom-btn home-btn">⌂ Return to Home</a>
+        <a href="#/about-you" class="chapter-bottom-btn next-btn">Chapter 05: All About You →</a>
+      </nav>
+    </div>
+
+    
+    <!-- ============================================================
+         PAGE VIEW 5: CHAPTER 05 — ALL ABOUT YOU
+         ============================================================ -->
+    <div id="page-chapter-5" class="sanctuary-view chapter-page-wrapper" data-chapter="5" hidden>
+      <!-- Dedicated Fixed Background Layer (Option A: Fixed, No-lag, Exact Proportions) -->
+      <div class="chapter-fixed-backdrop" id="chapter-5-fixed-backdrop" aria-hidden="true"></div>
+
+      <div class="chapter-hero-banner">
+        <span class="chapter-badge-tag">CHAPTER 05</span>
+        <h1 class="chapter-hero-title">All About You</h1>
+        <p class="chapter-hero-sub">Every tiny reason, your radiant smile, and seeing yourself through my eyes.</p>
+        <div class="chapter-divider-ornament"><span>♡</span></div>
+      </div>
+
+      <!-- Chapter 05 Feature Contents -->
+      <section class="section-spacing" id="things-i-love">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">Appreciation Deck</span>
+          <h2 class="section-title">Things I Love About You</h2>
+          <p class="section-subtitle">Tap any card to reveal a quiet reflection I keep close.</p>
+        </div>
+        <div class="love-cards-grid" id="love-cards-container">
+          <!-- Dynamically populated from js/config.js -->
+        </div>
+      </div>
+    </section>
+      
+
+      <nav class="chapter-bottom-nav">
+        <a href="#/words" class="chapter-bottom-btn prev-btn">← Chapter 04: Words I Keep For You</a>
+        <a href="#/home" class="chapter-bottom-btn home-btn">⌂ Return to Home</a>
+        <a href="#/future" class="chapter-bottom-btn next-btn">Chapter 06: Our Future →</a>
+      </nav>
+    </div>
+
+    
+    <!-- ============================================================
+         PAGE VIEW 6: CHAPTER 06 — OUR FUTURE
+         ============================================================ -->
+    <div id="page-chapter-6" class="sanctuary-view chapter-page-wrapper" data-chapter="6" hidden>
+      <!-- Dedicated Fixed Background Layer (Option A: Fixed, No-lag, Exact Proportions) -->
+      <div class="chapter-fixed-backdrop" id="chapter-6-fixed-backdrop" aria-hidden="true"></div>
+
+      <div class="chapter-hero-banner">
+        <span class="chapter-badge-tag">CHAPTER 06</span>
+        <h1 class="chapter-hero-title">Our Future</h1>
+        <p class="chapter-hero-sub">Dreams, promises for tomorrow, and the adventures waiting for us.</p>
+        <div class="chapter-divider-ornament"><span>♡</span></div>
+      </div>
+
+      <!-- Chapter 06 Feature Contents -->
+      
+
+      <!-- Chapter 06 Starting Feature: If You Could See Yourself Through My Eyes (Frosted Glass) -->
+      <section class="section-spacing eyes-section" id="see-through-my-eyes">
+      <div class="container">
+        <div class="glass-card eyes-card reveal-on-scroll">
+          <div class="eyes-media-frame">
+            <img src="assets/images/eyes-spotlight.jpg" alt="Lahari — Radiant and authentic" loading="lazy">
+          </div>
+          <div class="eyes-content">
+            <span class="section-badge">A Quiet Perspective</span>
+            <h2 class="eyes-title">If You Could See Yourself Through My Eyes</h2>
+            <div class="eyes-quote-lead">
+              “If you could see yourself the way I see you, you would never doubt your worth, your beauty, or the impact you have.”
+            </div>
+            <p>I see someone whose heart is fiercely genuine in a world full of imitations. I see someone whose kindness is not an act, but an instinct. When you look in the mirror, you might see ordinary moments, but from where I stand, every angle reflects grace, resilience, and an undeniable light.</p>
+            <p>You are the girl who turns ordinary days into poetry, and loving you is the easiest, most natural choice I've ever made.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <section class="section-spacing" id="bucket-list-section">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-badge">Future Horizons</span>
+          <h2 class="section-title">Our Future Dreams</h2>
+          <p class="section-subtitle">Six sacred promises waiting for our shared tomorrow. Tap any promise to stamp it into our hearts.</p>
+        </div>
+        <div class="bucket-list-card reveal-on-scroll">
+          <div class="bucket-list-grid" id="bucket-list-container">
+            <!-- Dynamically populated from config.futureBucketList -->
+          </div>
+        </div>
+      </div>
+    </section>
+      
+      <footer class="final-screen-section" id="final-screen">
+      <div class="final-content reveal-on-scroll">
+        <div class="final-media-frame">
+          <img src="assets/images/final-photo.jpg" alt="Lahari — Forever cherished" loading="lazy">
+        </div>
+        <p class="final-lead">Among all the beautiful things in this world...</p>
+        <h2 class="final-main-text">You are my favorite.</h2>
+        <p class="final-sub-quote">“Remember that somewhere in this world, there is someone who is very happy that Lahari exists.”</p>
+        <span class="final-signature-text">Love,</span>
+        <span class="final-signature-name">Nisar</span>
+        <div class="final-footer-note">
+          <span>Made especially for Lahari</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+      </div>
+    </footer>
+
+      <nav class="chapter-bottom-nav">
+        <a href="#/about-you" class="chapter-bottom-btn prev-btn">← Chapter 05: All About You</a>
+        <a href="#/home" class="chapter-bottom-btn home-btn">⌂ Return to Home</a>
+        <button type="button" class="chapter-bottom-btn next-btn" onclick="document.getElementById('bday-modal') && document.getElementById('bday-modal').classList.add('is-active')">
+          Celebrate Our Day ♡
+        </button>
+      </nav>
+    </div>
+
+    <div id="one-more-modal" role="dialog" aria-modal="true" aria-label="One More Thing">
+    <div class="one-more-content">
+      <p class="one-more-lead">Hey Lahari...</p>
+      <div class="one-more-message">
+        If I had to choose my favorite person all over again...<br>
+        <strong style="color: var(--color-gold-light); display: block; margin-top: 1rem;">I'd still choose you.</strong>
+      </div>
+      <span class="one-more-signature">— Nisar</span>
+      <button class="btn-secondary" id="one-more-close" style="margin-top: 2rem;" aria-label="Close message">
+        Close with Love ❤️
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       18. SECRET EASTER EGG
+       ============================================================ -->
+  <button class="easter-egg-btn" id="secret-easter-egg" title="A tiny secret" aria-label="Secret heart">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+  </button>
+
+  <div id="easter-egg-modal" role="dialog" aria-modal="true" aria-label="Secret Easter Egg">
+    <div class="easter-egg-box">
+      <h4>Psst...</h4>
+      <p style="font-style: italic; color: var(--color-gold); margin-bottom: 0.5rem;">Just in case you forgot...</p>
+      <p>Nisar loves you.<br>Always and unconditionally.</p>
+      <button class="btn-secondary" id="easter-egg-close" style="margin-top: 1.5rem;">
+        Keep Secret 🤫
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BIRTHDAY CELEBRATION MODAL (FULLSCREEN CENTERED OVERLAY)
+       ============================================================ -->
+  <div id="bday-modal" role="dialog" aria-modal="true" aria-label="Birthday Surprise">
+    <div class="birthday-modal-dialog">
+      <div class="birthday-celebration-box is-active">
+        <span class="section-badge" id="bday-modal-badge" style="background: rgba(223, 183, 108, 0.2);">Special Day • 29 September 🎂</span>
+        <h3 id="bday-modal-title" style="font-size: clamp(1.9rem, 4.5vw, 3rem); color: var(--color-gold-light); margin: 1rem 0; font-family: var(--font-display);">Happy Birthday, My Beloved Lahari! ✨</h3>
+        <p id="bday-modal-letter" style="font-family: var(--font-serif); font-size: 1.18rem; color: var(--color-cream); line-height: 1.8; margin-bottom: 1.5rem;">
+          Today is about you—the grace you carry, the warmth you give, and the happiness you bring into my life. On this day in 2007, someone truly extraordinary was born, and I thank my lucky stars every single day that I get to love you. Happy Birthday, my favorite person in the whole universe.
+        </p>
+        <div class="candle-container" id="candle-box" title="Click to blow out the candle">
+          <div class="candle-flame" id="candle-flame"></div>
+          <div class="candle-body"></div>
+          <span class="candle-hint" id="candle-wish-notice">Tap the candle to make a wish 🕯️</span>
+        </div>
+        <div style="text-align: right; margin-top: 1.5rem;">
+          <span style="font-family: var(--font-script); font-size: 2.8rem; color: var(--color-gold); display: block;">— Always yours, Nisar</span>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <button class="btn-secondary" id="bday-modal-close" style="padding: 0.65rem 1.75rem;">Keep This Day In My Heart ❤️</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Envelope Modal -->
+  <!-- Envelope Modal -->
+  <div id="envelope-modal" role="dialog" aria-modal="true" aria-label="Letter Preview">
+    <div class="envelope-letter-paper">
+      <h3 id="envelope-modal-title">Letter</h3>
+      <p id="envelope-modal-body">...</p>
+      <div style="text-align: right;">
+        <span style="font-family: var(--font-script); font-size: 2.2rem; color: var(--color-gold);">— Nisar</span>
+      </div>
+      <div style="text-align: center; margin-top: 1.5rem; display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+        <button class="btn-secondary" id="envelope-another-btn">Read Another Note 💌</button>
+        <button class="btn-secondary" id="envelope-modal-close">Fold Letter & Keep Safe ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Time Capsule Modal -->
+  <div id="capsule-modal" role="dialog" aria-modal="true" aria-label="Time Capsule Oath">
+    <div class="capsule-modal-card">
+      <button class="capsule-modal-close-x" id="capsule-modal-close-x" title="Close" aria-label="Close Oath">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <span class="section-badge" style="margin-bottom: 1rem;">Sealed Promise • 2030</span>
+      <h3 style="font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--color-gold-light); margin-bottom: 1rem;">Nisar's 5-Year Oath to Lahari</h3>
+      <p style="font-family: var(--font-serif); font-size: 1.15rem; color: var(--color-cream); line-height: 1.8; margin-bottom: 1.25rem;">
+        “To my beloved Lahari in 2030... If you are reading this, years have passed, chapters have turned, and the world has changed in a thousand ways. But one thing will always be as fresh, as deep, and as absolute as day one: my devotion to you. I promised to love you through every season, and that promise has no expiration date. You are my home, yesterday, today, and for every tomorrow.”
+      </p>
+      <div style="text-align: right;">
+        <span style="font-family: var(--font-script); font-size: 2.5rem; color: var(--color-gold);">— Always yours, Nisar</span>
+      </div>
+      <div style="text-align: center; margin-top: 1.75rem;">
+        <button class="btn-secondary" id="capsule-modal-close">Reseal Oath In Vault 🔒</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Unified Sanctum Atelier Drawer (Atmosphere & Petal Styles) -->
+  <div class="theme-drawer-overlay" id="sanctum-atelier-drawer" role="dialog" aria-modal="true" aria-label="Sanctum Atelier">
+    <div class="theme-drawer-panel" id="atelier-panel">
+      <div class="theme-drawer-pill-bar"></div>
+      
+      <!-- Atelier Header with Luxury Segmented Pill Switcher & Close Button -->
+      <div class="atelier-header">
+        <div class="atelier-segmented-tabs" role="tablist" aria-label="Atelier Options">
+          <div class="atelier-tab-indicator" id="atelier-tab-indicator"></div>
+          <button type="button" class="atelier-tab-btn is-active" id="atelier-tab-themes" role="tab" aria-selected="true" aria-controls="atelier-panel-themes">
+            <span class="atelier-tab-icon">💎</span>
+            <span class="atelier-tab-label">Themes</span>
+          </button>
+          <button type="button" class="atelier-tab-btn" id="atelier-tab-petals" role="tab" aria-selected="false" aria-controls="atelier-panel-petals">
+            <span class="atelier-tab-icon">🌹</span>
+            <span class="atelier-tab-label">Petals</span>
+          </button>
+        </div>
+        
+        <button type="button" class="theme-drawer-close" id="atelier-drawer-close" aria-label="Close Atelier">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Tab Content 1: Themes Grid (Cushion-Cut Swatches) -->
+      <div class="atelier-tab-content is-active" id="atelier-panel-themes" role="tabpanel" aria-labelledby="atelier-tab-themes">
+        <div class="theme-grid" id="theme-grid">
+          <!-- Dynamically rendered 10 luxury theme visual swatch cards -->
+        </div>
+      </div>
+
+      <!-- Tab Content 2: Petals Grid & Precision Power Switch -->
+      <div class="atelier-tab-content" id="atelier-panel-petals" role="tabpanel" aria-labelledby="atelier-tab-petals">
+        <div class="atelier-petal-power-bar">
+          <span class="atelier-petal-status-label" id="petals-active-status-desc">Falling Drift</span>
+          <button type="button" class="atelier-toggle-switch is-active" id="petals-power-toggle" aria-label="Toggle Petals Drift" role="switch" aria-checked="true">
+            <span class="atelier-toggle-knob"></span>
+            <span id="petals-power-text" class="sr-only" style="display:none;">Turn Drift OFF</span>
+          </button>
+        </div>
+        <div class="theme-grid" id="petals-grid">
+          <!-- Dynamically rendered 10 luxury petal style visual swatch cards -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       19. FULLSCREEN LIGHTBOX MODAL
+       ============================================================ -->
+  <div id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Media Preview">
+    <button class="lightbox-close-btn" id="lightbox-close" aria-label="Close Lightbox">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button class="lightbox-prev-btn" id="lightbox-prev" aria-label="Previous Media">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button class="lightbox-next-btn" id="lightbox-next" aria-label="Next Media">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="lightbox-content-wrap">
+      <div id="lightbox-media-container"></div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+      <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       FEATURE 13: MESSAGE IN A BOTTLE MODAL
+       ============================================================ -->
+  <div id="bottle-modal" role="dialog" aria-modal="true" aria-label="Message in a Bottle">
+    <div class="bottle-parchment">
+      <span class="section-badge" style="background: rgba(86, 178, 255, 0.2); color: #88c8ff; border-color: rgba(86, 178, 255, 0.4); margin-bottom: 1.2rem;">Ocean Drift Letter</span>
+      <p id="bottle-modal-text" style="font-family: var(--font-serif); font-style: italic; font-size: 1.22rem; line-height: 1.8; color: #1e1005; margin-bottom: 1.5rem;">
+        “Drifting ashore: Even if the ocean tried to swallow every word, my devotion to you would still echo on every shore.”
+      </p>
+      <div style="text-align: right; margin-bottom: 1.5rem;">
+        <span style="font-family: var(--font-script); font-size: 2.4rem; color: #8a6524;">— Always Nisar</span>
+      </div>
+      <div style="display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;">
+        <button class="btn-secondary" id="bottle-another-btn" style="color: #2b1708; border-color: #8a6524;">Draw Another Drift Letter 🌊</button>
+        <button class="btn-secondary" id="bottle-modal-close" style="color: #2b1708; border-color: #8a6524;">Return Bottle To Waves 🍾</button>
+      </div>
+    </div>
+  </div>
+<!-- ============================================================
+       FEATURE 22: THE MAGIC BLOOMING ROSE VOUCHER MODAL
+       ============================================================ -->
+  <div id="rose-voucher-modal" class="rose-voucher-modal-wrap" role="dialog" aria-modal="true" aria-label="Official Love Coupon Voucher">
+    <div class="rose-voucher-container">
+      <div class="voucher-ticket">
+        <div class="voucher-top-bar">
+          <span class="voucher-badge">🌹 OFFICIAL LOVE COUPON • 100% NON-EXPIRING</span>
+          <button class="rose-modal-close-icon" id="rose-modal-close-x" aria-label="Close Voucher">&times;</button>
+        </div>
+        <h3 class="voucher-title" id="rose-voucher-title">The Infinite Comfort Voucher</h3>
+        <p class="voucher-desc" id="rose-voucher-desc">Redeemable by Lahari anytime, anywhere, with no expiration date:</p>
+        <ul class="voucher-list" id="rose-voucher-list">
+          <li>✨ Unlimited forehead kisses on difficult days</li>
+          <li>✨ 1 uninterrupted hour of undivided listening</li>
+          <li>✨ Warm, tight embraces until your heart feels calm</li>
+          <li>✨ Midnight cravings delivery &amp; endless pampering</li>
+        </ul>
+        <div class="voucher-footer">
+          <span>Signed &amp; Guaranteed:</span>
+          <strong>Nisar ❤️</strong>
+        </div>
+        <div class="voucher-actions-row">
+          <button class="btn-primary" id="rose-another-btn" style="padding: 0.6rem 1.4rem; font-size: 0.86rem;">
+            <span>Draw Another Coupon 🎫</span>
+          </button>
+          <button class="btn-secondary" id="rose-modal-close-btn" style="padding: 0.6rem 1.4rem; font-size: 0.86rem; color: #2b1807; border-color: #b88d44;">
+            <span>Keep In My Heart 🌸</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FEATURE 17: OFFICIAL STAR NAMING CERTIFICATE MODAL
+       ============================================================ -->
+  <div id="star-cert-modal" role="dialog" aria-modal="true" aria-label="Official Star Naming Certificate">
+    <div class="star-cert-frame">
+      <div style="font-size: 0.76rem; letter-spacing: 0.28em; text-transform: uppercase; color: #8a6524; font-weight: 600;">Celestial Registry Of Devotion</div>
+      <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 4.5vw, 2.8rem); color: #422606; margin: 0.6rem 0 0.2rem 0; font-weight: 600;">Certificate Of Star Dedication</h2>
+      <p style="font-size: 0.88rem; color: #73501a; font-style: italic; margin-bottom: 1.5rem;">This official celestial decree proclaims that the star located at:</p>
+      
+      <div style="background: rgba(184, 141, 68, 0.1); border: 1px solid #b88d44; border-radius: 6px; padding: 1rem; margin: 1rem 0;">
+        <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: #69450c; letter-spacing: 0.05em;" id="cert-star-name">Star Lahari-2909</h3>
+        <p style="font-size: 0.92rem; color: #40270a; margin-top: 0.3rem;" id="cert-coords">RA 13h 25m 11s | Dec -11° 09' 40" • Constellation Virgo</p>
+      </div>
+
+      <p style="font-family: var(--font-serif); font-size: 1.12rem; color: #2e1a06; line-height: 1.7; margin: 1.4rem 0;" id="cert-proclamation">
+        “Registered permanently in the celestial register as an eternal symbol of devotion, forever shining over Lahari.”
+      </p>
+
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 2rem; padding: 0 1rem; text-align: left;">
+        <div>
+          <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: #8a6524; display: block;">Registered By</span>
+          <span style="font-family: var(--font-script); font-size: 2.2rem; color: #5a3809;" id="cert-registrant">Nisar Sayyad</span>
+        </div>
+        <div class="cert-gold-seal">24K GOLD SEAL</div>
+        <div style="text-align: right;">
+          <span style="font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.15em; color: #8a6524; display: block;">Dedication Date</span>
+          <span style="font-family: var(--font-serif); font-size: 1.1rem; color: #3b2308; font-weight: 600;">29 September</span>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 2.2rem;">
+        <button class="btn-secondary" id="star-cert-close" style="color: #3b2308; border-color: #8a6524; padding: 0.6rem 2rem;">Seal In Starlight ✨</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       FEATURE 6: SECRET MIDNIGHT VAULT (3:00 AM CONFIDENTIAL EASTER EGG)
+       ============================================================ -->
+  <div id="midnight-vault-modal" role="dialog" aria-modal="true" aria-label="Secret Midnight Vault" style="display: none;">
+    <div class="midnight-vault-card" id="midnight-vault-card">
+      <button class="vault-close-btn" id="vault-close-btn" aria-label="Close Midnight Vault">&times;</button>
+      <div class="vault-badge">✨ PRIVATE SANCTUM • 3:00 AM CONFIDENTIAL</div>
+      <div class="vault-moon-icon">🌙</div>
+      <h2 class="vault-title">The Secret Midnight Vault</h2>
+      <p class="vault-subtitle">Reserved for the quietest hours—when the entire world is asleep and you miss me the most.</p>
+      
+      <!-- Wax seal to crack open -->
+      <div class="vault-seal-box" id="vault-seal-box">
+        <div class="vault-wax-seal-btn" id="vault-wax-seal-btn" role="button" tabindex="0" title="Tap to break the golden wax seal">
+          <div class="vault-seal-insignia">N × L</div>
+          <span class="vault-seal-action">TAP TO BREAK SEAL</span>
+        </div>
+        <p class="vault-seal-tip">Tap the hot wax seal to open this letter</p>
+      </div>
+
+      <!-- Letter revealed upon breaking the seal -->
+      <div class="vault-letter-box" id="vault-letter-box" style="display: none;">
+        <div class="vault-letter-parchment">
+          <div class="vault-letter-header">
+            <span class="vault-time-stamp">3:00 AM • In The Quiet Of The Night</span>
+            <h3 class="vault-salutation">Meri Pyari Lahari,</h3>
+          </div>
+          <div class="vault-letter-body">
+            <p>Agar tum yeh secret khat padh rahi ho, toh shayad raat ke kisi khamosh pehar mein tum mujhe yaad kar rahi ho, ya neend tumhari aankhon se thodi door hai...</p>
+            <p>Main chahta hoon tum yeh hamesha jaano: Chahe kitni bhi dooriyan ho, chahe kitna bhi andhera ho, tum is duniya mein kabhi akeli nahi ho. Meri har dua, meri har khushi, aur mere dil ki har ek dhadkan hamesha sirf tumhare naam rehti hai.</p>
+            <p>Jab bhi dil thoda udaas ho ya mera ehsaas chahiye ho, bas aankhein band karna aur ek gehri saans lena—main yahin hoon, tumhare dil ke sabse kareeb. Tum meri zindagi ki sabse khoobsurat nemat ho, aur yeh baat qayamat tak nahi badlegi.</p>
+            <p>So jao ab sukoon se, mere khwaabon mein tumhara intezar rahega.</p>
+          </div>
+          <div class="vault-letter-closing">
+            <span>Hamesha sirf tumhara,</span>
+            <strong>Nisar ❤️</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SECRET NOTES & EASTER EGGS MODAL (UNIFIED LUXURY DISPLAY)
+       ============================================================ -->
+  <div id="secret-note-modal" class="secret-modal-backdrop" role="dialog" aria-modal="true" aria-label="Secret Note Unlocked" style="display: none;">
+    <div class="secret-modal-card" id="secret-note-card">
+      <button class="secret-modal-close" id="secret-note-close-btn" aria-label="Close Note">&times;</button>
+      
+      <!-- Top Badging -->
+      <div class="secret-badge-pill" id="secret-modal-badge">✨ SECRET NOTE UNLOCKED</div>
+      <div class="secret-modal-icon" id="secret-modal-icon">💌</div>
+      <h3 class="secret-modal-title" id="secret-modal-title">Secret Note Title</h3>
+      
+      <!-- Dynamic Note Body Content -->
+      <div class="secret-modal-body" id="secret-modal-body">
+        <p class="secret-modal-text" id="secret-modal-text">Content goes here...</p>
+      </div>
+
+      <!-- Dedicated Wish Area (for Constellation #1) -->
+      <div class="secret-wish-box" id="secret-wish-box" style="display: none;">
+        <label for="constellation-wish-input" class="wish-box-label">What wish does your heart make upon this star?</label>
+        <textarea id="constellation-wish-input" class="wish-box-textarea" placeholder="Type your wish here, Lahari..." rows="3"></textarea>
+        <a href="#" id="send-wish-whatsapp-btn" class="btn-primary wish-whatsapp-btn" target="_blank" rel="noopener">
+          <span>Send My Wish to Him on WhatsApp 💬</span>
+        </a>
+      </div>
+
+      <!-- Footer Stamp -->
+      <div class="secret-modal-footer">
+        <span class="secret-footer-sign">— Nisar ❤️</span>
+        <span class="secret-footer-tag" id="secret-footer-counter">Exclusive for Lahari • Found with Love</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dynamic Blank Screen Secrets Layer (Randomized on each page load in blank side margins) -->
+  <div id="blank-screen-secrets-layer" class="blank-screen-secrets-layer" aria-hidden="false"></div>
+
+  <!-- ========================================================================
+       PAGE CINEMATIC VISUALS & SENSORY AMBIENCE (FROM PAGE)
+       ======================================================================== -->
+
+  <!-- Permanent Mountain Night Environment -->
+  <div id="mountain-night-bg" aria-hidden="true">
+    <canvas id="stars-canvas"></canvas>
+    <div class="nebula-glow nebula-rose"></div>
+    <div class="nebula-glow nebula-gold"></div>
+
+  </div>
+
+  <!-- Stardust Fairy Dust Particle Canvas Overlay -->
+  <canvas id="stardust-canvas"></canvas>
+
+  <!-- Surprise Gift Sealed Modal Dialog -->
+  <div id="gift-modal" class="gift-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="gift-modal-title">
+    <div class="gift-modal-dialog">
+      <button id="gift-modal-close" class="gift-modal-close" aria-label="Close dialog">&times;</button>
+      <div id="gift-modal-icon" class="gift-modal-icon">&#x1F512;</div>
+      <h3 id="gift-modal-title" class="gift-modal-title">Sealed With Devotion</h3>
+      <p id="gift-modal-desc" class="gift-modal-desc">
+        This surprise gift is safely locked with crimson wax and starlight.<br />
+        It is sealed exclusively for your birthday on <strong>29 September</strong> &bull; It will unwrap automatically on your special day! &#x1F382;
+      </p>
+      <div id="gift-modal-actions" class="gift-modal-btn-row">
+        <button id="gift-preview-btn" class="btn-gift-action" type="button">Unlock Preview &#x2728;</button>
+        <button id="gift-close-btn" class="btn-gift-secondary" type="button">Wait For Her Day</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full-Screen 3D Photo Lightbox ("Flip to Read Memory") -->
+  <div id="photo-lightbox-modal" class="photo-lightbox-backdrop" role="dialog" aria-modal="true" aria-label="Photo Lightbox">
+    <div class="lightbox-container">
+      <button id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Close Lightbox">&times;</button>
+      <div id="lightbox-card-3d" class="lightbox-card-3d" title="Click or tap to flip card">
+        <div class="lightbox-card-inner">
+          <div class="lightbox-card-front">
+            <img id="lightbox-front-img" class="lightbox-front-img" src="" alt="Lahari Memory" />
+          </div>
+          <div class="lightbox-card-back">
+            <div class="lightbox-back-stamp">MEMORABILIA &bull; NISAR &times; LAHARI</div>
+            <p id="lightbox-back-quote" class="lightbox-back-quote">&ldquo;Forever my favorite view.&rdquo;</p>
+            <div class="lightbox-back-meta">
+              <span id="lightbox-back-date" class="lightbox-back-date">SANCTUARY MEMORY &bull; 2909</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="lightbox-controls-bar">
+        <button id="lightbox-flip-btn" class="lightbox-btn" aria-label="Flip photo to read memory">
+          <span>Flip Photo</span> <span>&#x21BA;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Ambient Soundscapes Vinyl Widget (100% Offline Procedural Web Audio) -->
+  <div id="ambient-music-widget" class="ambient-music-widget" aria-label="Ambient Soundscape Music Player">
+    <div id="vinyl-disc" class="vinyl-disc" role="button" tabindex="0" aria-label="Toggle ambient music" title="Click to play / pause music">
+      <div class="vinyl-center-label"></div>
+    </div>
+    <div class="ambient-track-info">
+      <span id="ambient-track-title" class="ambient-track-title">Midnight Serenade</span>
+      <span id="ambient-track-tag" class="ambient-track-tag">Piano &amp; Strings</span>
+    </div>
+    <div class="ambient-controls-group">
+      <button id="ambient-play-btn" class="ambient-btn" aria-label="Play ambient music" title="Play / Pause">&#x25B6;</button>
+      <button id="ambient-next-btn" class="ambient-btn" aria-label="Next track" title="Next Soundscape">&#x23ED;</button>
+    </div>
+  </div>
+
+  
+</template>
+
+  <!-- Synchronous Mounter for Authenticated Page Boot -->
+  <script id="auth-sync-mounter">
+    (function() {
+      if (window.__AUTH_STATE__ === 'authenticated') {
+        var tpl = document.getElementById('sanctuary-experience-template');
+        var root = document.getElementById('sanctuary-app-root');
+        if (tpl && root && root.children.length === 0) {
+          var frag = tpl.content.cloneNode ? tpl.content.cloneNode(true) : tpl.content;
+          var ROUTE_MAP = {
+            '': 'page-home',
+            '#': 'page-home',
+            '#/': 'page-home',
+            '#/home': 'page-home',
+            '#/sanctuary': 'page-chapter-1',
+            '#/universe': 'page-chapter-2',
+            '#/museum': 'page-chapter-3',
+            '#/words': 'page-chapter-4',
+            '#/about-you': 'page-chapter-5',
+            '#/future': 'page-chapter-6'
+          };
+          var rawHash = window.location.hash || '#/home';
+          var cleanHash = rawHash.split('?')[0].toLowerCase();
+          var targetPageId = ROUTE_MAP[cleanHash] || 'page-home';
+
+          var views = frag.querySelectorAll('.sanctuary-view');
+          views.forEach(function(v) {
+            if (v.id === targetPageId) {
+              v.classList.add('is-active');
+              v.removeAttribute('hidden');
+            } else {
+              v.classList.remove('is-active');
+              v.setAttribute('hidden', '');
+            }
+          });
+          root.appendChild(frag);
+          var isHome = targetPageId === 'page-home';
+          document.documentElement.setAttribute('data-is-home', isHome ? 'true' : 'false');
+          document.documentElement.setAttribute('data-target-page', targetPageId);
+          document.documentElement.classList.toggle('boot-home-view', isHome);
+          document.documentElement.classList.toggle('boot-chapter-view', !isHome);
+          if (isHome) {
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+          } else {
+            document.documentElement.style.removeProperty('overflow');
+            document.documentElement.style.overflowY = 'auto';
+            document.documentElement.style.overflowX = 'hidden';
+            document.body.style.removeProperty('overflow');
+            document.body.style.overflowY = 'auto';
+            document.body.style.overflowX = 'hidden';
+            document.body.style.height = 'auto';
+          }
+          document.body.classList.toggle('home-active-view', isHome);
+        }
+        var gate = document.getElementById('passcode-gate');
+        if (gate) {
+          gate.remove();
+        }
+        document.body.classList.remove('passcode-locked');
+        document.body.classList.add('sanctuary-entered');
+      }
+      // Reveal page seamlessly
+      requestAnimationFrame(function() {
+        document.documentElement.classList.remove('app-booting');
+      });
+    })();
+  </script>
+
+  <!-- Scripts with Cache Busting -->
+  <script src="js/config.js?v=20260928_04"></script>
+  <script src="js/particles.js?v=20260928_04"></script>
+  <script src="js/atmosphere.js?v=20260928_04"></script>
+  <script src="js/audio.js?v=20260928_04"></script>
+  <script src="js/clock.js?v=20260929_160"></script>
+  <script src="js/features.js?v=20260928_04"></script>
+  <script src="js/lightbox.js?v=20260928_04"></script>
+  <script src="js/atmosphere-effects.js?v=20260928_04"></script>
+  <script src="js/router.js?v=20260929_117"></script>
+  <script src="js/birthday-celebration.js?v=20260929_74"></script>
+  <script src="js/app.js?v=20260929_160"></script>
+  <script>
+    window.addEventListener('load', function() {
+      var params = new URLSearchParams(window.location.search);
+      var scrollTarget = params.get('scroll');
+      if (scrollTarget) {
+        setTimeout(function() {
+          document.querySelectorAll('.reveal-on-scroll').forEach(function(r) {
+            r.classList.add('is-visible');
+          });
+          var el = document.getElementById(scrollTarget);
+          if (el) el.scrollIntoView({ behavior: 'instant', block: 'center' });
+        }, 400);
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+

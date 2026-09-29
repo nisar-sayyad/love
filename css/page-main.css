@@ -1,0 +1,204 @@
+/* ==========================================================================
+   NISAR × LAHARI — DIGITAL SANCTUARY DESIGN SYSTEM
+   Obsidian (#080205) + Celestial Gold (#F9D976) + Soft Rose (#B82E4E)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* Color Palette */
+  --bg-obsidian: #080205;
+  --bg-obsidian-soft: #0D0309;
+  --bg-card: rgba(18, 7, 14, 0.72);
+  --bg-card-hover: rgba(26, 11, 20, 0.85);
+  --border-gold-subtle: rgba(249, 217, 118, 0.22);
+  --border-gold-strong: rgba(249, 217, 118, 0.55);
+
+  --gold-celestial: #F9D976;
+  --gold-champagne: #E4B342;
+  --gold-deep: #C59828;
+  --gold-glow: rgba(249, 217, 118, 0.32);
+
+  --rose-primary: #B82E4E;
+  --rose-soft: #F4C2C2;
+  --rose-muted: #CD9FAF;
+  --rose-dark: #6C142A;
+
+  --text-pure: #FFFFFF;
+  --text-ivory: #FDFBF7;
+  --text-muted: rgba(253, 251, 247, 0.68);
+  --text-subtle: rgba(253, 251, 247, 0.45);
+
+  /* Typography */
+  --font-display: 'Cinzel', 'Playfair Display', serif;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-handwritten: 'Caveat', 'Pinyon Script', cursive;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Elevations & Effects */
+  --glass-blur: blur(16px);
+  --glass-blur-sm: blur(8px);
+  --shadow-gold: 0 12px 40px rgba(249, 217, 118, 0.12);
+  --shadow-deep: 0 20px 60px rgba(0, 0, 0, 0.85);
+  --gold-gradient: linear-gradient(135deg, #F9D976 0%, #E4B342 50%, #C59828 100%);
+  --rose-gradient: linear-gradient(135deg, #B82E4E 0%, #6C142A 100%);
+
+  /* Transitions */
+  --ease-cinematic: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 250ms var(--ease-cinematic);
+  --transition-medium: 500ms var(--ease-cinematic);
+  --transition-slow: 900ms var(--ease-cinematic);
+
+  /* Layout Containers */
+  --content-max-width: 1200px;
+  --section-padding-y: clamp(70px, 9vw, 130px);
+  --section-padding-x: clamp(20px, 5vw, 48px);
+}
+
+/* Global Reset & Body overrides disabled to preserve LOVE base */
+/*
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--bg-obsidian);
+  color: var(--text-ivory);
+}
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-obsidian);
+  color: var(--text-ivory);
+}
+*/
+
+/* Scroll Lock when Layer 1 or 2 is active or Modal is open */
+body.scroll-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  color: var(--text-ivory);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.25;
+}
+
+h3 {
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  line-height: 1.35;
+}
+
+p {
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+}
+
+/* Links & Buttons */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+}
+
+/* Images & Videos: Face First rules */
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+.portrait-photo {
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* Screen reader utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--gold-celestial);
+  outline-offset: 3px;
+}
+
+/* Section Header Shared Component */
+.section-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(36px, 6vw, 64px);
+  padding: 0 16px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: var(--gold-celestial);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.section-eyebrow::before,
+.section-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--gold-glow);
+  vertical-align: middle;
+  margin: 0 10px;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F4C2C2 80%, #F9D976 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  font-style: italic;
+  color: var(--rose-muted);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Accessibility Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

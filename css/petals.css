@@ -1,0 +1,215 @@
+﻿/* ==========================================================================
+   20-THEME PETAL & PARTICLE SYSTEM
+   Canvas + 5x4 Theme Selector Modal Panel
+   ========================================================================== */
+
+#petal-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* Petal Panel Modal Backdrop */
+.petal-panel-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9996;
+  background: rgba(8, 2, 5, 0.75);
+  backdrop-filter: var(--glass-blur);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+}
+
+.petal-panel-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.petal-panel-dialog {
+  max-width: 520px;
+  width: 100%;
+  background: rgba(18, 6, 14, 0.94);
+  border: 1.5px solid var(--border-gold-strong);
+  border-radius: 28px;
+  padding: 28px 24px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 45px rgba(249, 217, 118, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  transform: scale(0.95);
+  transition: transform var(--transition-fast);
+}
+
+.petal-panel-backdrop.active .petal-panel-dialog {
+  transform: scale(1);
+}
+
+.petal-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.petal-panel-title {
+  font-size: 1.25rem;
+  color: var(--gold-celestial);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.petal-panel-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.petal-panel-close:hover {
+  background: var(--gold-celestial);
+  color: var(--bg-obsidian);
+}
+
+/* 5 x 4 Theme Grid */
+.petal-themes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.theme-tile {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(249, 217, 118, 0.15);
+  border-radius: 14px;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: all 180ms ease;
+  user-select: none;
+}
+
+.theme-tile:hover {
+  background: rgba(249, 217, 118, 0.1);
+  border-color: var(--gold-celestial);
+  transform: translateY(-2px);
+}
+
+.theme-tile.active {
+  background: rgba(249, 217, 118, 0.22);
+  border-color: var(--gold-celestial);
+  box-shadow: 0 0 14px var(--gold-glow);
+}
+
+.theme-icon {
+  font-size: 1.35rem;
+}
+
+.theme-name {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.2;
+}
+
+.theme-tile.active .theme-name {
+  color: var(--gold-celestial);
+  font-weight: 600;
+}
+
+/* Panel Controls (Modes & Reset) */
+.petal-controls-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(249, 217, 118, 0.12);
+  padding-top: 16px;
+}
+
+.mode-toggle-group {
+  display: flex;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 999px;
+  padding: 3px;
+  border: 1px solid rgba(249, 217, 118, 0.15);
+}
+
+.mode-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.mode-btn.active {
+  background: var(--gold-gradient);
+  color: var(--bg-obsidian);
+  font-weight: 600;
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 8px;
+}
+
+.panel-action-btn {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(249, 217, 118, 0.15);
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.panel-action-btn:hover {
+  background: rgba(249, 217, 118, 0.15);
+  color: var(--gold-celestial);
+  border-color: var(--gold-celestial);
+}
+
+@media (max-width: 480px) {
+  .petal-themes-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  
+  .theme-tile {
+    padding: 8px 2px;
+  }
+  
+  .theme-icon {
+    font-size: 1.15rem;
+  }
+  
+  .theme-name {
+    font-size: 0.58rem;
+  }
+}

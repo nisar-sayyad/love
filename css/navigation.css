@@ -1,0 +1,171 @@
+/* ==========================================================================
+   NAVIGATION, FLOATING STORY RAIL & QUICK DOCK
+   ========================================================================== */
+
+/* Top Master Header */
+.sanctuary-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(20px, 4vw, 48px);
+  background: rgba(8, 2, 5, 0.65);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid rgba(249, 217, 118, 0.1);
+  transition: all var(--transition-fast);
+}
+
+.sanctuary-header.scrolled {
+  background: rgba(8, 2, 5, 0.88);
+  border-bottom-color: var(--border-gold-subtle);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Monogram Logo */
+.brand-monogram {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--gold-celestial);
+}
+
+.brand-monogram .cross-symbol {
+  font-size: 0.85rem;
+  color: var(--rose-primary);
+}
+
+/* Desktop Nav Links */
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.5vw, 32px);
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+  position: relative;
+  padding: 6px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--gold-gradient);
+  transition: all var(--transition-fast);
+  transform: translateX(-50%);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--gold-celestial);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Floating Story Rail (Right Side on Desktop) */
+.story-rail {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(13, 3, 9, 0.5);
+  backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid rgba(249, 217, 118, 0.12);
+  padding: 16px 8px;
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.rail-node {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.rail-node:hover {
+  color: var(--gold-celestial);
+  background: rgba(249, 217, 118, 0.15);
+}
+
+.rail-node.active {
+  color: var(--bg-obsidian);
+  background: var(--gold-gradient);
+  box-shadow: 0 0 14px var(--gold-glow);
+  transform: scale(1.15);
+}
+
+
+
+/* Floating Petal System Trigger Button */
+.petal-toggle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184, 46, 78, 0.3) 0%, rgba(249, 217, 118, 0.15) 100%);
+  border: 1px solid var(--border-gold-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  box-shadow: 0 0 16px var(--gold-glow);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.petal-toggle-btn:hover {
+  transform: rotate(25deg) scale(1.12);
+  box-shadow: 0 0 24px var(--gold-glow);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .story-rail {
+    display: none; /* Hidden on mobile to prevent viewport obstruction */
+  }
+}
+
+@media (max-width: 768px) {
+  .sanctuary-header {
+    height: 60px;
+    padding: 0 16px;
+  }
+  
+  .desktop-nav {
+    display: none;
+  }
+}
